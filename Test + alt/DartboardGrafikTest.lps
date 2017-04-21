@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="13">
+      <Unit0>
+        <Filename Value="DartboardGrafikTest.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos Y="21"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="testmain.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="TestMain"/>
+        <CursorPos X="36" Y="12"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="dartboardtest.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmBoard"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DartBoardTest"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="602"/>
+        <CursorPos X="74" Y="633"/>
+        <UsageCount Value="31"/>
+        <Bookmarks Count="1">
+          <Item0 X="54" Y="336" ID="2"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="dart501.pas"/>
+        <UnitName Value="Dart501"/>
+        <CursorPos X="19" Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="dartboard.pas"/>
+        <UnitName Value="Dartboard"/>
+        <UsageCount Value="9"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="frspielerx01.pas"/>
+        <ComponentName Value="SpielerX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="frspielerX01"/>
+        <CursorPos X="53" Y="31"/>
+        <UsageCount Value="9"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\..\..\Lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <TopLine Value="154"/>
+        <CursorPos X="3" Y="185"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="..\..\..\Lazarus\fpc\2.6.2\source\rtl\objpas\classes\classesh.inc"/>
+        <TopLine Value="79"/>
+        <CursorPos X="57" Y="110"/>
+        <UsageCount Value="9"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="..\fr_dartboard.pp"/>
+        <ComponentName Value="FrDarboard"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <TopLine Value="124"/>
+        <CursorPos X="75" Y="153"/>
+        <UsageCount Value="15"/>
+        <Bookmarks Count="1">
+          <Item0 X="26" Y="145" ID="1"/>
+        </Bookmarks>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\dartclasses.pas"/>
+        <UnitName Value="DartClasses"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="32" Y="23"/>
+        <UsageCount Value="15"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="..\dartconstants.pp"/>
+        <UnitName Value="DartConstants"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="49" Y="19"/>
+        <UsageCount Value="15"/>
+        <Loaded Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\..\..\Lazarus\fpc\2.6.4\source\rtl\inc\mathh.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="44"/>
+        <CursorPos X="14" Y="76"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\dartfunctions.pas"/>
+        <UnitName Value="DartFunctions"/>
+        <UsageCount Value="10"/>
+      </Unit12>
+    </Units>
+    <JumpHistory Count="19" HistoryIndex="18">
+      <Position1>
+        <Filename Value="..\dartclasses.pas"/>
+        <Caret Line="22" TopLine="2"/>
+      </Position1>
+      <Position2>
+        <Filename Value="..\dartclasses.pas"/>
+        <Caret Line="454" TopLine="401"/>
+      </Position2>
+      <Position3>
+        <Filename Value="..\dartclasses.pas"/>
+        <Caret Line="23"/>
+      </Position3>
+      <Position4>
+        <Filename Value="..\dartconstants.pp"/>
+        <Caret Line="16" Column="31"/>
+      </Position4>
+      <Position5>
+        <Filename Value="..\dartclasses.pas"/>
+        <Caret Line="23"/>
+      </Position5>
+      <Position6>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="612" TopLine="586"/>
+      </Position6>
+      <Position7>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="641" Column="22" TopLine="591"/>
+      </Position7>
+      <Position8>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="529" Column="10" TopLine="522"/>
+      </Position8>
+      <Position9>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="546" TopLine="541"/>
+      </Position9>
+      <Position10>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="529" TopLine="527"/>
+      </Position10>
+      <Position11>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="394" Column="13" TopLine="387"/>
+      </Position11>
+      <Position12>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="644" TopLine="592"/>
+      </Position12>
+      <Position13>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="594" TopLine="589"/>
+      </Position13>
+      <Position14>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="591" Column="23" TopLine="568"/>
+      </Position14>
+      <Position15>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="644" Column="12" TopLine="595"/>
+      </Position15>
+      <Position16>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="93" TopLine="56"/>
+      </Position16>
+      <Position17>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="591" TopLine="571"/>
+      </Position17>
+      <Position18>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="643" Column="14" TopLine="593"/>
+      </Position18>
+      <Position19>
+        <Filename Value="dartboardtest.pas"/>
+        <Caret Line="612" Column="23" TopLine="594"/>
+      </Position19>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

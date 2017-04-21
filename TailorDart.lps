@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="77">
+      <Unit0>
+        <Filename Value="TailorDart.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="37" Y="23"/>
+        <UsageCount Value="204"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="selectgame.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmSelectGame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SelectGame"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="75"/>
+        <CursorPos X="3" Y="75"/>
+        <UsageCount Value="204"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="dartclasses.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DartClasses"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="407"/>
+        <CursorPos Y="435"/>
+        <UsageCount Value="204"/>
+        <Bookmarks Count="1">
+          <Item0 Y="293" ID="3"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="playgame.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmPlayGame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="45" Y="28"/>
+        <UsageCount Value="203"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="GameTest.pp"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="35" Y="7"/>
+        <UsageCount Value="201"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="fr_player.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrPlayer"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="fr_Player"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="41"/>
+        <CursorPos X="40" Y="64"/>
+        <UsageCount Value="151"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="yesno.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmYesNo"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="YesNo"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="28"/>
+        <CursorPos X="52" Y="34"/>
+        <UsageCount Value="145"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="GameTestPlayer.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrTestPlayer"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="175"/>
+        <CursorPos Y="211"/>
+        <UsageCount Value="134"/>
+        <Loaded Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="GameX01Player.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrX01Player"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="253"/>
+        <CursorPos X="62" Y="268"/>
+        <UsageCount Value="109"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="GameX01.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <TopLine Value="64"/>
+        <CursorPos X="21" Y="88"/>
+        <UsageCount Value="109"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="dartmain.pas"/>
+        <ComponentName Value="FrmDartMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DartMain"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="91"/>
+        <CursorPos X="14" Y="93"/>
+        <UsageCount Value="5"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_Panel.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="68" Y="39"/>
+        <UsageCount Value="8"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\..\Lazarus\lcl\extctrls.pp"/>
+        <UnitName Value="ExtCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="995"/>
+        <CursorPos X="14" Y="1049"/>
+        <UsageCount Value="8"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="..\..\Lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1002"/>
+        <CursorPos X="3" Y="1031"/>
+        <UsageCount Value="6"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\..\Lazarus\lcl\stdctrls.pp"/>
+        <UnitName Value="StdCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="140"/>
+        <CursorPos X="3" Y="171"/>
+        <UsageCount Value="1"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\..\Lazarus\fpc\2.6.4\source\packages\fcl-base\src\contnrs.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="172"/>
+        <CursorPos X="3" Y="72"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="..\..\Lazarus\fpc\2.6.4\source\rtl\objpas\fgl.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="137"/>
+        <CursorPos X="111" Y="157"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="playdart.lfm"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="127" Y="15"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\..\Lazarus\components\codetools\codecompletiontemplater.pas"/>
+        <UnitName Value="CodeCompletionTemplater"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="373"/>
+        <CursorPos X="34" Y="376"/>
+        <UsageCount Value="10"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_Application.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="142"/>
+        <CursorPos X="44" Y="151"/>
+        <UsageCount Value="11"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\..\Lazarus\fpc\3.0.0\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1744"/>
+        <CursorPos X="15" Y="1771"/>
+        <UsageCount Value="8"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\..\Lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1334"/>
+        <CursorPos X="15" Y="1361"/>
+        <UsageCount Value="11"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_DBStateLabel.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="140"/>
+        <CursorPos X="28" Y="170"/>
+        <UsageCount Value="10"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="..\..\Lazarus\components\leakview\heaptrcview.pas"/>
+        <UnitName Value="HeapTrcView"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="410"/>
+        <CursorPos X="36" Y="440"/>
+        <UsageCount Value="10"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="..\..\LazComp\TSLib\source\TSLibDB.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="502"/>
+        <CursorPos X="33" Y="532"/>
+        <UsageCount Value="10"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\..\Lazarus\components\leakview\dbginforeader.pas"/>
+        <UnitName Value="DbgInfoReader"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="21"/>
+        <CursorPos X="86" Y="43"/>
+        <UsageCount Value="10"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\..\Lazarus\lcl\include\controlconsts.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="11"/>
+        <CursorPos X="3" Y="38"/>
+        <UsageCount Value="7"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_DBGrid.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="857"/>
+        <CursorPos X="50" Y="886"/>
+        <UsageCount Value="10"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="fr_player.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="1"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="..\..\Lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2711"/>
+        <CursorPos Y="2740"/>
+        <UsageCount Value="10"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="..\..\Lazarus\lcl\include\speedbutton.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="410"/>
+        <CursorPos X="84" Y="420"/>
+        <UsageCount Value="7"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="..\..\LazComp\TSLib\source\TSG.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="38" Y="16"/>
+        <UsageCount Value="1"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="selectgame.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="504"/>
+        <CursorPos X="29" Y="538"/>
+        <UsageCount Value="8"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="..\..\LazComp\TSLib\PackageDefs.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="14" Y="4"/>
+        <UsageCount Value="6"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_RegINI.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="47" Y="27"/>
+        <UsageCount Value="1"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_Splitter.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
+        <CursorPos X="59" Y="24"/>
+        <UsageCount Value="1"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_RegINI.lrs"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="106" Y="11"/>
+        <UsageCount Value="1"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="..\..\LazComp\TSLib\source\TSClasses.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="87" Y="18"/>
+        <UsageCount Value="1"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="..\..\LazComp\TSLib\source\TSLibGraphics.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <UsageCount Value="1"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="..\..\LazComp\TSLib\source\TSLibColors.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="86"/>
+        <CursorPos X="54" Y="126"/>
+        <UsageCount Value="16"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="..\..\Lazarus\fpc\3.0.0\source\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="178"/>
+        <CursorPos X="26" Y="205"/>
+        <UsageCount Value="6"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="..\..\Lazarus\lcl\lclclasses.pp"/>
+        <UnitName Value="LCLClasses"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="28"/>
+        <CursorPos X="17" Y="50"/>
+        <UsageCount Value="1"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="..\..\Lazarus\fpc\3.0.0\source\rtl\inc\wstringh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="11" Y="30"/>
+        <UsageCount Value="1"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="..\..\Lazarus\lcl\include\customedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="569"/>
+        <CursorPos X="35" Y="577"/>
+        <UsageCount Value="1"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="..\..\Lazarus\lcl\interfaces\win32\win32int.pp"/>
+        <UnitName Value="Win32Int"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="1"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="..\..\Lazarus\lcl\interfaces\win32\win32winapih.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="148"/>
+        <CursorPos Y="174"/>
+        <UsageCount Value="1"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="..\..\Lazarus\lcl\lclintf.pas"/>
+        <UnitName Value="LCLIntf"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="1"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="..\..\Lazarus\fpc\3.0.0\source\packages\winunits-jedi\src\jwalmaudit.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="27" Y="5"/>
+        <UsageCount Value="1"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="..\..\Lazarus\lcl\include\containedaction.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="60"/>
+        <CursorPos Y="100"/>
+        <UsageCount Value="2"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="..\..\Lazarus\lcl\include\customaction.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="221"/>
+        <CursorPos Y="247"/>
+        <UsageCount Value="2"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="..\..\Lazarus\fpc\3.0.0\source\rtl\inc\objpas.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="257"/>
+        <CursorPos X="9" Y="277"/>
+        <UsageCount Value="5"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_Edit.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1998"/>
+        <CursorPos X="76" Y="2025"/>
+        <UsageCount Value="27"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="Dart\fr_playerx01.pp"/>
+        <ComponentName Value="PlayerX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Fr_PlayerX01"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="200"/>
+        <CursorPos X="3" Y="207"/>
+        <UsageCount Value="22"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="Dart\fr_optionenx01.pp"/>
+        <ComponentName Value="FrOptionenX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="22"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="..\..\Lazarus\indentation.pas"/>
+        <UnitName Value="Indentation"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="50" Y="18"/>
+        <UsageCount Value="4"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="..\..\Lazarus\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="629"/>
+        <CursorPos X="19" Y="635"/>
+        <UsageCount Value="11"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="..\..\Lazarus\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5758"/>
+        <CursorPos Y="5784"/>
+        <UsageCount Value="8"/>
+      </Unit56>
+      <Unit57>
+        <Filename Value="..\..\Lazarus\lcl\include\customframe.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="136"/>
+        <CursorPos Y="187"/>
+        <UsageCount Value="5"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="..\..\Lazarus\lcl\include\scrollingwincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="23"/>
+        <UsageCount Value="5"/>
+      </Unit58>
+      <Unit59>
+        <Filename Value="..\..\LazComp\TSLib\source\TSLibConvert.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="92" Y="25"/>
+        <UsageCount Value="13"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="..\..\LazComp\TSLib\TailorWareDB.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="6"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_CustomINI.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="974"/>
+        <CursorPos Y="995"/>
+        <UsageCount Value="6"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_SpeedButton.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="26" Y="28"/>
+        <UsageCount Value="20"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="..\..\LazComp\BGRAControls\bgraspeedbutton.pas"/>
+        <UnitName Value="BGRASpeedButton"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="41"/>
+        <CursorPos X="63" Y="51"/>
+        <UsageCount Value="6"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="..\..\Lazarus\lcl\buttons.pp"/>
+        <UnitName Value="Buttons"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="249"/>
+        <CursorPos X="15" Y="276"/>
+        <UsageCount Value="6"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="..\..\LazComp\BGRAControls\bcbutton.pas"/>
+        <UnitName Value="BCButton"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="649"/>
+        <CursorPos X="18" Y="695"/>
+        <UsageCount Value="9"/>
+      </Unit65>
+      <Unit66>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_Timer.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="42"/>
+        <UsageCount Value="7"/>
+      </Unit66>
+      <Unit67>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_SpeedButton.lrs"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="6"/>
+      </Unit67>
+      <Unit68>
+        <Filename Value="..\..\Lazarus\packager\packageeditor.pas"/>
+        <ComponentName Value="PackageEditorForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="PackageEditor"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="941"/>
+        <CursorPos X="31" Y="953"/>
+        <UsageCount Value="6"/>
+      </Unit68>
+      <Unit69>
+        <Filename Value="..\..\Lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1470"/>
+        <CursorPos Y="1505"/>
+        <UsageCount Value="14"/>
+      </Unit69>
+      <Unit70>
+        <Filename Value="Test + alt\frspielerx01.pas"/>
+        <ComponentName Value="SpielerX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="frspielerX01"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="236"/>
+        <CursorPos X="34" Y="267"/>
+        <UsageCount Value="15"/>
+      </Unit70>
+      <Unit71>
+        <Filename Value="..\..\Lazarus\lcl\grids.pas"/>
+        <UnitName Value="Grids"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="9260"/>
+        <CursorPos Y="9287"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit71>
+      <Unit72>
+        <Filename Value="..\..\Lazarus\lcl\dynamicarray.pas"/>
+        <UnitName Value="DynamicArray"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="35"/>
+        <CursorPos Y="63"/>
+        <UsageCount Value="8"/>
+      </Unit72>
+      <Unit73>
+        <Filename Value="..\..\LazComp\BGRAControls\bcbasectrls.pas"/>
+        <UnitName Value="BCBaseCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="352"/>
+        <CursorPos X="3" Y="360"/>
+        <UsageCount Value="9"/>
+      </Unit73>
+      <Unit74>
+        <Filename Value="..\..\Lazarus\lcl\graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="31"/>
+        <CursorPos X="3" Y="58"/>
+        <UsageCount Value="8"/>
+      </Unit74>
+      <Unit75>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_StructuredFileName.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="3" Y="31"/>
+        <UsageCount Value="10"/>
+      </Unit75>
+      <Unit76>
+        <Filename Value="..\..\Lazarus\fpc\3.0.0\source\rtl\objpas\classes\compon.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="278"/>
+        <CursorPos X="16" Y="281"/>
+        <UsageCount Value="8"/>
+      </Unit76>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="291" TopLine="252"/>
+      </Position1>
+      <Position2>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="97" Column="17" TopLine="79"/>
+      </Position2>
+      <Position3>
+        <Filename Value="selectgame.pp"/>
+        <Caret Line="81" Column="3" TopLine="76"/>
+      </Position3>
+      <Position4>
+        <Filename Value="selectgame.pp"/>
+        <Caret Line="75" Column="3" TopLine="75"/>
+      </Position4>
+      <Position5>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="302" TopLine="253"/>
+      </Position5>
+      <Position6>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="303" TopLine="253"/>
+      </Position6>
+      <Position7>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="470" TopLine="437"/>
+      </Position7>
+      <Position8>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="471" TopLine="437"/>
+      </Position8>
+      <Position9>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="343" Column="26" TopLine="316"/>
+      </Position9>
+      <Position10>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="344" TopLine="316"/>
+      </Position10>
+      <Position11>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="202" TopLine="175"/>
+      </Position11>
+      <Position12>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="491" TopLine="437"/>
+      </Position12>
+      <Position13>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="203" TopLine="176"/>
+      </Position13>
+      <Position14>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="253" TopLine="226"/>
+      </Position14>
+      <Position15>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="254" TopLine="226"/>
+      </Position15>
+      <Position16>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="345" TopLine="318"/>
+      </Position16>
+      <Position17>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="202" TopLine="175"/>
+      </Position17>
+      <Position18>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="203" TopLine="175"/>
+      </Position18>
+      <Position19>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="434" TopLine="407"/>
+      </Position19>
+      <Position20>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="253" TopLine="226"/>
+      </Position20>
+      <Position21>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="254" TopLine="226"/>
+      </Position21>
+      <Position22>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="435" TopLine="407"/>
+      </Position22>
+      <Position23>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="289" TopLine="253"/>
+      </Position23>
+      <Position24>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="253" TopLine="226"/>
+      </Position24>
+      <Position25>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="254" TopLine="226"/>
+      </Position25>
+      <Position26>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="291" TopLine="253"/>
+      </Position26>
+      <Position27>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="292" TopLine="253"/>
+      </Position27>
+      <Position28>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="293" TopLine="253"/>
+      </Position28>
+      <Position29>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="294" TopLine="253"/>
+      </Position29>
+      <Position30>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="295" TopLine="253"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="GameX01Player.pp"/>
+        <Line Value="97"/>
+      </Item1>
+    </BreakPoints>
+    <Watches Count="1">
+      <Item1>
+        <Expression Value="fUpPlayerIdx"/>
+      </Item1>
+    </Watches>
+  </Debugging>
+</CONFIG>

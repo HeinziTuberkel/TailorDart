@@ -1,0 +1,164 @@
+object FrmDartMain: TFrmDartMain
+  Left = 710
+  Height = 685
+  Top = 126
+  Width = 952
+  Caption = 'FrmDartMain'
+  ClientHeight = 685
+  ClientWidth = 952
+  Color = clBlack
+  Font.Color = clWhite
+  Font.Name = 'CHAWP'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.6.2.0'
+  object Panel1: TPanel
+    Left = 177
+    Height = 685
+    Top = 0
+    Width = 775
+    Align = alClient
+    ClientHeight = 685
+    ClientWidth = 775
+    TabOrder = 0
+    object BxOptionen: TGroupBox
+      Left = 1
+      Height = 250
+      Top = 1
+      Width = 773
+      Align = alTop
+      Caption = 'Spieloptionen'
+      ClientHeight = 229
+      ClientWidth = 769
+      TabOrder = 0
+      object BtnAddPlayer: TSpeedButton
+        Left = 0
+        Height = 41
+        Top = 188
+        Width = 769
+        Align = alBottom
+        Caption = 'Spieler hinzufügen'
+        Font.Color = clBlack
+        Font.Name = 'blzee'
+        OnClick = BtnAddPlayerClick
+        ParentFont = False
+      end
+      object ScBxOptionen: TScrollBox
+        Left = 0
+        Height = 183
+        Top = 5
+        Width = 769
+        HorzScrollBar.Page = 1
+        VertScrollBar.Page = 1
+        Align = alClient
+        BorderSpacing.Top = 5
+        BorderStyle = bsNone
+        TabOrder = 0
+      end
+    end
+    object ScBxSpielerListe: TScrollBox
+      Left = 1
+      Height = 428
+      Top = 256
+      Width = 773
+      HorzScrollBar.Page = 183
+      VertScrollBar.Page = 41
+      Align = alClient
+      ClientHeight = 424
+      ClientWidth = 769
+      Font.Color = clWhite
+      Font.Name = 'blzee'
+      ParentFont = False
+      TabOrder = 1
+      object BtnStart: TSpeedButton
+        Left = 0
+        Height = 41
+        Top = 383
+        Width = 769
+        Align = alBottom
+        Caption = 'Spiel beginnen'
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'blzee'
+        OnClick = BtnStartClick
+        ParentFont = False
+      end
+    end
+    object Splitter2: TSplitter
+      Cursor = crVSplit
+      Left = 1
+      Height = 5
+      Top = 251
+      Width = 773
+      Align = alTop
+      Color = clMaroon
+      ParentColor = False
+      ResizeAnchor = akTop
+    end
+  end
+  object BxSpiel: TGroupBox
+    Left = 0
+    Height = 685
+    Top = 0
+    Width = 177
+    Align = alLeft
+    Caption = '  Spiel auswählen  '
+    ClientHeight = 664
+    ClientWidth = 173
+    TabOrder = 1
+    object ScrollBox1: TScrollBox
+      Left = 0
+      Height = 654
+      Top = 10
+      Width = 173
+      HorzScrollBar.Page = 140
+      VertScrollBar.Page = 192
+      Align = alClient
+      BorderSpacing.Top = 10
+      ClientHeight = 650
+      ClientWidth = 169
+      Font.Color = clMaroon
+      Font.Name = 'CHAWP'
+      ParentFont = False
+      TabOrder = 0
+      object BtnGameMickeyMouse: TSpeedButton
+        Left = 0
+        Height = 64
+        Top = 128
+        Width = 169
+        Align = alTop
+        Caption = 'Mickey Mouse'
+        GroupIndex = 1
+        OnClick = BtnGameMickeyMouseClick
+      end
+      object BtnGameShandy: TSpeedButton
+        Left = 0
+        Height = 64
+        Top = 64
+        Width = 169
+        Align = alTop
+        Caption = 'Shandy Special'
+        GroupIndex = 1
+        OnClick = BtnGameShandyClick
+      end
+      object BtnGameX01: TSpeedButton
+        Left = 0
+        Height = 64
+        Top = 0
+        Width = 169
+        Align = alTop
+        Caption = 'X01'
+        Down = True
+        GroupIndex = 1
+        OnClick = BtnGameX01Click
+      end
+    end
+  end
+  object TSApplication1: TTSApplication
+    ConnectedFiles.FileExtension = '.ini'
+    ConnectedFiles.Options = [fnoFileNameIsApplicationName]
+    LogFileName.Options = [fnoFileNameIsApplicationName, fnoExtIsLog, fnoUseTSAppBaseDir, fnoUseTSAppSubDir]
+    left = 32
+    top = 240
+  end
+end

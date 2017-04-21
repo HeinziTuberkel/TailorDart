@@ -1,0 +1,31 @@
+object FrOptMickeyMouse: TFrOptMickeyMouse
+  Left = 399
+  Height = 240
+  Top = 456
+  Width = 320
+  ClientHeight = 240
+  ClientWidth = 320
+  Color = clGreen
+  LCLVersion = '1.2.4.0'
+  object Label1: TLabel
+    Left = 24
+    Height = 13
+    Top = 32
+    Width = 66
+    Caption = 'Mickey Mouse'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    AnchorSideLeft.Control = Label1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrCenter
+    Left = 100
+    Height = 21
+    Top = 28
+    Width = 80
+    BorderSpacing.Left = 10
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+end

@@ -1,0 +1,8 @@
+object FrmDartboard: TFrmDartboard
+  Left = 413
+  Height = 240
+  Top = 145
+  Width = 320
+  Caption = 'FrmDartboard'
+  LCLVersion = '1.2.0.3'
+end

@@ -1,0 +1,9 @@
+object FrmDart501: TFrmDart501
+  Left = 414
+  Height = 651
+  Top = 330
+  Width = 628
+  Caption = 'FrmDart501'
+  Color = clWhite
+  LCLVersion = '1.2.0.3'
+end

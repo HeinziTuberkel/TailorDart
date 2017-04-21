@@ -1,0 +1,18 @@
+object FrOptShandy: TFrOptShandy
+  Left = 397
+  Height = 177
+  Top = 722
+  Width = 396
+  ClientHeight = 177
+  ClientWidth = 396
+  Color = clMaroon
+  LCLVersion = '1.2.4.0'
+  object Label1: TLabel
+    Left = 25
+    Height = 13
+    Top = 9
+    Width = 83
+    Caption = 'Shandy Optionen'
+    ParentColor = False
+  end
+end

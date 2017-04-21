@@ -1,0 +1,29 @@
+object FrmPlayDart: TFrmPlayDart
+  Left = 656
+  Height = 738
+  Top = 232
+  Width = 821
+  Caption = 'FrmPlayDart'
+  ClientHeight = 738
+  ClientWidth = 821
+  LCLVersion = '1.4.4.0'
+  inline FrDarboard1: TFrDarboard
+    Left = 144
+    Height = 532
+    Top = 120
+    Width = 656
+    ClientHeight = 532
+    ClientWidth = 656
+    DesignLeft = 326
+    DesignTop = 110
+    inherited ImgBoard: TImage
+      Height = 501
+      Width = 656
+    end
+    inherited PnlCurrentAim: TTSPanel
+      Top = 501
+      Width = 656
+      OnClick = PnlCurrentAimClick
+    end
+  end
+end

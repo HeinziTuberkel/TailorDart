@@ -1,0 +1,10 @@
+object FrmPlayGame: TFrmPlayGame
+  Left = 1285
+  Height = 354
+  Top = 162
+  Width = 504
+  Caption = 'FrmPlayGame'
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '1.6.2.0'
+end

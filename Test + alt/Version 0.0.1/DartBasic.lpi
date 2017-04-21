@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="DartBasic"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="2">
+      <Item1>
+        <PackageName Value="TailorWare"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
+    </RequiredPackages>
+    <Units Count="14">
+      <Unit0>
+        <Filename Value="DartBasic.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="dartfunctions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DartFunctions"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="dmdart.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DataModule1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="DMDart"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="dartclasses.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DartClasses"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="fr_playerx01.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="PlayerX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Fr_PlayerX01"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="playdart.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmPlayDart"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="PlayDart"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="getplayer.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmGetSpieler"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="GetPlayer"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="dartconstants.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DartConstants"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="dartmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmDartMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DartMain"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="fr_spielerdaten.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrSpielerDaten"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="fr_optshandy.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrOptShandy"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Fr_OptShandy"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="fr_optmickeymouse.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrOptMickeyMouse"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Fr_OptMickeyMouse"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="fr_optx01.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrOptX01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Fr_OptX01"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="fr_dartboard.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrDarboard"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit13>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="DartBasic"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="..\..\LazComp\TSLib"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="6">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+      <Item4>
+        <Name Value="EConvertError"/>
+      </Item4>
+      <Item5>
+        <Name Value="ETSAcceptError"/>
+      </Item5>
+      <Item6>
+        <Name Value="EReadError"/>
+      </Item6>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
