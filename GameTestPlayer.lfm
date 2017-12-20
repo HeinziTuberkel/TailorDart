@@ -11,11 +11,11 @@ object FrTestPlayer: TFrTestPlayer
   ParentColor = False
   ParentFont = False
   TabOrder = 0
-  DesignLeft = 880
-  DesignTop = 120
+  DesignLeft = 2934
+  DesignTop = 20
   object LbNickname: TLabel
     Left = 0
-    Height = 27
+    Height = 36
     Top = 10
     Width = 239
     Align = alTop
@@ -64,18 +64,21 @@ object FrTestPlayer: TFrTestPlayer
   end
   object LbPunkte: TLabel
     Left = 32
-    Height = 27
+    Height = 36
     Top = 352
-    Width = 131
+    Width = 130
     Alignment = taRightJustify
     Caption = 'LbPunkte'
     ParentColor = False
   end
   object EdGeworfen: TTSNumEdit
     Left = 40
-    Height = 35
+    Height = 44
     Top = 392
     Width = 120
+    MinNumValue = 0
+    MaxNumValue = 0
+    EmptyValue = 0
     Options = [neoFormatOnEdit, neoPrefixOnEdit, neoPostfixOnEdit]
     Value = 1
     EditButton.Width = 0
@@ -126,9 +129,9 @@ object FrTestPlayer: TFrTestPlayer
   end
   object LbWurf: TLabel
     Left = 32
-    Height = 27
+    Height = 36
     Top = 296
-    Width = 104
+    Width = 105
     Alignment = taRightJustify
     Caption = 'LbWurf'
     ParentColor = False

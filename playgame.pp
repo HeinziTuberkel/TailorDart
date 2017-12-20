@@ -39,12 +39,11 @@ end;
 
 procedure TFrmPlayGame.FormShow(Sender: TObject);
 begin
-  ActiveGame.OnGameEnd := @OnEndGame;
   ActiveGame.InitGame(Self);
   AutoSize := True;
   Application.ProcessMessages;
   SetScreenPos;
-	ActiveGame.PlayDart;
+	ActiveGame.PlayGame;
 end;
 
 procedure TFrmPlayGame.SetScreenPos;

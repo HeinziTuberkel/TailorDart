@@ -1,20 +1,22 @@
 object FrX01Player: TFrX01Player
   Left = 0
-  Height = 740
+  Height = 719
   Top = 0
-  Width = 434
-  ClientHeight = 740
-  ClientWidth = 434
+  Width = 431
+  ClientHeight = 719
+  ClientWidth = 431
   Font.Name = 'CHAWP'
   ParentFont = False
+  ParentShowHint = False
+  ShowHint = True
   TabOrder = 0
-  DesignLeft = 1380
-  DesignTop = 107
+  DesignLeft = 1705
+  DesignTop = 82
   object SGChalkBoard: TStringGrid
     Left = 0
-    Height = 444
+    Height = 423
     Top = 124
-    Width = 434
+    Width = 431
     Align = alClient
     AutoFillColumns = True
     BorderStyle = bsNone
@@ -97,12 +99,12 @@ object FrX01Player: TFrX01Player
     Left = 0
     Height = 124
     Top = 0
-    Width = 434
+    Width = 431
     Align = alTop
     AutoSize = True
     BorderWidth = 5
     ClientHeight = 124
-    ClientWidth = 434
+    ClientWidth = 431
     Color = clBlack
     Font.Color = clWhite
     Font.Height = -16
@@ -115,7 +117,7 @@ object FrX01Player: TFrX01Player
       Left = 6
       Height = 58
       Top = 6
-      Width = 422
+      Width = 419
       Align = alTop
       Alignment = taCenter
       Caption = 'Heinz Meier'
@@ -130,13 +132,13 @@ object FrX01Player: TFrX01Player
       Left = 11
       Height = 27
       Top = 64
-      Width = 412
+      Width = 409
       Align = alTop
       AutoSize = True
       BorderSpacing.Left = 5
       BorderSpacing.Right = 5
       ClientHeight = 27
-      ClientWidth = 412
+      ClientWidth = 409
       TabOrder = 0
       object LbName2: TLabel
         Left = 6
@@ -166,16 +168,16 @@ object FrX01Player: TFrX01Player
       Left = 11
       Height = 27
       Top = 91
-      Width = 412
+      Width = 409
       Align = alTop
       AutoSize = True
       BorderSpacing.Left = 5
       BorderSpacing.Right = 5
       ClientHeight = 27
-      ClientWidth = 412
+      ClientWidth = 409
       TabOrder = 1
       object LbName5: TLabel
-        Left = 305
+        Left = 302
         Height = 25
         Top = 1
         Width = 60
@@ -197,7 +199,7 @@ object FrX01Player: TFrX01Player
         WordWrap = True
       end
       object LbFinish: TLabel
-        Left = 370
+        Left = 367
         Height = 25
         Top = 1
         Width = 36
@@ -227,8 +229,8 @@ object FrX01Player: TFrX01Player
   object PnlGetScore: TTSPanel
     Left = 0
     Height = 172
-    Top = 568
-    Width = 434
+    Top = 547
+    Width = 431
     DisplayStyle.Font.Height = -50
     DisplayStyle.Font.Name = 'AR CENA'
     DisplayStyle.TextAlign = tapCenter
@@ -265,7 +267,7 @@ object FrX01Player: TFrX01Player
     DisplayStyle.Background.Style = bbsColor
     Align = alBottom
     ClientHeight = 172
-    ClientWidth = 434
+    ClientWidth = 431
     Color = clBlack
     Font.Height = -50
     Font.Name = 'AR CENA'
@@ -276,7 +278,7 @@ object FrX01Player: TFrX01Player
       Left = 3
       Height = 88
       Top = 3
-      Width = 428
+      Width = 425
       DisplayStyle.TextAlign = tapCenter
       DisplayStyle.BorderStyle = brdrBump
       DisplayStyle.BorderWidth = 2
@@ -311,14 +313,15 @@ object FrX01Player: TFrX01Player
       DisplayStyle.Background.Style = bbsColor
       Align = alClient
       ClientHeight = 88
-      ClientWidth = 428
+      ClientWidth = 425
       TabOrder = 0
       object BCButton1: TTSSpeedButton
         Left = 131
         Height = 82
+        Hint = 'Number is points scored'
         Top = 3
-        Width = 166
-        Align = alClient
+        Width = 163
+        Align = alLeft
         StateClicked.Background.Color = clBlack
         StateClicked.Background.ColorOpacity = 255
         StateClicked.Background.Gradient1.StartColor = clRed
@@ -371,43 +374,43 @@ object FrX01Player: TFrX01Player
         StateClicked.FontEx.WordBreak = False
         StateHover.Background.Color = clBlack
         StateHover.Background.ColorOpacity = 255
-        StateHover.Background.Gradient1.StartColor = 16744448
+        StateHover.Background.Gradient1.StartColor = 15749200
         StateHover.Background.Gradient1.StartColorOpacity = 255
         StateHover.Background.Gradient1.DrawMode = dmSet
-        StateHover.Background.Gradient1.EndColor = 8404992
+        StateHover.Background.Gradient1.EndColor = clBlack
         StateHover.Background.Gradient1.EndColorOpacity = 255
         StateHover.Background.Gradient1.ColorCorrection = True
-        StateHover.Background.Gradient1.GradientType = gtRadial
-        StateHover.Background.Gradient1.Point1XPercent = 50
+        StateHover.Background.Gradient1.GradientType = gtLinear
+        StateHover.Background.Gradient1.Point1XPercent = 0
         StateHover.Background.Gradient1.Point1YPercent = 100
         StateHover.Background.Gradient1.Point2XPercent = 0
         StateHover.Background.Gradient1.Point2YPercent = 0
         StateHover.Background.Gradient1.Sinus = False
-        StateHover.Background.Gradient2.StartColor = clWhite
+        StateHover.Background.Gradient2.StartColor = clBlack
         StateHover.Background.Gradient2.StartColorOpacity = 255
         StateHover.Background.Gradient2.DrawMode = dmSet
-        StateHover.Background.Gradient2.EndColor = clBlack
+        StateHover.Background.Gradient2.EndColor = 15749200
         StateHover.Background.Gradient2.EndColorOpacity = 255
         StateHover.Background.Gradient2.ColorCorrection = True
         StateHover.Background.Gradient2.GradientType = gtLinear
         StateHover.Background.Gradient2.Point1XPercent = 0
-        StateHover.Background.Gradient2.Point1YPercent = 0
+        StateHover.Background.Gradient2.Point1YPercent = 100
         StateHover.Background.Gradient2.Point2XPercent = 0
-        StateHover.Background.Gradient2.Point2YPercent = 100
+        StateHover.Background.Gradient2.Point2YPercent = 0
         StateHover.Background.Gradient2.Sinus = False
-        StateHover.Background.Gradient1EndPercent = 100
+        StateHover.Background.Gradient1EndPercent = 60
         StateHover.Background.Style = bbsGradient
-        StateHover.Border.Color = clBlack
+        StateHover.Border.Color = clWhite
         StateHover.Border.ColorOpacity = 255
-        StateHover.Border.LightColor = clWhite
+        StateHover.Border.LightColor = 15728640
         StateHover.Border.LightOpacity = 255
-        StateHover.Border.LightWidth = 0
-        StateHover.Border.Style = bboNone
-        StateHover.Border.Width = 1
+        StateHover.Border.LightWidth = 2
+        StateHover.Border.Style = bboSolid
+        StateHover.Border.Width = 2
         StateHover.FontEx.Color = clWhite
         StateHover.FontEx.EndEllipsis = False
         StateHover.FontEx.FontQuality = fqSystemClearType
-        StateHover.FontEx.Height = 0
+        StateHover.FontEx.Height = 50
         StateHover.FontEx.Name = 'ar cena'
         StateHover.FontEx.SingleLine = True
         StateHover.FontEx.Shadow = True
@@ -421,26 +424,26 @@ object FrX01Player: TFrX01Player
         StateHover.FontEx.WordBreak = False
         StateNormal.Background.Color = clBlack
         StateNormal.Background.ColorOpacity = 255
-        StateNormal.Background.Gradient1.StartColor = 4194304
+        StateNormal.Background.Gradient1.StartColor = clBlack
         StateNormal.Background.Gradient1.StartColorOpacity = 255
         StateNormal.Background.Gradient1.DrawMode = dmSet
-        StateNormal.Background.Gradient1.EndColor = 8405056
+        StateNormal.Background.Gradient1.EndColor = 9474192
         StateNormal.Background.Gradient1.EndColorOpacity = 255
         StateNormal.Background.Gradient1.ColorCorrection = True
         StateNormal.Background.Gradient1.GradientType = gtLinear
         StateNormal.Background.Gradient1.Point1XPercent = 0
-        StateNormal.Background.Gradient1.Point1YPercent = 0
+        StateNormal.Background.Gradient1.Point1YPercent = 55
         StateNormal.Background.Gradient1.Point2XPercent = 0
-        StateNormal.Background.Gradient1.Point2YPercent = 100
+        StateNormal.Background.Gradient1.Point2YPercent = 0
         StateNormal.Background.Gradient1.Sinus = False
-        StateNormal.Background.Gradient2.StartColor = 8405056
+        StateNormal.Background.Gradient2.StartColor = 5592405
         StateNormal.Background.Gradient2.StartColorOpacity = 255
         StateNormal.Background.Gradient2.DrawMode = dmSet
-        StateNormal.Background.Gradient2.EndColor = 4194304
+        StateNormal.Background.Gradient2.EndColor = clBlack
         StateNormal.Background.Gradient2.EndColorOpacity = 255
         StateNormal.Background.Gradient2.ColorCorrection = True
-        StateNormal.Background.Gradient2.GradientType = gtRadial
-        StateNormal.Background.Gradient2.Point1XPercent = 50
+        StateNormal.Background.Gradient2.GradientType = gtLinear
+        StateNormal.Background.Gradient2.Point1XPercent = 0
         StateNormal.Background.Gradient2.Point1YPercent = 100
         StateNormal.Background.Gradient2.Point2XPercent = 0
         StateNormal.Background.Gradient2.Point2YPercent = 0
@@ -451,13 +454,13 @@ object FrX01Player: TFrX01Player
         StateNormal.Border.ColorOpacity = 255
         StateNormal.Border.LightColor = clWhite
         StateNormal.Border.LightOpacity = 255
-        StateNormal.Border.LightWidth = 0
-        StateNormal.Border.Style = bboNone
+        StateNormal.Border.LightWidth = 1
+        StateNormal.Border.Style = bboSolid
         StateNormal.Border.Width = 1
         StateNormal.FontEx.Color = 16770790
         StateNormal.FontEx.EndEllipsis = False
         StateNormal.FontEx.FontQuality = fqSystemClearType
-        StateNormal.FontEx.Height = 0
+        StateNormal.FontEx.Height = 50
         StateNormal.FontEx.Name = 'ar cena'
         StateNormal.FontEx.SingleLine = True
         StateNormal.FontEx.Shadow = True
@@ -765,6 +768,7 @@ object FrX01Player: TFrX01Player
           0000717B87000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000
         }
+        InnerMargin = 0
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -774,11 +778,14 @@ object FrX01Player: TFrX01Player
         RoundingDropDown.RoundOptions = []
         ShowHint = True
         TextApplyGlobalOpacity = False
+        MemoryUsage = bmuHigh
+        AllowAllUp = True
         GroupIndex = 1
       end
       object BCButton2: TTSSpeedButton
         Left = 3
         Height = 82
+        Hint = 'Number is points scored'
         Top = 3
         Width = 128
         Align = alLeft
@@ -834,43 +841,43 @@ object FrX01Player: TFrX01Player
         StateClicked.FontEx.WordBreak = False
         StateHover.Background.Color = clBlack
         StateHover.Background.ColorOpacity = 255
-        StateHover.Background.Gradient1.StartColor = 16744448
+        StateHover.Background.Gradient1.StartColor = 15749200
         StateHover.Background.Gradient1.StartColorOpacity = 255
         StateHover.Background.Gradient1.DrawMode = dmSet
-        StateHover.Background.Gradient1.EndColor = 8404992
+        StateHover.Background.Gradient1.EndColor = clBlack
         StateHover.Background.Gradient1.EndColorOpacity = 255
         StateHover.Background.Gradient1.ColorCorrection = True
-        StateHover.Background.Gradient1.GradientType = gtRadial
-        StateHover.Background.Gradient1.Point1XPercent = 50
+        StateHover.Background.Gradient1.GradientType = gtLinear
+        StateHover.Background.Gradient1.Point1XPercent = 0
         StateHover.Background.Gradient1.Point1YPercent = 100
         StateHover.Background.Gradient1.Point2XPercent = 0
         StateHover.Background.Gradient1.Point2YPercent = 0
         StateHover.Background.Gradient1.Sinus = False
-        StateHover.Background.Gradient2.StartColor = clWhite
+        StateHover.Background.Gradient2.StartColor = clBlack
         StateHover.Background.Gradient2.StartColorOpacity = 255
         StateHover.Background.Gradient2.DrawMode = dmSet
-        StateHover.Background.Gradient2.EndColor = clBlack
+        StateHover.Background.Gradient2.EndColor = 15749200
         StateHover.Background.Gradient2.EndColorOpacity = 255
         StateHover.Background.Gradient2.ColorCorrection = True
         StateHover.Background.Gradient2.GradientType = gtLinear
         StateHover.Background.Gradient2.Point1XPercent = 0
-        StateHover.Background.Gradient2.Point1YPercent = 0
+        StateHover.Background.Gradient2.Point1YPercent = 100
         StateHover.Background.Gradient2.Point2XPercent = 0
-        StateHover.Background.Gradient2.Point2YPercent = 100
+        StateHover.Background.Gradient2.Point2YPercent = 0
         StateHover.Background.Gradient2.Sinus = False
-        StateHover.Background.Gradient1EndPercent = 100
+        StateHover.Background.Gradient1EndPercent = 60
         StateHover.Background.Style = bbsGradient
-        StateHover.Border.Color = clBlack
+        StateHover.Border.Color = clWhite
         StateHover.Border.ColorOpacity = 255
-        StateHover.Border.LightColor = clWhite
+        StateHover.Border.LightColor = 15728640
         StateHover.Border.LightOpacity = 255
-        StateHover.Border.LightWidth = 0
-        StateHover.Border.Style = bboNone
-        StateHover.Border.Width = 1
+        StateHover.Border.LightWidth = 2
+        StateHover.Border.Style = bboSolid
+        StateHover.Border.Width = 2
         StateHover.FontEx.Color = clWhite
         StateHover.FontEx.EndEllipsis = False
         StateHover.FontEx.FontQuality = fqSystemClearType
-        StateHover.FontEx.Height = 0
+        StateHover.FontEx.Height = 50
         StateHover.FontEx.Name = 'ar cena'
         StateHover.FontEx.SingleLine = True
         StateHover.FontEx.Shadow = True
@@ -884,26 +891,26 @@ object FrX01Player: TFrX01Player
         StateHover.FontEx.WordBreak = False
         StateNormal.Background.Color = clBlack
         StateNormal.Background.ColorOpacity = 255
-        StateNormal.Background.Gradient1.StartColor = 4194304
+        StateNormal.Background.Gradient1.StartColor = clBlack
         StateNormal.Background.Gradient1.StartColorOpacity = 255
         StateNormal.Background.Gradient1.DrawMode = dmSet
-        StateNormal.Background.Gradient1.EndColor = 8405056
+        StateNormal.Background.Gradient1.EndColor = 9474192
         StateNormal.Background.Gradient1.EndColorOpacity = 255
         StateNormal.Background.Gradient1.ColorCorrection = True
         StateNormal.Background.Gradient1.GradientType = gtLinear
         StateNormal.Background.Gradient1.Point1XPercent = 0
-        StateNormal.Background.Gradient1.Point1YPercent = 0
+        StateNormal.Background.Gradient1.Point1YPercent = 55
         StateNormal.Background.Gradient1.Point2XPercent = 0
-        StateNormal.Background.Gradient1.Point2YPercent = 100
+        StateNormal.Background.Gradient1.Point2YPercent = 0
         StateNormal.Background.Gradient1.Sinus = False
-        StateNormal.Background.Gradient2.StartColor = 8405056
+        StateNormal.Background.Gradient2.StartColor = 5592405
         StateNormal.Background.Gradient2.StartColorOpacity = 255
         StateNormal.Background.Gradient2.DrawMode = dmSet
-        StateNormal.Background.Gradient2.EndColor = 4194304
+        StateNormal.Background.Gradient2.EndColor = clBlack
         StateNormal.Background.Gradient2.EndColorOpacity = 255
         StateNormal.Background.Gradient2.ColorCorrection = True
-        StateNormal.Background.Gradient2.GradientType = gtRadial
-        StateNormal.Background.Gradient2.Point1XPercent = 50
+        StateNormal.Background.Gradient2.GradientType = gtLinear
+        StateNormal.Background.Gradient2.Point1XPercent = 0
         StateNormal.Background.Gradient2.Point1YPercent = 100
         StateNormal.Background.Gradient2.Point2XPercent = 0
         StateNormal.Background.Gradient2.Point2YPercent = 0
@@ -914,13 +921,13 @@ object FrX01Player: TFrX01Player
         StateNormal.Border.ColorOpacity = 255
         StateNormal.Border.LightColor = clWhite
         StateNormal.Border.LightOpacity = 255
-        StateNormal.Border.LightWidth = 0
-        StateNormal.Border.Style = bboNone
+        StateNormal.Border.LightWidth = 1
+        StateNormal.Border.Style = bboSolid
         StateNormal.Border.Width = 1
         StateNormal.FontEx.Color = 16770790
         StateNormal.FontEx.EndEllipsis = False
         StateNormal.FontEx.FontQuality = fqSystemClearType
-        StateNormal.FontEx.Height = 0
+        StateNormal.FontEx.Height = 50
         StateNormal.FontEx.Name = 'ar cena'
         StateNormal.FontEx.SingleLine = True
         StateNormal.FontEx.Shadow = True
@@ -1393,6 +1400,7 @@ object FrX01Player: TFrX01Player
           928C937162BA7D4B44DB825448D299786BB2BEA9A670F2F0F11CFFFFFF00FEFD
           FD01FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
+        InnerMargin = 0
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -1402,14 +1410,17 @@ object FrX01Player: TFrX01Player
         RoundingDropDown.RoundOptions = []
         ShowHint = True
         TextApplyGlobalOpacity = False
+        MemoryUsage = bmuHigh
+        AllowAllUp = True
         GroupIndex = 1
       end
       object BCButton3: TTSSpeedButton
-        Left = 297
+        Left = 294
         Height = 82
+        Hint = 'Number is points scored'
         Top = 3
         Width = 128
-        Align = alRight
+        Align = alLeft
         StateClicked.Background.Color = clBlack
         StateClicked.Background.ColorOpacity = 255
         StateClicked.Background.Gradient1.StartColor = clRed
@@ -1462,43 +1473,43 @@ object FrX01Player: TFrX01Player
         StateClicked.FontEx.WordBreak = False
         StateHover.Background.Color = clBlack
         StateHover.Background.ColorOpacity = 255
-        StateHover.Background.Gradient1.StartColor = 16744448
+        StateHover.Background.Gradient1.StartColor = 15749200
         StateHover.Background.Gradient1.StartColorOpacity = 255
         StateHover.Background.Gradient1.DrawMode = dmSet
-        StateHover.Background.Gradient1.EndColor = 8404992
+        StateHover.Background.Gradient1.EndColor = clBlack
         StateHover.Background.Gradient1.EndColorOpacity = 255
         StateHover.Background.Gradient1.ColorCorrection = True
-        StateHover.Background.Gradient1.GradientType = gtRadial
-        StateHover.Background.Gradient1.Point1XPercent = 50
+        StateHover.Background.Gradient1.GradientType = gtLinear
+        StateHover.Background.Gradient1.Point1XPercent = 0
         StateHover.Background.Gradient1.Point1YPercent = 100
         StateHover.Background.Gradient1.Point2XPercent = 0
         StateHover.Background.Gradient1.Point2YPercent = 0
         StateHover.Background.Gradient1.Sinus = False
-        StateHover.Background.Gradient2.StartColor = clWhite
+        StateHover.Background.Gradient2.StartColor = clBlack
         StateHover.Background.Gradient2.StartColorOpacity = 255
         StateHover.Background.Gradient2.DrawMode = dmSet
-        StateHover.Background.Gradient2.EndColor = clBlack
+        StateHover.Background.Gradient2.EndColor = 15749200
         StateHover.Background.Gradient2.EndColorOpacity = 255
         StateHover.Background.Gradient2.ColorCorrection = True
         StateHover.Background.Gradient2.GradientType = gtLinear
         StateHover.Background.Gradient2.Point1XPercent = 0
-        StateHover.Background.Gradient2.Point1YPercent = 0
+        StateHover.Background.Gradient2.Point1YPercent = 100
         StateHover.Background.Gradient2.Point2XPercent = 0
-        StateHover.Background.Gradient2.Point2YPercent = 100
+        StateHover.Background.Gradient2.Point2YPercent = 0
         StateHover.Background.Gradient2.Sinus = False
-        StateHover.Background.Gradient1EndPercent = 100
+        StateHover.Background.Gradient1EndPercent = 60
         StateHover.Background.Style = bbsGradient
-        StateHover.Border.Color = clBlack
+        StateHover.Border.Color = clWhite
         StateHover.Border.ColorOpacity = 255
-        StateHover.Border.LightColor = clWhite
+        StateHover.Border.LightColor = 15728640
         StateHover.Border.LightOpacity = 255
-        StateHover.Border.LightWidth = 0
-        StateHover.Border.Style = bboNone
-        StateHover.Border.Width = 1
+        StateHover.Border.LightWidth = 2
+        StateHover.Border.Style = bboSolid
+        StateHover.Border.Width = 2
         StateHover.FontEx.Color = clWhite
         StateHover.FontEx.EndEllipsis = False
         StateHover.FontEx.FontQuality = fqSystemClearType
-        StateHover.FontEx.Height = 0
+        StateHover.FontEx.Height = 50
         StateHover.FontEx.Name = 'ar cena'
         StateHover.FontEx.SingleLine = True
         StateHover.FontEx.Shadow = True
@@ -1512,26 +1523,26 @@ object FrX01Player: TFrX01Player
         StateHover.FontEx.WordBreak = False
         StateNormal.Background.Color = clBlack
         StateNormal.Background.ColorOpacity = 255
-        StateNormal.Background.Gradient1.StartColor = 4194304
+        StateNormal.Background.Gradient1.StartColor = clBlack
         StateNormal.Background.Gradient1.StartColorOpacity = 255
         StateNormal.Background.Gradient1.DrawMode = dmSet
-        StateNormal.Background.Gradient1.EndColor = 8405056
+        StateNormal.Background.Gradient1.EndColor = 9474192
         StateNormal.Background.Gradient1.EndColorOpacity = 255
         StateNormal.Background.Gradient1.ColorCorrection = True
         StateNormal.Background.Gradient1.GradientType = gtLinear
         StateNormal.Background.Gradient1.Point1XPercent = 0
-        StateNormal.Background.Gradient1.Point1YPercent = 0
+        StateNormal.Background.Gradient1.Point1YPercent = 55
         StateNormal.Background.Gradient1.Point2XPercent = 0
-        StateNormal.Background.Gradient1.Point2YPercent = 100
+        StateNormal.Background.Gradient1.Point2YPercent = 0
         StateNormal.Background.Gradient1.Sinus = False
-        StateNormal.Background.Gradient2.StartColor = 8405056
+        StateNormal.Background.Gradient2.StartColor = 5592405
         StateNormal.Background.Gradient2.StartColorOpacity = 255
         StateNormal.Background.Gradient2.DrawMode = dmSet
-        StateNormal.Background.Gradient2.EndColor = 4194304
+        StateNormal.Background.Gradient2.EndColor = clBlack
         StateNormal.Background.Gradient2.EndColorOpacity = 255
         StateNormal.Background.Gradient2.ColorCorrection = True
-        StateNormal.Background.Gradient2.GradientType = gtRadial
-        StateNormal.Background.Gradient2.Point1XPercent = 50
+        StateNormal.Background.Gradient2.GradientType = gtLinear
+        StateNormal.Background.Gradient2.Point1XPercent = 0
         StateNormal.Background.Gradient2.Point1YPercent = 100
         StateNormal.Background.Gradient2.Point2XPercent = 0
         StateNormal.Background.Gradient2.Point2YPercent = 0
@@ -1542,8 +1553,8 @@ object FrX01Player: TFrX01Player
         StateNormal.Border.ColorOpacity = 255
         StateNormal.Border.LightColor = clWhite
         StateNormal.Border.LightOpacity = 255
-        StateNormal.Border.LightWidth = 0
-        StateNormal.Border.Style = bboNone
+        StateNormal.Border.LightWidth = 1
+        StateNormal.Border.Style = bboSolid
         StateNormal.Border.Width = 1
         StateNormal.FontEx.Color = 16770790
         StateNormal.FontEx.EndEllipsis = False
@@ -1565,6 +1576,7 @@ object FrX01Player: TFrX01Player
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
+        InnerMargin = 0
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -1574,6 +1586,8 @@ object FrX01Player: TFrX01Player
         RoundingDropDown.RoundOptions = []
         ShowHint = True
         TextApplyGlobalOpacity = False
+        MemoryUsage = bmuHigh
+        AllowAllUp = True
         GroupIndex = 1
       end
     end
@@ -1581,17 +1595,18 @@ object FrX01Player: TFrX01Player
       Left = 3
       Height = 78
       Top = 91
-      Width = 428
+      Width = 425
       Align = alBottom
       AutoSize = True
       BorderWidth = 3
       Caption = 'PnlEdit'
       ClientHeight = 78
-      ClientWidth = 428
+      ClientWidth = 425
       TabOrder = 1
       object BtnUndoThrow: TTSSpeedButton
         Left = 4
         Height = 70
+        Hint = 'Press to add another Player to the Game'
         Top = 4
         Width = 93
         Align = alLeft
@@ -2041,6 +2056,7 @@ object FrX01Player: TFrX01Player
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000
         }
+        InnerMargin = 0
         OnClick = BtnUndoThrowClick
         ParentColor = False
         Rounding.RoundX = 12
@@ -2051,10 +2067,12 @@ object FrX01Player: TFrX01Player
         RoundingDropDown.RoundOptions = []
         TextApplyGlobalOpacity = False
         DropDownPosition = bdpBottom
+        MemoryUsage = bmuHigh
       end
       object BtnScoreDone: TTSSpeedButton
-        Left = 331
+        Left = 328
         Height = 70
+        Hint = 'Press to add another Player to the Game'
         Top = 4
         Width = 93
         Align = alRight
@@ -2504,6 +2522,7 @@ object FrX01Player: TFrX01Player
           0021000000200000001E0000001C0000001A0000001800000015000000130000
           00110000000E0000000C0000000A000000080000000600000004
         }
+        InnerMargin = 0
         OnClick = BtnScoreDoneClick
         ParentColor = False
         Rounding.RoundX = 12
@@ -2514,6 +2533,7 @@ object FrX01Player: TFrX01Player
         RoundingDropDown.RoundOptions = []
         TextApplyGlobalOpacity = False
         DropDownPosition = bdpBottom
+        MemoryUsage = bmuHigh
       end
       object EdScore: TTSNumEdit
         AnchorSideLeft.Control = BtnUndoThrow
@@ -2522,13 +2542,14 @@ object FrX01Player: TFrX01Player
         Left = 99
         Height = 66
         Top = 6
-        Width = 230
+        Width = 227
         MinNumValue = 0
         MaxNumValue = 180
         EmptyValue = 0
         DecimalPlaces = 0
         Options = [neoFormatOnEdit, neoPrefixOnEdit, neoPostfixOnEdit]
         DisplayFormat = '0'
+        OnAcceptValue = EdScoreAcceptValue
         Value = 0
         EditButton.Width = 0
         EditButton.Glyph.Data = {
@@ -2569,11 +2590,10 @@ object FrX01Player: TFrX01Player
         }
         EditButton.GlyphUseDefault = False
         AntiFlickerGutter = False
-        OnAccept = EdScoreAccept
+        OnAccepted = EdScoreAccepted
         BorderSpacing.Around = 2
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 0
-        OnKeyPress = EdScoreKeyPress
         ExtendedValues = (
           '0'
           '180'

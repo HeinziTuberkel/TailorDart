@@ -40,21 +40,20 @@ type
 		BtnUndoThrow: TTSSpeedButton;
 		BtnScoreDone: TTSSpeedButton;
 		procedure BtnScoreDoneClick(Sender: TObject);
-	procedure BtnUndoThrowClick(Sender: TObject);
-	procedure EdScoreAccept(Sender: TObject; var NewText: string;
-		var AcceptAction: NTSAcceptAction);
-	procedure EdScoreKeyPress(Sender: TObject; var Key: char);
-	procedure Panel1Enter(Sender: TObject);
+		procedure BtnUndoThrowClick(Sender: TObject);
+		procedure EdScoreAccepted(Sender: TObject);
+		procedure EdScoreAcceptValue(Sender: TObject; var Value: Extended; var AcceptAction: NTSAcceptAction);
+		procedure Panel1Enter(Sender: TObject);
 	private
-    Player: TPlayerX01;
+		Player: TPlayerX01;
 	public
 		procedure Init;
-    procedure LockInput;
-    procedure GetScore;
-    procedure UpdateDisplay;
-    function ScoreInput: Integer;
-    procedure AddScoreLine(Score, Remain: Integer);
-    procedure RemoveScoreLine;
+		procedure LockInput;
+		procedure GetScore;
+		procedure UpdateDisplay;
+		function ScoreInput: Integer;
+		procedure AddScoreLine(Score, Remain: Integer);
+		procedure RemoveScoreLine;
 	end;
 
 	{ TPlayerX01 }
@@ -73,7 +72,7 @@ type
 	public
 		constructor Create; override;
 		destructor Destroy; override;
-		procedure InitGame(TheGame: TDartGame; NewIndex: Integer); override;
+		procedure InitGame(TheGame: TDartGame); override;
 
 		function CanUndoThrow: Boolean; override;
 		function IsCheckOut: Boolean; override;
@@ -97,20 +96,14 @@ begin
   Player.ThrowCancel;
 end;
 
-procedure TFrX01Player.EdScoreAccept(Sender: TObject; var NewText: string;
-	var AcceptAction: NTSAcceptAction);
+procedure TFrX01Player.EdScoreAccepted(Sender: TObject);
 begin
 	Player.ThrowDone;
 end;
 
-procedure TFrX01Player.EdScoreKeyPress(Sender: TObject; var Key: char);
+procedure TFrX01Player.EdScoreAcceptValue(Sender: TObject; var Value: Extended;
+	var AcceptAction: NTSAcceptAction);
 begin
-  if Key = #13 then
-  begin
-  	Key := #0;
-    EdScore.Accept;
-    Player.ThrowDone;
-	end;
 end;
 
 procedure TFrX01Player.Panel1Enter(Sender: TObject);
@@ -126,7 +119,7 @@ end;
 procedure TFrX01Player.Init;
 begin
   Parent := Player.ScoreBoard;
-  Left := Width + Player.Index + 1;
+  Left := Width + 1;
   Align := alLeft;
   LbNickname.Caption := Player.Nickname;
   SGChalkboard.Clear;
@@ -228,11 +221,11 @@ begin
     Frame.Free;
 end;
 
-procedure TPlayerX01.InitGame(TheGame: TDartGame; NewIndex: Integer);
+procedure TPlayerX01.InitGame(TheGame: TDartGame);
 begin
   if not (TheGame is TDartGameX01) then
 		raise Exception.Create('Wrong game type for TPlayerX01. Must be TDartGameX01');
-  inherited InitGame(TheGame, NewIndex);
+  inherited InitGame(TheGame);
   ThisGame := TDartGameX01(TheGame);
   if not Assigned(Frame) then
 		Frame := TFrX01Player.Create(ScoreBoard.Owner);

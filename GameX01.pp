@@ -5,8 +5,8 @@ unit GameX01;
 interface
 
 uses
-  DartClasses,
-	Classes, SysUtils, FileUtil, Forms, Controls, StdCtrls, Buttons, TS_Edit;
+  DartClasses, Classes, SysUtils, FileUtil, Forms, Controls, StdCtrls, Buttons,
+	TS_Edit, TS_SpeedButton;
 
 type
   TDartGameX01 = class;
@@ -21,14 +21,15 @@ type
 		EdLegs: TTSNumEdit;
 		EdSets: TTSNumEdit;
 		XBestOfMode: TSpeedButton;
+		XDoubleOut: TTSSpeedButton;
 		XSetMode: TSpeedButton;
-		XDoubleOut: TSpeedButton;
 		XDoubleIn: TSpeedButton;
 		procedure CBxPunkteChange(Sender: TObject);
 		procedure EdLegsAcceptValue(Sender: TObject; var Value: Extended;
 			var AcceptAction: NTSAcceptAction);
 		procedure EdSetsAcceptValue(Sender: TObject; var Value: Extended;
 			var AcceptAction: NTSAcceptAction);
+		procedure FrameClick(Sender: TObject);
 		procedure XDoubleInClick(Sender: TObject);
 		procedure XDoubleOutClick(Sender: TObject);
 		procedure XSetModeClick(Sender: TObject);
@@ -121,6 +122,11 @@ procedure TFrX01.EdSetsAcceptValue(Sender: TObject; var Value: Extended;
 	var AcceptAction: NTSAcceptAction);
 begin
 	Game.WinningSets := Trunc(Value);
+end;
+
+procedure TFrX01.FrameClick(Sender: TObject);
+begin
+
 end;
 
 procedure TFrX01.XDoubleOutClick(Sender: TObject);

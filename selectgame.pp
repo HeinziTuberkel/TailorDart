@@ -5,15 +5,14 @@ unit SelectGame;
 interface
 
 uses
+  Windows,
 	fr_Player, DartClasses, PlayGame, GameTest, GameX01, Classes, SysUtils,
 	FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
 	ActnList, StdCtrls, TS_Application, TS_Panel, TS_GroupBox, TS_Splitter,
 	TS_SpeedButton, BCButton, BGRASpeedButton;
 
 type
-
 	{ TFrmSelectGame }
-
 	TFrmSelectGame = class(TForm)
 		AcAddPlayer: TAction;
 		ActStartGame: TAction;
@@ -30,42 +29,67 @@ type
 		PnlRoster: TTSPanel;
 		ScrollBox1: TScrollBox;
 		SpltOptions: TSplitter;
-		TSApplication1: TTSApplication;
+		App: TTSApplication;
 		TSSplitter1: TTSSplitter;
 		procedure AcAddPlayerExecute(Sender: TObject);
-  	procedure ActStartGameExecute(Sender: TObject);
- 		procedure BtnGameMickeyMouseClick(Sender: TObject);
-  	procedure BtnGameShandyClick(Sender: TObject);
-  	procedure BtnGameTestClick(Sender: TObject);
+		procedure ActStartGameExecute(Sender: TObject);
+		procedure BtnGameMickeyMouseClick(Sender: TObject);
+		procedure BtnGameShandyClick(Sender: TObject);
+		procedure BtnGameTestClick(Sender: TObject);
 		procedure BtnGameX01Click(Sender: TObject);
+		procedure BtnStartClick(Sender: TObject);
+		procedure BxSpiel1Click(Sender: TObject);
+		procedure BxSpielClick(Sender: TObject);
+		procedure FormCreate(Sender: TObject);
+		procedure FormDestroy(Sender: TObject);
 		procedure FormShow(Sender: TObject);
+		procedure PnlOptionsClick(Sender: TObject);
+		procedure PnlRosterClick(Sender: TObject);
+		procedure ScrollBox1Click(Sender: TObject);
 	private
-    PlayerList: array of TFrPlayer;
-  	SelectedGame: TDartGame;
+		PlayerList: array of TFrPlayer;
+		SelectedGame: TDartGame;
 		DartGameTest: TDartGame;
-    DartGameX01: TDartGame;
-    DartGameMickeyMouse: TDartGame;
-    DartGameShandy: TDartGame;
-    procedure OnDeletePlayerClick(Sender: TObject; Index: Integer);
-    procedure SetGame(var Game: TDartGame; GameClass: TDartGameClass);
-    procedure CheckShowOptions;
+		DartGameX01: TDartGame;
+		DartGameMickeyMouse: TDartGame;
+		DartGameShandy: TDartGame;
+    FontID: array of Cardinal;
+		procedure OnDeletePlayerClick(Sender: TObject; Index: Integer);
+		procedure SetGame(var Game: TDartGame; GameClass: TDartGameClass);
+		procedure CheckShowOptions;
+		procedure LoadFonts;
+		procedure UnloadFonts;
 	public
 	end;
 
 var
 		FrmSelectGame: TFrmSelectGame;
 
+
 implementation
 
 {$R *.lfm}
 
-uses TSLib;
+uses
+	LResources,
+  TSLibGraphics,
+	TSLib;
 
 { TFrmSelectGame }
 procedure TFrmSelectGame.BtnGameX01Click(Sender: TObject);
 begin
 	if BtnGameX01.Down then
-  	SetGame(DartGameX01, TDartGameX01);
+		SetGame(DartGameX01, TDartGameX01);
+end;
+
+procedure TFrmSelectGame.FormCreate(Sender: TObject);
+begin
+  LoadFonts;
+end;
+
+procedure TFrmSelectGame.FormDestroy(Sender: TObject);
+begin
+  UnloadFonts;
 end;
 
 procedure TFrmSelectGame.FormShow(Sender: TObject);
@@ -156,20 +180,42 @@ begin
 end;
 
 procedure TFrmSelectGame.CheckShowOptions;
-begin
-  if Assigned(SelectedGame) and SelectedGame.HasOptions then
-  begin
+	begin
+	if Assigned(SelectedGame) and SelectedGame.HasOptions then
+	begin
 		SelectedGame.Options.Parent := PnlOptions;
-    PnlOptions.Show;
-    PnlOptions.Height := SelectedGame.Options.Height;
-    SelectedGame.Options.Align := alClient;
-    SpltOptions.Show;
-  end
-  else begin
-    PnlOptions.Hide;
-    SpltOptions.Hide;
+		PnlOptions.Show;
+		PnlOptions.Height := SelectedGame.Options.Height;
+		SelectedGame.Options.Align := alClient;
+		SpltOptions.Show;
+	end
+	else begin
+		PnlOptions.Hide;
+		SpltOptions.Hide;
 	end;
 end;
 
-end.
+procedure TFrmSelectGame.LoadFonts;
+var
+ 	Path: string;
+begin
+	Path := ApplicationPath + 'fonts\';
+  SetLength(FontID, 3);
+	if LoadTemporaryFont(Path + 'blzee.ttf') then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+	if LoadTemporaryFont(Path + 'chawp.ttf') then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+	if LoadTemporaryFont(Path + 'ARCENA.ttf') then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+end;
 
+procedure TFrmSelectGame.UnloadFonts;
+begin
+	if UnloadTemporaryFont('chawp.ttf')
+  	or UnloadTemporaryFont('blzee.ttf')
+    or UnloadTemporaryFont('ARCENA.ttf')
+	then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+end;
+
+end.

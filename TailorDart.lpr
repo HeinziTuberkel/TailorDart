@@ -15,9 +15,9 @@ uses
 begin
 		RequireDerivedFormResource := True;
 		Application.Initialize;
-    Application.CreateForm(TFrmSelectGame, FrmSelectGame);
 		Application.CreateForm(TFrmPlayGame, FrmPlayGame);
-    Application.CreateForm(TFrmYesNo, FrmYesNo);
+		Application.CreateForm(TFrmSelectGame, FrmSelectGame);
+		Application.CreateForm(TFrmYesNo, FrmYesNo);
 		Application.Run;
 end.
 

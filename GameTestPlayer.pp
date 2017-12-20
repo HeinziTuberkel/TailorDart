@@ -51,7 +51,7 @@ type
 	public
     constructor Create; override;
   	destructor Destroy; override;
-		procedure InitGame(TheGame: TDartGame; NewIndex: Integer); override;
+		procedure InitGame(TheGame: TDartGame); override;
 
     function CanUndoThrow: Boolean; override;
 		function IsCheckOut: Boolean; override;
@@ -97,7 +97,7 @@ end;
 procedure TFrTestPlayer.Init;
 begin
   Parent := Player.ScoreBoard;
-  Left := Width + Player.Index + 1;
+  Left := Width * + 1;
   Align := alLeft;
   LbNickname.Caption := Player.Nickname;
   UpdateDisplay;
@@ -144,9 +144,9 @@ begin
     Frame.Free;
 end;
 
-procedure TDartPlayerTest.InitGame(TheGame: TDartGame; NewIndex: Integer);
+procedure TDartPlayerTest.InitGame(TheGame: TDartGame);
 begin
-  inherited InitGame(TheGame, NewIndex);
+  inherited InitGame(TheGame);
  	Punkte := 501;
   Wurf := 0;
   if not Assigned(Frame) then
@@ -216,7 +216,7 @@ procedure TDartPlayerTest.LoseOut;
 begin
 	inherited LoseOut;
   if Confirm('Neu anfangen?') then
-    InitGame(Game, Index)
+    InitGame(Game)
   else
   	Enabled := False;
 end;

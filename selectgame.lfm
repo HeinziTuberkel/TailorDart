@@ -1,29 +1,33 @@
 object FrmSelectGame: TFrmSelectGame
-  Left = 283
+  Left = 1964
   Height = 626
-  Top = 55
-  Width = 930
+  Top = 438
+  Width = 852
   Caption = 'FrmSelectGame'
   ClientHeight = 626
-  ClientWidth = 930
-  Color = clBlack
-  Font.Color = clWhite
+  ClientWidth = 852
+  Color = clGreen
+  Font.Color = clRed
   Font.Height = -21
   Font.Name = 'CHAWP'
   KeyPreview = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   ShowHint = True
-  LCLVersion = '1.6.2.0'
+  ShowInTaskBar = stNever
+  LCLVersion = '1.6.4.0'
   object PnlRight: TTSPanel
     Left = 272
     Height = 561
     Top = 0
-    Width = 658
+    Width = 580
     DisplayStyle.TextAlign = tapCenter
+    DisplayStyle.BorderColor = clBlack
     DisplayStyle.BorderStyle = brdrBump
     DisplayStyle.BorderWidth = 2
     DisplayStyle.BevelSides = [bvlLeft, bvlRight, bvlTop, bvlBottom]
-    DisplayStyle.Background.Color = clBlack
+    DisplayStyle.Background.Color = clGreen
     DisplayStyle.Background.ColorOpacity = 255
     DisplayStyle.Background.Gradient1.StartColor = clWhite
     DisplayStyle.Background.Gradient1.StartColorOpacity = 255
@@ -55,13 +59,13 @@ object FrmSelectGame: TFrmSelectGame
     Align = alClient
     Caption = 'PnlRight'
     ClientHeight = 561
-    ClientWidth = 658
+    ClientWidth = 580
     TabOrder = 2
     object PnlRoster: TTSPanel
       Left = 3
       Height = 264
       Top = 63
-      Width = 652
+      Width = 574
       DisplayStyle.TextAlign = tapCenter
       DisplayStyle.BorderColor = clBlack
       DisplayStyle.BorderStyle = brdrBump
@@ -101,23 +105,25 @@ object FrmSelectGame: TFrmSelectGame
       Color = clGreen
       ParentColor = False
       TabOrder = 0
+      OnClick = PnlRosterClick
     end
     object PnlOptions: TPanel
       Left = 3
       Height = 226
       Top = 332
-      Width = 652
+      Width = 574
       Align = alBottom
       Caption = ' '
       TabOrder = 1
       Visible = False
+      OnClick = PnlOptionsClick
     end
     object SpltOptions: TSplitter
       Cursor = crVSplit
       Left = 3
       Height = 5
       Top = 327
-      Width = 652
+      Width = 574
       Align = alBottom
       Color = clGreen
       ParentColor = False
@@ -128,7 +134,7 @@ object FrmSelectGame: TFrmSelectGame
       Left = 3
       Height = 60
       Top = 3
-      Width = 652
+      Width = 574
       Action = AcAddPlayer
       Align = alTop
       StateClicked.Background.Color = clBlack
@@ -285,6 +291,7 @@ object FrmSelectGame: TFrmSelectGame
       DropDownWidth = 16
       DropDownArrowSize = 8
       GlobalOpacity = 255
+      InnerMargin = 0
       ParentColor = False
       Rounding.RoundX = 12
       Rounding.RoundY = 12
@@ -294,6 +301,7 @@ object FrmSelectGame: TFrmSelectGame
       RoundingDropDown.RoundOptions = []
       TextApplyGlobalOpacity = False
       DropDownPosition = bdpBottom
+      MemoryUsage = bmuHigh
     end
   end
   object BxSpiel: TTSGroupBox
@@ -306,7 +314,12 @@ object FrmSelectGame: TFrmSelectGame
     Caption = 'Spiel wählen'
     ClientHeight = 527
     ClientWidth = 263
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'CHAWP'
+    ParentFont = False
     TabOrder = 0
+    OnClick = BxSpielClick
     object ScrollBox1: TScrollBox
       Left = 0
       Height = 517
@@ -323,6 +336,7 @@ object FrmSelectGame: TFrmSelectGame
       Font.Name = 'CHAWP'
       ParentFont = False
       TabOrder = 0
+      OnClick = ScrollBox1Click
       object BtnGameX01: TTSSpeedButton
         Left = 0
         Height = 60
@@ -485,6 +499,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
+        InnerMargin = 0
         OnClick = BtnGameX01Click
         ParentColor = False
         Rounding.RoundX = 12
@@ -495,6 +510,7 @@ object FrmSelectGame: TFrmSelectGame
         RoundingDropDown.RoundOptions = []
         TextApplyGlobalOpacity = False
         DropDownPosition = bdpBottom
+        MemoryUsage = bmuHigh
         GroupIndex = 1
       end
       object BtnGameShandy: TTSSpeedButton
@@ -658,6 +674,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
+        InnerMargin = 0
         OnClick = BtnGameShandyClick
         ParentColor = False
         Rounding.RoundX = 12
@@ -668,6 +685,7 @@ object FrmSelectGame: TFrmSelectGame
         RoundingDropDown.RoundOptions = []
         TextApplyGlobalOpacity = False
         DropDownPosition = bdpBottom
+        MemoryUsage = bmuHigh
         GroupIndex = 1
       end
       object BtnGameMickeyMouse: TTSSpeedButton
@@ -831,6 +849,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
+        InnerMargin = 0
         OnClick = BtnGameMickeyMouseClick
         ParentColor = False
         Rounding.RoundX = 12
@@ -841,6 +860,7 @@ object FrmSelectGame: TFrmSelectGame
         RoundingDropDown.RoundOptions = []
         TextApplyGlobalOpacity = False
         DropDownPosition = bdpBottom
+        MemoryUsage = bmuHigh
         GroupIndex = 1
       end
       object BtnGameTest: TTSSpeedButton
@@ -1004,6 +1024,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
+        InnerMargin = 0
         OnClick = BtnGameTestClick
         ParentColor = False
         Rounding.RoundX = 12
@@ -1014,6 +1035,7 @@ object FrmSelectGame: TFrmSelectGame
         RoundingDropDown.RoundOptions = []
         TextApplyGlobalOpacity = False
         DropDownPosition = bdpBottom
+        MemoryUsage = bmuHigh
         GroupIndex = 1
       end
     end
@@ -1029,7 +1051,7 @@ object FrmSelectGame: TFrmSelectGame
     Left = 0
     Height = 65
     Top = 561
-    Width = 930
+    Width = 852
     Action = ActStartGame
     Align = alBottom
     StateClicked.Background.Color = clBlack
@@ -1479,6 +1501,8 @@ object FrmSelectGame: TFrmSelectGame
       0000000000000000000000000000000000000000000000000000
     }
     GlyphMargin = 40
+    InnerMargin = 0
+    OnClick = BtnStartClick
     ParentColor = False
     Rounding.RoundX = 12
     Rounding.RoundY = 12
@@ -1489,8 +1513,9 @@ object FrmSelectGame: TFrmSelectGame
     ShowHint = True
     TextApplyGlobalOpacity = False
     DropDownPosition = bdpBottom
+    MemoryUsage = bmuHigh
   end
-  object TSApplication1: TTSApplication
+  object App: TTSApplication
     HintColor = clRed
     HintHidePause = 0
     HintHidePausePerChar = 0
@@ -1498,6 +1523,7 @@ object FrmSelectGame: TFrmSelectGame
     HintShortCuts = True
     HintShortPause = 0
     ShowHint = True
+    MainFormOnTaskBar = False
     ConnectedFiles.FileExtension = '.ini'
     ConnectedFiles.Options = [fnoFileNameIsApplicationName]
     LogFileName.Options = [fnoFileNameIsApplicationName, fnoExtIsLog, fnoUseTSAppBaseDir, fnoUseTSAppSubDir]
