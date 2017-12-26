@@ -5,8 +5,7 @@ unit SelectGame;
 interface
 
 uses
-  Windows,
-	fr_Player, DartClasses, PlayGame, GameTest, GameX01, Classes, SysUtils,
+	fr_Player, DartClasses, GameTest, GameX01, Classes, SysUtils,
 	FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
 	ActnList, StdCtrls, TS_Application, TS_Panel, TS_GroupBox, TS_Splitter,
 	TS_SpeedButton, BCButton, BGRASpeedButton;
@@ -33,19 +32,8 @@ type
 		TSSplitter1: TTSSplitter;
 		procedure AcAddPlayerExecute(Sender: TObject);
 		procedure ActStartGameExecute(Sender: TObject);
-		procedure BtnGameMickeyMouseClick(Sender: TObject);
-		procedure BtnGameShandyClick(Sender: TObject);
-		procedure BtnGameTestClick(Sender: TObject);
-		procedure BtnGameX01Click(Sender: TObject);
-		procedure BtnStartClick(Sender: TObject);
-		procedure BxSpiel1Click(Sender: TObject);
-		procedure BxSpielClick(Sender: TObject);
-		procedure FormCreate(Sender: TObject);
-		procedure FormDestroy(Sender: TObject);
+		procedure BtnSelectGameClick(Sender: TObject);
 		procedure FormShow(Sender: TObject);
-		procedure PnlOptionsClick(Sender: TObject);
-		procedure PnlRosterClick(Sender: TObject);
-		procedure ScrollBox1Click(Sender: TObject);
 	private
 		PlayerList: array of TFrPlayer;
 		SelectedGame: TDartGame;
@@ -53,13 +41,11 @@ type
 		DartGameX01: TDartGame;
 		DartGameMickeyMouse: TDartGame;
 		DartGameShandy: TDartGame;
-    FontID: array of Cardinal;
 		procedure OnDeletePlayerClick(Sender: TObject; Index: Integer);
 		procedure SetGame(var Game: TDartGame; GameClass: TDartGameClass);
 		procedure CheckShowOptions;
-		procedure LoadFonts;
-		procedure UnloadFonts;
 	public
+    procedure AlignToParent;
 	end;
 
 var
@@ -71,48 +57,28 @@ implementation
 {$R *.lfm}
 
 uses
-	LResources,
-  TSLibGraphics,
-	TSLib;
+  PlayGame;
 
 { TFrmSelectGame }
-procedure TFrmSelectGame.BtnGameX01Click(Sender: TObject);
+procedure TFrmSelectGame.BtnSelectGameClick(Sender: TObject);
 begin
 	if BtnGameX01.Down then
-		SetGame(DartGameX01, TDartGameX01);
-end;
-
-procedure TFrmSelectGame.FormCreate(Sender: TObject);
-begin
-  LoadFonts;
-end;
-
-procedure TFrmSelectGame.FormDestroy(Sender: TObject);
-begin
-  UnloadFonts;
+		SetGame(DartGameX01, TDartGameX01)
+  else if BtnGameShandy.Down then
+    SetGame(DartGameShandy, TDartGame)
+	else if BtnGameMickeyMouse.Down then
+  	SetGame(DartGameMickeyMouse, TDartGame)
+  else if BtnGameTest.Down then
+		SetGame(DartGameTest, TDartGameTest)
+  else begin
+    BtnGameX01.Down := True;
+    SetGame(DartGameX01, TDartGameX01);
+	end;
 end;
 
 procedure TFrmSelectGame.FormShow(Sender: TObject);
 begin
-  BtnGameX01.Click;
-end;
-
-procedure TFrmSelectGame.BtnGameTestClick(Sender: TObject);
-begin
-  if BtnGameTest.Down then
-		SetGame(DartGameTest, TDartGameTest);
-end;
-
-procedure TFrmSelectGame.BtnGameShandyClick(Sender: TObject);
-begin
-  if BtnGameShandy.Down then
-		SetGame(DartGameShandy, TDartGame);
-end;
-
-procedure TFrmSelectGame.BtnGameMickeyMouseClick(Sender: TObject);
-begin
-  if BtnGameMickeyMouse.Down then
-		SetGame(DartGameMickeyMouse, TDartGame);
+  BtnSelectGameClick(nil);
 end;
 
 procedure TFrmSelectGame.ActStartGameExecute(Sender: TObject);
@@ -128,11 +94,7 @@ begin
       SelectedGame.Player[N].Nickname := PlayerList[I].Nickname;
     end;
     Self.Hide;
-		try
-		  FrmPlayGame.PlayDartGame(SelectedGame);
-    finally
-      Self.Show;
-		end;
+	  FrmPlayGame.PlayDartGame(SelectedGame);
 	end;
 end;
 
@@ -195,27 +157,13 @@ procedure TFrmSelectGame.CheckShowOptions;
 	end;
 end;
 
-procedure TFrmSelectGame.LoadFonts;
-var
- 	Path: string;
+procedure TFrmSelectGame.AlignToParent;
 begin
-	Path := ApplicationPath + 'fonts\';
-  SetLength(FontID, 3);
-	if LoadTemporaryFont(Path + 'blzee.ttf') then
-		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
-	if LoadTemporaryFont(Path + 'chawp.ttf') then
-		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
-	if LoadTemporaryFont(Path + 'ARCENA.ttf') then
-		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
-end;
+  Left := 50;
+  Top := 50;
+  Width := Parent.ClientWidth - 100;
+  Height := Parent.ClientHeight - 100;
 
-procedure TFrmSelectGame.UnloadFonts;
-begin
-	if UnloadTemporaryFont('chawp.ttf')
-  	or UnloadTemporaryFont('blzee.ttf')
-    or UnloadTemporaryFont('ARCENA.ttf')
-	then
-		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
 end;
 
 end.

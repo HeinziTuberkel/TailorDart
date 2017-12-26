@@ -1,27 +1,27 @@
 object FrmSelectGame: TFrmSelectGame
-  Left = 1964
-  Height = 626
-  Top = 438
-  Width = 852
+  Left = 1796
+  Height = 823
+  Top = 142
+  Width = 1081
+  BorderStyle = bsNone
   Caption = 'FrmSelectGame'
-  ClientHeight = 626
-  ClientWidth = 852
+  ClientHeight = 823
+  ClientWidth = 1081
   Color = clGreen
   Font.Color = clRed
   Font.Height = -21
   Font.Name = 'CHAWP'
   KeyPreview = True
-  OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnShow = FormShow
+  Position = poMainFormCenter
   ShowHint = True
   ShowInTaskBar = stNever
   LCLVersion = '1.6.4.0'
   object PnlRight: TTSPanel
     Left = 272
-    Height = 561
+    Height = 758
     Top = 0
-    Width = 580
+    Width = 809
     DisplayStyle.TextAlign = tapCenter
     DisplayStyle.BorderColor = clBlack
     DisplayStyle.BorderStyle = brdrBump
@@ -58,14 +58,14 @@ object FrmSelectGame: TFrmSelectGame
     DisplayStyle.Caption = 'PnlRight'
     Align = alClient
     Caption = 'PnlRight'
-    ClientHeight = 561
-    ClientWidth = 580
+    ClientHeight = 758
+    ClientWidth = 809
     TabOrder = 2
     object PnlRoster: TTSPanel
       Left = 3
-      Height = 264
+      Height = 461
       Top = 63
-      Width = 574
+      Width = 803
       DisplayStyle.TextAlign = tapCenter
       DisplayStyle.BorderColor = clBlack
       DisplayStyle.BorderStyle = brdrBump
@@ -105,25 +105,23 @@ object FrmSelectGame: TFrmSelectGame
       Color = clGreen
       ParentColor = False
       TabOrder = 0
-      OnClick = PnlRosterClick
     end
     object PnlOptions: TPanel
       Left = 3
       Height = 226
-      Top = 332
-      Width = 574
+      Top = 529
+      Width = 803
       Align = alBottom
       Caption = ' '
       TabOrder = 1
       Visible = False
-      OnClick = PnlOptionsClick
     end
     object SpltOptions: TSplitter
       Cursor = crVSplit
       Left = 3
       Height = 5
-      Top = 327
-      Width = 574
+      Top = 524
+      Width = 803
       Align = alBottom
       Color = clGreen
       ParentColor = False
@@ -134,7 +132,7 @@ object FrmSelectGame: TFrmSelectGame
       Left = 3
       Height = 60
       Top = 3
-      Width = 574
+      Width = 803
       Action = AcAddPlayer
       Align = alTop
       StateClicked.Background.Color = clBlack
@@ -306,23 +304,22 @@ object FrmSelectGame: TFrmSelectGame
   end
   object BxSpiel: TTSGroupBox
     Left = 0
-    Height = 561
+    Height = 758
     Hint = 'Select one of these Games to play'
     Top = 0
     Width = 267
     Align = alLeft
     Caption = 'Spiel wählen'
-    ClientHeight = 527
+    ClientHeight = 724
     ClientWidth = 263
     Font.Color = clWhite
     Font.Height = -21
     Font.Name = 'CHAWP'
     ParentFont = False
     TabOrder = 0
-    OnClick = BxSpielClick
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 517
+      Height = 714
       Hint = 'Select one of these Games to play'
       Top = 10
       Width = 263
@@ -330,13 +327,12 @@ object FrmSelectGame: TFrmSelectGame
       VertScrollBar.Page = 240
       Align = alClient
       BorderSpacing.Top = 10
-      ClientHeight = 513
+      ClientHeight = 710
       ClientWidth = 259
       Font.Color = clMaroon
       Font.Name = 'CHAWP'
       ParentFont = False
       TabOrder = 0
-      OnClick = ScrollBox1Click
       object BtnGameX01: TTSSpeedButton
         Left = 0
         Height = 60
@@ -500,7 +496,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownArrowSize = 8
         GlobalOpacity = 255
         InnerMargin = 0
-        OnClick = BtnGameX01Click
+        OnClick = BtnSelectGameClick
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -675,7 +671,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownArrowSize = 8
         GlobalOpacity = 255
         InnerMargin = 0
-        OnClick = BtnGameShandyClick
+        OnClick = BtnSelectGameClick
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -850,7 +846,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownArrowSize = 8
         GlobalOpacity = 255
         InnerMargin = 0
-        OnClick = BtnGameMickeyMouseClick
+        OnClick = BtnSelectGameClick
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -1025,7 +1021,7 @@ object FrmSelectGame: TFrmSelectGame
         DropDownArrowSize = 8
         GlobalOpacity = 255
         InnerMargin = 0
-        OnClick = BtnGameTestClick
+        OnClick = BtnSelectGameClick
         ParentColor = False
         Rounding.RoundX = 12
         Rounding.RoundY = 12
@@ -1042,7 +1038,7 @@ object FrmSelectGame: TFrmSelectGame
   end
   object TSSplitter1: TTSSplitter
     Left = 267
-    Height = 561
+    Height = 758
     Top = 0
     Width = 5
     Color = clGreen
@@ -1050,8 +1046,8 @@ object FrmSelectGame: TFrmSelectGame
   object BtnStart: TTSSpeedButton
     Left = 0
     Height = 65
-    Top = 561
-    Width = 852
+    Top = 758
+    Width = 1081
     Action = ActStartGame
     Align = alBottom
     StateClicked.Background.Color = clBlack
@@ -1502,7 +1498,6 @@ object FrmSelectGame: TFrmSelectGame
     }
     GlyphMargin = 40
     InnerMargin = 0
-    OnClick = BtnStartClick
     ParentColor = False
     Rounding.RoundX = 12
     Rounding.RoundY = 12

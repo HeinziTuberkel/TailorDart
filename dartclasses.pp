@@ -46,7 +46,8 @@ type
 		fEnabled: Boolean;
 		fStartPlayer: Boolean;
 		fThrowing: Boolean;
-		function GetScoreBoard: TWinControl;
+		function GetGame: TDartGame;
+  function GetScoreBoard: TWinControl;
     procedure SetNickname(AValue: string);
 		procedure SetThrowing(AValue: Boolean);
   protected
@@ -78,7 +79,7 @@ type
 		function IsLoseOut: Boolean; virtual;
 
     //Game: The TDartGame object, this player is playing.
-    property Game: TDartGame read fGame;
+    property Game: TDartGame read GetGame;
     //The Container on which the score board (TFrame) is placed.
     property ScoreBoard: TWinControl read GetScoreBoard;
     //Set "TRUE" by the Game, if this player is the first to throw.
@@ -407,6 +408,14 @@ begin
     Result := nil;
 end;
 
+function TPlayer.GetGame: TDartGame;
+begin
+  if Assigned(fGame) then
+  	Result := fGame
+  else
+    raise Exception.Create(Nickname + '.Game not Assigned.');
+end;
+
 //*************************************************
 procedure TPlayer.Throw;
 begin
@@ -451,23 +460,28 @@ begin
     CheckOut
   else if IsLoseOut then
     LoseOut
+  else
+  	Game.ThrowDone(Self);
 end;
 
 //*************************************************
 procedure TPlayer.ThrowCancel;
 begin
+  Game.ThrowCancel(Self);
 end;
 
 //*************************************************
 procedure TPlayer.CheckOut;
 begin
   Enabled := False;
+  Game.CheckOut(Self);
 end;
 
 //*************************************************
 procedure TPlayer.LoseOut;
 begin
   Enabled := False;
+  Game.LoseOut(Self);
 end;
 
 end.

@@ -5,6 +5,7 @@ unit playgame;
 interface
 
 uses
+  Windows,
 	DartClasses,
 	Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
 
@@ -13,13 +14,22 @@ type
 	{ TFrmPlayGame }
 
 	TFrmPlayGame = class(TForm)
+		procedure FormCreate(Sender: TObject);
+		procedure FormDestroy(Sender: TObject);
+		procedure FormResize(Sender: TObject);
 		procedure FormShow(Sender: TObject);
 	private
     ActiveGame: TDartGame;
+    FontID: array of Cardinal;
+
     procedure SetScreenPos;
+ 		procedure LoadFonts;
+		procedure UnloadFonts;
 	public
     procedure PlayDartGame(ThisGame: TDartGame);
     procedure OnEndGame(Sender: TObject);
+    procedure ClearGameBoard;
+    procedure ShowGameSelector;
 	end;
 
 var
@@ -29,21 +39,69 @@ implementation
 
 {$R *.lfm}
 
+uses
+	LResources,
+  TSLibGraphics,
+	TSLib,
+  SelectGame;
 { TFrmPlayGame }
 
-procedure TFrmPlayGame.PlayDartGame(ThisGame: TDartGame);
+procedure TFrmPlayGame.FormCreate(Sender: TObject);
 begin
-  ActiveGame := ThisGame;
-  Self.ShowModal;
+  ActiveGame := nil;
+  LoadFonts;
+end;
+
+procedure TFrmPlayGame.FormDestroy(Sender: TObject);
+begin
+  UnloadFonts;
+end;
+
+procedure TFrmPlayGame.FormResize(Sender: TObject);
+begin
+	if FrmSelectGame.Showing and (FrmSelectGame.Parent = Self) then
+		FrmSelectGame.AlignToParent;
 end;
 
 procedure TFrmPlayGame.FormShow(Sender: TObject);
 begin
-  ActiveGame.InitGame(Self);
-  AutoSize := True;
-  Application.ProcessMessages;
-  SetScreenPos;
-	ActiveGame.PlayGame;
+  if Assigned(ActiveGame) then
+  begin
+  	ActiveGame.InitGame(Self);
+    BorderStyle := bsNone;
+    WindowState := wsFullScreen;
+  	ActiveGame.PlayGame;
+	end
+  else
+  	ShowGameSelector;
+end;
+
+procedure TFrmPlayGame.PlayDartGame(ThisGame: TDartGame);
+begin
+  ActiveGame := ThisGame;
+end;
+
+procedure TFrmPlayGame.LoadFonts;
+var
+ 	Path: string;
+begin
+	Path := ApplicationPath + 'fonts\';
+  SetLength(FontID, 3);
+	if LoadTemporaryFont(Path + 'blzee.ttf') then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+	if LoadTemporaryFont(Path + 'chawp.ttf') then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+  if LoadTemporaryFont(Path + 'ARCENA.ttf') then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
+end;
+
+procedure TFrmPlayGame.UnloadFonts;
+begin
+	if UnloadTemporaryFont('chawp.ttf')
+  	or UnloadTemporaryFont('blzee.ttf')
+    or UnloadTemporaryFont('ARCENA.ttf')
+	then
+		SendMessage(Handle, WM_FONTCHANGE, 0, 0);
 end;
 
 procedure TFrmPlayGame.SetScreenPos;
@@ -57,8 +115,23 @@ end;
 
 procedure TFrmPlayGame.OnEndGame(Sender: TObject);
 begin
-  AutoSize := False;
-  ModalResult := mrOK;
+
+end;
+
+procedure TFrmPlayGame.ClearGameBoard;
+begin
+
+end;
+
+procedure TFrmPlayGame.ShowGameSelector;
+begin
+  ClearGameBoard;
+  with FrmSelectGame do
+  begin
+		Parent := Self;
+  	AlignToParent;
+		Show;
+	end;
 end;
 
 end.

@@ -44,6 +44,8 @@ type
 		procedure EdScoreAccepted(Sender: TObject);
 		procedure EdScoreAcceptValue(Sender: TObject; var Value: Extended; var AcceptAction: NTSAcceptAction);
 		procedure Panel1Enter(Sender: TObject);
+		procedure Panel4Click(Sender: TObject);
+		procedure Panel5Click(Sender: TObject);
 	private
 		Player: TPlayerX01;
 	public
@@ -109,6 +111,16 @@ end;
 procedure TFrX01Player.Panel1Enter(Sender: TObject);
 begin
   EdScore.TryFocus;
+end;
+
+procedure TFrX01Player.Panel4Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFrX01Player.Panel5Click(Sender: TObject);
+begin
+
 end;
 
 procedure TFrX01Player.BtnScoreDoneClick(Sender: TObject);
@@ -243,7 +255,7 @@ end;
 
 function TPlayerX01.CanUndoThrow: Boolean;
 begin
-	Result := (Length(ScoreList)>0) or (Index>0);
+	Result := Length(ScoreList)>0;
 end;
 
 function TPlayerX01.IsCheckOut: Boolean;
