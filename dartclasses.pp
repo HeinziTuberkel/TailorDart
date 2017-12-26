@@ -399,6 +399,7 @@ begin
   Throwing := False;
 end;
 
+
 //*************************************************
 function TPlayer.GetScoreBoard: TWinControl;
 begin
@@ -438,7 +439,7 @@ end;
 //*************************************************
 function TPlayer.CanUndoThrow: Boolean;
 begin
-  Result := False;
+  Result := not fStartPlayer;
 end;
 
 //*************************************************

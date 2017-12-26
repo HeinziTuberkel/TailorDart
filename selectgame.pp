@@ -34,6 +34,7 @@ type
 		procedure ActStartGameExecute(Sender: TObject);
 		procedure BtnSelectGameClick(Sender: TObject);
 		procedure FormShow(Sender: TObject);
+		procedure PnlOptionsClick(Sender: TObject);
 	private
 		PlayerList: array of TFrPlayer;
 		SelectedGame: TDartGame;
@@ -81,6 +82,11 @@ begin
   BtnSelectGameClick(nil);
 end;
 
+procedure TFrmSelectGame.PnlOptionsClick(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmSelectGame.ActStartGameExecute(Sender: TObject);
 var
 	I, N: Integer;
@@ -93,7 +99,7 @@ begin
 	    N := SelectedGame.AddPlayer;
       SelectedGame.Player[N].Nickname := PlayerList[I].Nickname;
     end;
-    Self.Hide;
+    Self.Close;
 	  FrmPlayGame.PlayDartGame(SelectedGame);
 	end;
 end;
@@ -163,7 +169,6 @@ begin
   Top := 50;
   Width := Parent.ClientWidth - 100;
   Height := Parent.ClientHeight - 100;
-
 end;
 
 end.

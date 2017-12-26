@@ -65,20 +65,17 @@ end;
 
 procedure TFrmPlayGame.FormShow(Sender: TObject);
 begin
-  if Assigned(ActiveGame) then
-  begin
-  	ActiveGame.InitGame(Self);
-    BorderStyle := bsNone;
-    WindowState := wsFullScreen;
-  	ActiveGame.PlayGame;
-	end
-  else
-  	ShowGameSelector;
+  if ActiveGame = nil then
+	 	ShowGameSelector;
 end;
 
 procedure TFrmPlayGame.PlayDartGame(ThisGame: TDartGame);
 begin
   ActiveGame := ThisGame;
+	ActiveGame.InitGame(Self);
+  BorderStyle := bsNone;
+  WindowState := wsFullScreen;
+	ActiveGame.PlayGame;
 end;
 
 procedure TFrmPlayGame.LoadFonts;

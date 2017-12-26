@@ -1,7 +1,7 @@
 object FrmSelectGame: TFrmSelectGame
-  Left = 1796
+  Left = 1816
   Height = 823
-  Top = 142
+  Top = 17
   Width = 1081
   BorderStyle = bsNone
   Caption = 'FrmSelectGame'
@@ -115,6 +115,7 @@ object FrmSelectGame: TFrmSelectGame
       Caption = ' '
       TabOrder = 1
       Visible = False
+      OnClick = PnlOptionsClick
     end
     object SpltOptions: TSplitter
       Cursor = crVSplit

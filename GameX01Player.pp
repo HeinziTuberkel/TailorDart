@@ -255,7 +255,7 @@ end;
 
 function TPlayerX01.CanUndoThrow: Boolean;
 begin
-	Result := Length(ScoreList)>0;
+	Result := (Length(ScoreList)>0) or not IsStartPlayer;
 end;
 
 function TPlayerX01.IsCheckOut: Boolean;

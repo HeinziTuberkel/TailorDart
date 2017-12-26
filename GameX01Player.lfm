@@ -10,8 +10,8 @@ object FrX01Player: TFrX01Player
   ParentShowHint = False
   ShowHint = True
   TabOrder = 0
-  DesignLeft = 1753
-  DesignTop = 46
+  DesignLeft = 1716
+  DesignTop = 127
   object SGChalkBoard: TStringGrid
     Left = 0
     Height = 423

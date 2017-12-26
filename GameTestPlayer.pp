@@ -183,7 +183,7 @@ end;
 
 function TDartPlayerTest.CanUndoThrow: Boolean;
 begin
-	Result := Wurf > 0;
+	Result := (Wurf > 0) or not IsStartPlayer;
 end;
 
 function TDartPlayerTest.IsCheckOut: Boolean;
