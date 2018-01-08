@@ -10,8 +10,8 @@ object FrX01Player: TFrX01Player
   ParentShowHint = False
   ShowHint = True
   TabOrder = 0
-  DesignLeft = 1716
-  DesignTop = 127
+  DesignLeft = 407
+  DesignTop = 112
   object SGChalkBoard: TStringGrid
     Left = 0
     Height = 423
@@ -37,7 +37,7 @@ object FrX01Player: TFrX01Player
         Font.Height = -40
         Font.Name = 'CHAWP'
         Title.Caption = 'Rest'
-        Width = 207
+        Width = 208
       end>
     DefaultColWidth = 150
     DefaultRowHeight = 40
@@ -59,7 +59,7 @@ object FrX01Player: TFrX01Player
     TitleFont.Name = 'CHAWP'
     ColWidths = (
       207
-      207
+      208
     )
     Cells = (
       10
@@ -2551,7 +2551,6 @@ object FrX01Player: TFrX01Player
         DecimalPlaces = 0
         Options = [neoFormatOnEdit, neoPrefixOnEdit, neoPostfixOnEdit]
         DisplayFormat = '0'
-        OnAcceptValue = EdScoreAcceptValue
         Value = 0
         EditButton.Width = 0
         EditButton.Glyph.Data = {

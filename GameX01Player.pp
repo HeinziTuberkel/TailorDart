@@ -38,7 +38,6 @@ type
 		procedure BtnScoreDoneClick(Sender: TObject);
 		procedure BtnUndoThrowClick(Sender: TObject);
 		procedure EdScoreAccepted(Sender: TObject);
-		procedure EdScoreAcceptValue(Sender: TObject; var Value: Extended; var AcceptAction: NTSAcceptAction);
 		procedure Panel1Enter(Sender: TObject);
 		procedure Panel4Click(Sender: TObject);
 		procedure Panel5Click(Sender: TObject);
@@ -103,11 +102,6 @@ end;
 procedure TFrX01Player.EdScoreAccepted(Sender: TObject);
 begin
 	Player.ThrowDone;
-end;
-
-procedure TFrX01Player.EdScoreAcceptValue(Sender: TObject; var Value: Extended;
-	var AcceptAction: NTSAcceptAction);
-begin
 end;
 
 procedure TFrX01Player.Panel1Enter(Sender: TObject);

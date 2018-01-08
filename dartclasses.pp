@@ -62,7 +62,7 @@ type
 	public
     constructor Create; virtual;
 		procedure InitGame(TheGame: TDartGame); virtual;
-    procedure InitLeg; virtual;
+    procedure InitLeg(AsStartPlayer: Boolean); virtual;
     //Initiates the throw. It is completed by calling either ThrowDone or ThrowCancel.
 		procedure Throw; virtual;
     //If possible, the results of the prior throw are cancelled and "Throw" is called.
@@ -131,9 +131,9 @@ type
 		procedure Clear; virtual;
     //InitGame sets all game Start values whithout removing Players.
     procedure InitGame(TheScoreBoard: TWinControl); virtual;
+    procedure InitLeg; virtual;
     //Adds a Player to the List fPlayers. Returns the new Player's Index. Returns -1 if adding failed.
 		function AddPlayer(NewPlayer: TPlayer=nil): Integer; virtual;
-
 
     procedure NextPlayerUp; virtual;
     procedure PriorPlayerUp; virtual;
@@ -151,6 +151,11 @@ type
 		procedure LoseOut(aPlayer: TPlayer); virtual;
     //The game is finished.
     procedure EndGame; virtual;
+
+    property WinningSets: Integer read fSets write fSets default 1;
+    property WinningLegs: Integer read fLegs write fLegs default 1;
+		property ThisSet: Integer read fThisSet;
+		property ThisLeg: Integer read fThisLeg;
 
     property Options: TFrame read fOptions write SetOptions;
     property ScoreBoard: TWinControl read fScoreBoard;
@@ -239,8 +244,6 @@ end;
 procedure TDartGame.Clear;
 begin
   fPlayers.Clear;
-  fStartPlayerIdx := -1;
-  fUpPlayerIdx := -1;
   fStartPlayerIdx := 0;
   fUpPlayerIdx := 0;
 end;
@@ -263,7 +266,7 @@ end;
 function TDartGame.AddPlayer(NewPlayer: TPlayer): Integer;
 begin
   if NewPlayer = nil then
-    NewPlayer := fPlayerClass.Create
+    NewPlayer := fPlayerClass.Create;
 	Result := fPlayers.Add(NewPlayer);
 end;
 
@@ -393,6 +396,13 @@ begin
   fGame := TheGame;
 	Enabled := True;
   Throwing := False;
+  InitLeg;
+end;
+
+//*************************************************
+procedure TPlayer.InitLeg(AsStartPlayer: Boolean);
+begin
+
 end;
 
 

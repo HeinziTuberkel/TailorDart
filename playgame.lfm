@@ -1,13 +1,13 @@
 object FrmPlayGame: TFrmPlayGame
-  Left = 1720
-  Height = 708
-  Top = 32
-  Width = 862
+  Left = 968
+  Height = 199
+  Top = 140
+  Width = 383
   Caption = 'FrmPlayGame'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.6.4.0'
+  LCLVersion = '1.8.0.6'
 end

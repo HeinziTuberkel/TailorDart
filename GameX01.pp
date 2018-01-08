@@ -45,9 +45,7 @@ type
 		fBestOfMode: Boolean;
 		fDoubleIn: Boolean;
 		fDoubleOut: Boolean;
-		fLegs: Integer;
 		fSetMode: Boolean;
-		fSets: Integer;
 		fStartValue: Integer;
   public
 		constructor Create; override;
@@ -61,8 +59,6 @@ type
     property DoubleOut: Boolean read fDoubleOut write fDoubleOut;
     property SetMode: Boolean read fSetMode write fSetMode;
     property BestOfMode: Boolean read fBestOfMode write fBestOfMode;
-    property WinningSets: Integer read fSets write fSets;
-    property WinningLegs: Integer read fLegs write fLegs;
 	end;
 
 

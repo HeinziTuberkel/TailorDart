@@ -1,12 +1,12 @@
 object FrmYesNo: TFrmYesNo
-  Left = 1754
-  Height = 266
+  Left = 995
+  Height = 268
   Hint = 'Press [Esc] for No or [Ctrl+Return] for Yes'
-  Top = 295
-  Width = 841
+  Top = 113
+  Width = 416
   Caption = 'FrmYesNo'
-  ClientHeight = 266
-  ClientWidth = 841
+  ClientHeight = 268
+  ClientWidth = 416
   Color = clBlack
   Font.Color = clWhite
   Font.Height = -27
@@ -14,12 +14,12 @@ object FrmYesNo: TFrmYesNo
   KeyPreview = True
   OnKeyPress = FormKeyPress
   Position = poScreenCenter
-  LCLVersion = '1.6.4.0'
+  LCLVersion = '1.8.0.6'
   object LbQuestion: TLabel
     Left = 10
-    Height = 396
+    Height = 405
     Top = 20
-    Width = 821
+    Width = 396
     Align = alTop
     Alignment = taCenter
     BorderSpacing.Left = 10
@@ -35,16 +35,16 @@ object FrmYesNo: TFrmYesNo
   object PnlButtons: TPanel
     Left = 0
     Height = 68
-    Top = 199
-    Width = 841
+    Top = 201
+    Width = 416
     Align = alBottom
     AutoSize = True
     BevelOuter = bvNone
     ClientHeight = 68
-    ClientWidth = 841
+    ClientWidth = 416
     TabOrder = 0
     object ImgBtnYes: TImage
-      Left = 567
+      Left = 268
       Height = 48
       Top = 5
       Width = 48
@@ -91,7 +91,7 @@ object FrmYesNo: TFrmYesNo
       }
     end
     object ImgBtnNo: TImage
-      Left = 224
+      Left = 99
       Height = 48
       Top = 5
       Width = 48
