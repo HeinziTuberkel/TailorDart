@@ -29,7 +29,6 @@ type
 			var AcceptAction: NTSAcceptAction);
 		procedure EdSetsAcceptValue(Sender: TObject; var Value: Extended;
 			var AcceptAction: NTSAcceptAction);
-		procedure FrameClick(Sender: TObject);
 		procedure XDoubleInClick(Sender: TObject);
 		procedure XDoubleOutClick(Sender: TObject);
 		procedure XSetModeClick(Sender: TObject);
@@ -53,6 +52,9 @@ type
   public
 		constructor Create; override;
 		function HasOptions: Boolean; override;
+		procedure CheckOut(aPlayer: TPlayer); override;
+    procedure EndGame; override;
+    function HasWonSet(LegsWon: Integer): Boolean;
 
     property StartValue: Integer read fStartValue write fStartValue;
     property DoubleIn: Boolean read fDoubleIn write fDoubleIn;
@@ -69,7 +71,7 @@ implementation
 {$R *.lfm}
 
 uses
-	GameX01Player;
+	GameX01Player, DartResources;
 
 //*************************************************
 { TDartGameX01 }
@@ -98,6 +100,21 @@ begin
   Result := Assigned(Options);
 end;
 
+procedure TDartGameX01.CheckOut(aPlayer: TPlayer);
+begin
+	inherited CheckOut(aPlayer);
+end;
+
+procedure TDartGameX01.EndGame;
+begin
+	inherited EndGame;
+end;
+
+function TDartGameX01.HasWonSet(LegsWon: Integer): Boolean;
+begin
+	Result := LegsWon > (fLegs DIV 2)
+end;
+
 //*************************************************
 { TFrX01 }
 //*************************************************
@@ -124,11 +141,6 @@ begin
 	Game.WinningSets := Trunc(Value);
 end;
 
-procedure TFrX01.FrameClick(Sender: TObject);
-begin
-
-end;
-
 procedure TFrX01.XDoubleOutClick(Sender: TObject);
 begin
   Game.DoubleOut := XDoubleOut.Down;
@@ -146,12 +158,12 @@ begin
     Game.SetMode := Down;
     if Down then
     begin
-    	Caption := 'Set Mode';
+    	Caption := rsSetMode;
       EdSets.Show;
       LbSets.Show;
 		end
 		else begin
-      Caption := 'Leg Mode';
+      Caption := rsSetMode;
       EdSets.Hide;
       LbSets.Hide;
 		end;

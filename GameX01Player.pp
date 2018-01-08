@@ -9,10 +9,6 @@ uses
 	DartClasses, Classes, SysUtils, FileUtil, Forms, Controls, Grids, StdCtrls,
 	ExtCtrls, Buttons, TS_Panel, TS_SpeedButton, TS_Edit, BCButton;
 
-resourcestring
-  rsNoScore = 'no score';
-  rsBusted = 'busted';
-
 type
  TPlayerX01 = class;
 
@@ -52,6 +48,7 @@ type
 		procedure Init;
 		procedure LockInput;
 		procedure GetScore;
+    function IsCheckOut: Boolean;
 		procedure UpdateDisplay;
 		function ScoreInput: Integer;
 		procedure AddScoreLine(Score, Remain: Integer);
@@ -60,11 +57,11 @@ type
 
 	{ TPlayerX01 }
 
- TPlayerX01 = class(TPlayer)
+	TPlayerX01 = class(TPlayer)
 	private
 		Frame: TFrX01Player;
     ThisGame: TDartGameX01;
-    StartScore: Integer;
+    StartRemain: Integer;
     ScoreList: array of Integer;
     RemainList: array of Integer;
 	protected
@@ -75,13 +72,18 @@ type
 		constructor Create; override;
 		destructor Destroy; override;
 		procedure InitGame(TheGame: TDartGame); override;
+    procedure LegWon;
 
+    function Require: Integer;
 		function CanUndoThrow: Boolean; override;
 		function IsCheckOut: Boolean; override;
-		function IsLoseOut: Boolean; override;
 
-		procedure ThrowDone; override;
+    procedure ThrowDone; override;
 		procedure ThrowCancel; override;
+    procedure CheckOut; override;
+
+    property LegsWon: Integer read fLegs;
+    property SetsWon: Integer read fSets;
 	end;
 
 implementation
@@ -89,7 +91,7 @@ implementation
 {$R *.lfm}
 
 uses
-	strutils;
+	strutils, YesNo, DartResources;
 
 { TFrX01Player }
 
@@ -111,16 +113,6 @@ end;
 procedure TFrX01Player.Panel1Enter(Sender: TObject);
 begin
   EdScore.TryFocus;
-end;
-
-procedure TFrX01Player.Panel4Click(Sender: TObject);
-begin
-
-end;
-
-procedure TFrX01Player.Panel5Click(Sender: TObject);
-begin
-
 end;
 
 procedure TFrX01Player.BtnScoreDoneClick(Sender: TObject);
@@ -156,6 +148,11 @@ begin
   BtnUndoThrow.Enabled := Player.CanUndoThrow;
 end;
 
+function TFrX01Player.IsCheckOut: Boolean;
+begin
+  Result := Confirm(Format(rsPlayerCheckOut, [Player.Nickname]));
+end;
+
 procedure TFrX01Player.UpdateDisplay;
 begin
 
@@ -179,6 +176,7 @@ begin
     SGChalkBoard.Cells[1, R] := IntToStr(Remain);
 	end
   else begin
+    //Im "Object" der Row wird die Anzahl "No Scores" für diese Zeile gespeichert.
     if R > 0 then
 	    Z := PtrInt(SGChalkBoard.Rows[R-1].Objects[0])
     else
@@ -236,16 +234,27 @@ end;
 procedure TPlayerX01.InitGame(TheGame: TDartGame);
 begin
   if not (TheGame is TDartGameX01) then
-		raise Exception.Create('Wrong game type for TPlayerX01. Must be TDartGameX01');
+		raise Exception.Create(Format(rsWrongPlayerClass, ['TPlayerX01', 'TDartGameX01']));
   inherited InitGame(TheGame);
   ThisGame := TDartGameX01(TheGame);
   if not Assigned(Frame) then
 		Frame := TFrX01Player.Create(ScoreBoard.Owner);
   Frame.Player := Self;
   Frame.Init;
-  StartScore := ThisGame.StartValue;
+  StartRemain := ThisGame.StartValue;
   SetLength(ScoreList, 0);
   SetLength(RemainList, 0);
+end;
+
+function TPlayerX01.Require: Integer;
+var
+	N: Integer;
+begin
+  N := Length(RemainList);
+  if N = 0 then
+  	Result := StartRemain
+  else
+  	Result := RemainList[N-1];
 end;
 
 procedure TPlayerX01.ExecuteThrow;
@@ -258,34 +267,30 @@ begin
 	Result := (Length(ScoreList)>0) or not IsStartPlayer;
 end;
 
-function TPlayerX01.IsCheckOut: Boolean;
-begin
-	Result := inherited IsCheckOut;
-end;
-
-function TPlayerX01.IsLoseOut: Boolean;
-begin
-	Result := inherited IsLoseOut;
-end;
-
 procedure TPlayerX01.ThrowDone;
 var
-	Score, N: Integer;
+	Score, N, R: Integer;
 begin
   N := Length(ScoreList);
   Score := Frame.ScoreInput;
 	SetLength(ScoreList, N+1);
   SetLength(RemainList, N+1);
-  ScoreList[N] := Score;
+  //für evtl. spätere Unterscheidung zwischen "No Score" und "Busted".
+  if (Score > Require) then
+  begin
+  	Score := 0;
+	  ScoreList[N] := -1;
+ 	end
+	else
+	  ScoreList[N] := Score;
   if N > 0 then
 	  RemainList[N] := RemainList[N-1] - Score
   else
-  	RemainList[N] := StartScore - Score;
+  	RemainList[N] := StartRemain - Score;
 	Frame.AddScoreLine(ScoreList[N], RemainList[N]);
   Frame.LockInput;
 	inherited ThrowDone;
 end;
-
 
 procedure TPlayerX01.ExecuteUndoAction;
 var
@@ -307,6 +312,26 @@ begin
   Frame.LockInput;
 	inherited ThrowCancel;
 end;
+
+function TPlayerX01.IsCheckOut: Boolean;
+begin
+	Result := (Require = 0) and Frame.IsCheckOut;
+end;
+
+procedure TPlayerX01.CheckOut;
+begin
+	if IsCheckOut then
+  	LegWon;
+end;
+
+procedure TPlayerX01.LegWon;
+begin
+  inc(fLegs);
+  if
+
+end;
+
+
 
 end.
 

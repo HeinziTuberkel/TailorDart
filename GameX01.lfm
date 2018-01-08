@@ -13,12 +13,11 @@ object FrX01: TFrX01
   Color = clGray
   Font.Height = -20
   Font.Name = 'blzee'
-  OnClick = FrameClick
   ParentColor = False
   ParentFont = False
   TabOrder = 0
-  DesignLeft = 1704
-  DesignTop = 840
+  DesignLeft = 1709
+  DesignTop = 808
   object CBxPunkte: TComboBox
     Left = 328
     Height = 53

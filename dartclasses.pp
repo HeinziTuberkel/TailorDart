@@ -62,6 +62,7 @@ type
 	public
     constructor Create; virtual;
 		procedure InitGame(TheGame: TDartGame); virtual;
+    procedure InitLeg; virtual;
     //Initiates the throw. It is completed by calling either ThrowDone or ThrowCancel.
 		procedure Throw; virtual;
     //If possible, the results of the prior throw are cancelled and "Throw" is called.
@@ -78,6 +79,7 @@ type
 		//IsLoseOut: Returns TRUE, when the player is throwing and the current Entry results in losing the game/leg
 		function IsLoseOut: Boolean; virtual;
 
+    property Nickname: string read fNickname write SetNickname;
     //Game: The TDartGame object, this player is playing.
     property Game: TDartGame read GetGame;
     //The Container on which the score board (TFrame) is placed.
@@ -90,8 +92,6 @@ type
 		property Enabled: Boolean read fEnabled write SetEnabled;
     //Throwing: True, when this player is about to enter his throw's result.
 		property Throwing: Boolean read fThrowing write SetThrowing;
-
-    property Nickname: string read fNickname write SetNickname;
 	end;
 
 //****************************************************************************
@@ -145,7 +145,7 @@ type
 		procedure ThrowDone(aPlayer: TPlayer); virtual;
     //ThrowCancel: current player has canceled. Undo the prior players throw and redo.
 		procedure ThrowCancel(aPlayer: TPlayer); virtual;
-    //ChechOu t: current player finished this leg.
+    //ChechOut: current player finished this leg.
 		procedure CheckOut(aPlayer: TPlayer); virtual;
     //LoseOut: current player is out of the game.
 		procedure LoseOut(aPlayer: TPlayer); virtual;
@@ -264,10 +264,6 @@ function TDartGame.AddPlayer(NewPlayer: TPlayer): Integer;
 begin
   if NewPlayer = nil then
     NewPlayer := fPlayerClass.Create
-  else begin
-    if not (NewPlayer is PlayerClass) then
-	  	raise Exception.Create('Error adding Player: New player is not of class TPlayer');
-	end;
 	Result := fPlayers.Add(NewPlayer);
 end;
 

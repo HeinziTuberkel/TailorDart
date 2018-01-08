@@ -8,7 +8,7 @@ uses
 		{$ENDIF}{$ENDIF}
 		Interfaces, // this includes the LCL widgetset
 		Forms, runtimetypeinfocontrols, SelectGame, DartClasses, playgame, GameTest,
-		fr_Player, YesNo, GameTestPlayer, GameX01Player, GameX01;
+		fr_Player, YesNo, GameTestPlayer, GameX01Player, GameX01, DartResources;
 
 {$R *.res}
 

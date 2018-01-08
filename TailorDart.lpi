@@ -42,7 +42,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="10">
+    <Units Count="11">
       <Unit0>
         <Filename Value="TailorDart.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -108,6 +108,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="dartresources.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DartResources"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

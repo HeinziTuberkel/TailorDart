@@ -1,5 +1,5 @@
 object FrmPlayGame: TFrmPlayGame
-  Left = 1930
+  Left = 1720
   Height = 708
   Top = 32
   Width = 862

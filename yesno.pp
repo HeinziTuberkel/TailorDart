@@ -12,14 +12,14 @@ type
 
 	{ TFrmYesNo }
 
- TFrmYesNo = class(TForm)
+ 	TFrmYesNo = class(TForm)
 		ImgBtnNo: TImage;
 		ImgBtnYes: TImage;
 		LbQuestion: TLabel;
 		PnlButtons: TPanel;
-		procedure ImgBtnNoClick(Sender: TObject);
+		procedure FormKeyPress(Sender: TObject; var Key: char);
+  procedure ImgBtnNoClick(Sender: TObject);
 		procedure ImgBtnYesClick(Sender: TObject);
-		procedure PnlButtonsClick(Sender: TObject);
 	private
 		{ private declarations }
 	public
@@ -63,14 +63,21 @@ begin
 	ModalResult := mrCancel;
 end;
 
+procedure TFrmYesNo.FormKeyPress(Sender: TObject; var Key: char);
+begin
+  case Key of
+  	#10, 'Y', 'J', 'j', 'y', '1', 's', 'S':
+    	ModalResult := mrOK;
+   	#27, 'N', 'n', '0':
+      ModalResult := mrCancel;
+   	else
+      Key := #0;
+	end;
+end;
+
 procedure TFrmYesNo.ImgBtnYesClick(Sender: TObject);
 begin
   ModalResult := mrOK;
-end;
-
-procedure TFrmYesNo.PnlButtonsClick(Sender: TObject);
-begin
-
 end;
 
 end.

@@ -1,7 +1,8 @@
 object FrmYesNo: TFrmYesNo
-  Left = 638
+  Left = 1754
   Height = 266
-  Top = 319
+  Hint = 'Press [Esc] for No or [Ctrl+Return] for Yes'
+  Top = 295
   Width = 841
   Caption = 'FrmYesNo'
   ClientHeight = 266
@@ -10,11 +11,13 @@ object FrmYesNo: TFrmYesNo
   Font.Color = clWhite
   Font.Height = -27
   Font.Name = 'Chawp'
+  KeyPreview = True
+  OnKeyPress = FormKeyPress
   Position = poScreenCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '1.6.4.0'
   object LbQuestion: TLabel
     Left = 10
-    Height = 297
+    Height = 396
     Top = 20
     Width = 821
     Align = alTop
@@ -40,7 +43,6 @@ object FrmYesNo: TFrmYesNo
     ClientHeight = 68
     ClientWidth = 841
     TabOrder = 0
-    OnClick = PnlButtonsClick
     object ImgBtnYes: TImage
       Left = 567
       Height = 48
