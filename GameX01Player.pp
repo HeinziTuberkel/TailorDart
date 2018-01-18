@@ -39,8 +39,6 @@ type
 		procedure BtnUndoThrowClick(Sender: TObject);
 		procedure EdScoreAccepted(Sender: TObject);
 		procedure Panel1Enter(Sender: TObject);
-		procedure Panel4Click(Sender: TObject);
-		procedure Panel5Click(Sender: TObject);
 	private
 		Player: TPlayerX01;
 	public
@@ -58,7 +56,9 @@ type
 
 	TPlayerX01 = class(TPlayer)
 	private
+		fLegs: Integer;
 		Frame: TFrX01Player;
+		fSets: Integer;
     ThisGame: TDartGameX01;
     StartRemain: Integer;
     ScoreList: array of Integer;
@@ -321,7 +321,6 @@ end;
 procedure TPlayerX01.LegWon;
 begin
   inc(fLegs);
-  if
 
 end;
 

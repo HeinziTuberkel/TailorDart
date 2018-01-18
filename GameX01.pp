@@ -78,8 +78,6 @@ begin
 	inherited Create;
   PlayerClass := TPlayerX01;
   OptionsClass := TFrX01;
-  fLegs := 5;
-  fSets := 3;
   fDoubleIn := False;
   fDoubleOut := True;
   fSetMode := True;
@@ -108,7 +106,7 @@ end;
 
 function TDartGameX01.HasWonSet(LegsWon: Integer): Boolean;
 begin
-	Result := LegsWon > (fLegs DIV 2)
+	//Result := LegsWon > (fLegs DIV 2)
 end;
 
 //*************************************************

@@ -41,9 +41,12 @@ type
 
 	TPlayer = class(TObject)
 	private
+		fFirstToThrow: Boolean;
 		fGame: TDartGame;
+		fLegsWon: Integer;
 		fNickname: string;
 		fEnabled: Boolean;
+		fSetsWon: Integer;
 		fStartPlayer: Boolean;
 		fThrowing: Boolean;
 		function GetGame: TDartGame;
@@ -62,7 +65,7 @@ type
 	public
     constructor Create; virtual;
 		procedure InitGame(TheGame: TDartGame); virtual;
-    procedure InitLeg(AsStartPlayer: Boolean); virtual;
+    procedure InitLeg(AsFirstToThrow: Boolean); virtual;
     //Initiates the throw. It is completed by calling either ThrowDone or ThrowCancel.
 		procedure Throw; virtual;
     //If possible, the results of the prior throw are cancelled and "Throw" is called.
@@ -78,6 +81,10 @@ type
 		function IsCheckOut: Boolean; virtual;
 		//IsLoseOut: Returns TRUE, when the player is throwing and the current Entry results in losing the game/leg
 		function IsLoseOut: Boolean; virtual;
+
+		property LegsWon: Integer read fLegsWon write fLegsWon;
+		property SetsWon: Integer read fSetsWon write fSetsWon;
+		property FirstToThrow: Boolean read fFirstToThrow;
 
     property Nickname: string read fNickname write SetNickname;
     //Game: The TDartGame object, this player is playing.
@@ -100,6 +107,8 @@ type
 
 	TDartGame = class(TObject)
 	private
+		fAllowTie: Boolean;
+		fFirstToThrow: Integer;
 		fGameOptionsClass: TGameOptionsClass;
 		fLegs: Integer;
   	fPlayerClass: TPlayerClass;
@@ -112,13 +121,15 @@ type
 		fThrowCancel: MThrowCancel;
 		fThrowDone: MThrowDone;
     fGameEnded: Boolean;
-		fUpPlayerIdx: Integer;
+		fNowToThrow: Integer;
     fStartPlayerIdx: Integer;
 		function GetPlayer(Index: Integer): TPlayer;
 		function GetPlayerCount: Integer;
 		function GetStarterIndex: Integer;
-		function GetUpPlayer: TPlayer;
+		function GetPlayerToThrow: TPlayer;
 		procedure SetPlayer(Index: Integer; AValue: TPlayer);
+		function MaxLegNo: Integer; //0-based.
+		function MaxSetNo: Integer; //0-based.
   protected
     //The class that is used to create new player objects.
     property PlayerClass: TPlayerClass read fPlayerClass write fPlayerClass;
@@ -139,10 +150,10 @@ type
     //Adds a Player to the List fPlayers. Returns the new Player's Index. Returns -1 if adding failed.
 		function AddPlayer(NewPlayer: TPlayer=nil): Integer; virtual;
 
-    procedure NextPlayerUp; virtual;
-    procedure PriorPlayerUp; virtual;
+    procedure SelectNextToThrow; virtual;
+    procedure SelectPriorToThrow; virtual;
 
-    //PlayDart starts the game.
+    //PlayGame starts the game.
     //	All further game actions are conducted by the methods below (ThrowDone/Cancel, Check/LoseOut, EndGame);
 		procedure PlayGame; virtual;
     //ThrowDone: The current player has entered his score.
@@ -153,21 +164,26 @@ type
 		procedure CheckOut(aPlayer: TPlayer); virtual;
     //LoseOut: current player is out of the game.
 		procedure LoseOut(aPlayer: TPlayer); virtual;
-    //The game is finished.
+    //The Leg has ended. Either one player has won or all players are out of the game.
+		procedure EndLeg; virtual;
+		procedure EndSet; virtual;
+    //The game has ended.
     procedure EndGame; virtual;
 
 		property WinningSets: Integer read fSets write fSets default 1;
 		property WinningLegs: Integer read fLegs write fLegs default 1;
-		property ThisSet: Integer read fThisSet;
-		property ThisLeg: Integer read fThisLeg;
+		property ThisSet: Integer read fThisSet; //Set counter, 0-based
+		property ThisLeg: Integer read fThisLeg; //Leg counter in current set, 0-based
+		property AllowTieGame: Boolean read fAllowTie write fAllowTie;
+		property FirstToThrow: Integer read fFirstToThrow write fFirstToThrow;
 
     property Options: TFrame read fOptions write SetOptions;
     property ScoreBoard: TWinControl read fScoreBoard;
 		property PlayerCount: Integer read GetPlayerCount;
 		property Player[Index: Integer]: TPlayer read GetPlayer write SetPlayer;
     //UpPlayer: Index of next player to enter his score.
-		property UpPlayerIndex: Integer read fUpPlayerIdx;
-    property UpPlayer: TPlayer read GetUpPlayer;
+		property NowToThrow: Integer read fNowToThrow;
+    property PlayerToThrow: TPlayer read GetPlayerToThrow;
     property StartPlayerIndex: Integer read fStartPlayerIdx;
 	end;
 
@@ -175,11 +191,12 @@ type
 implementation
 
 uses
+	TSLib,
   ExtCtrls;
 
-//****************************************************************************
+//**************************************************************************************************
 	{ HPlayerList }
-//****************************************************************************
+//**************************************************************************************************
 
 //*************************************************
 function HPlayerList.MaxIndex: Integer;
@@ -187,9 +204,95 @@ begin
  	Result := pred(Count);
 end;
 
-//****************************************************************************
+//**************************************************************************************************
 	{ TDartGame }
-//****************************************************************************
+//**************************************************************************************************
+
+//*************************************************
+procedure TDartGame.InitGame(TheScoreBoard: TWinControl);
+var
+  I: Integer;
+begin
+  fScoreBoard := TheScoreBoard;
+	fThisLeg := 0;
+	fThisSet := 0;
+	for I := 0 to fPlayers.MaxIndex do
+    fPlayers[I].InitGame(Self);
+end;
+
+//*************************************************
+procedure TDartGame.InitLeg;
+var
+	I: Integer;
+begin
+	fNowToThrow := (fFirstToThrow + fThisSet + fThisLeg) mod fPlayers.Count;
+	for I := 0 to fPlayers.MaxIndex do
+		fPlayers[I].InitLeg(I =  fNowToThrow);
+end;
+
+//*************************************************
+procedure TDartGame.PlayGame;
+begin
+  if PlayerCount > 0 then
+	begin
+		InitLeg;
+	  Player[fNowToThrow].Throw;
+	end
+	else
+		EndGame;
+end;
+
+//*************************************************
+procedure TDartGame.EndLeg;
+var
+	I: Integer;
+begin
+	for I := 0 to fPlayers.MaxIndex do
+		if fPlayers[I].LegsWon >= fLegs then
+		begin
+	  	fPlayers[I].LegsWon := 0;
+			fPlayers[I].fSetsWon := fPlayers[I].fSetsWon + 1;
+			EndSet;
+			Exit;
+		end;
+	if ThisLeg < MaxLegNo then
+	begin
+		inc(fThisLeg);
+		PlayGame;
+	end
+	else
+		EndGame;
+end;
+
+//*************************************************
+procedure TDartGame.EndSet;
+var
+	I: Integer;
+begin
+	for I := 0 to fPlayers.MaxIndex do
+	begin
+		fPlayers[I].LegsWon := 0;
+		if fPlayers[I].SetsWon >= fSets then
+		begin
+			EndGame;
+			Exit;
+		end;
+	end;
+	if ThisSet < MaxSetNo then
+	begin
+		fThisLeg := 0;
+		inc(fThisSet);
+		PlayGame;
+	end
+	else
+		EndGame;
+end;
+
+//*************************************************
+procedure TDartGame.EndGame;
+begin
+  GameEnded := True;
+end;
 
 //*************************************************
 function TDartGame.GetPlayer(Index: Integer): TPlayer;
@@ -228,6 +331,22 @@ begin
 end;
 
 //*************************************************
+function TDartGame.MaxLegNo: Integer;
+begin
+	Result := (fLegs-1) * fPlayers.Count;
+  if fAllowTie and (fLegs>1) and (fThisSet=MaxSetNo) then
+		dec(Result)
+end;
+
+//*************************************************
+function TDartGame.MaxSetNo: Integer;
+begin
+	Result := (fSets-1) * fPlayers.Count;
+	if fAllowTie and (fSets>1) then
+		dec(Result);
+end;
+
+//*************************************************
 constructor TDartGame.Create;
 begin
   fPlayerClass := TPlayer;
@@ -249,27 +368,7 @@ procedure TDartGame.Clear;
 begin
   fPlayers.Clear;
   fStartPlayerIdx := 0;
-  fUpPlayerIdx := 0;
-end;
-
-//*************************************************
-procedure TDartGame.InitGame(TheScoreBoard: TWinControl);
-var
-  I: Integer;
-begin
-  fScoreBoard := TheScoreBoard;
-	for I := 0 to fPlayers.MaxIndex do
-  begin
-    fPlayers[I].InitGame(Self);
-  	fPlayers[I].IsStartPlayer := I = fStartPlayerIdx;
-	end;
- 	fUpPlayerIdx := fStartPlayerIdx;
-end;
-
-//*************************************************
-procedure TDartGame.InitLeg;
-begin
-
+  fNowToThrow := 0;
 end;
 
 //*************************************************
@@ -281,91 +380,77 @@ begin
 end;
 
 //*************************************************
-procedure TDartGame.NextPlayerUp;
+procedure TDartGame.SelectNextToThrow;
 var
 	I: Integer;
 begin
-  I := fUpPlayerIdx;
+  I := fNowToThrow;
 	repeat
-		fUpPlayerIdx := succ(fUpPlayerIdx) mod fPlayers.Count;
-	until fPlayers[fUpPlayerIdx].Enabled or (fUpPlayerIdx = I);
-  if not fPlayers[fUpPlayerIdx].Enabled then
-    fUpPlayerIdx := -1;
+		fNowToThrow := succ(fNowToThrow) mod fPlayers.Count;
+	until fPlayers[fNowToThrow].Enabled or (fNowToThrow = I);
+  if not fPlayers[fNowToThrow].Enabled then
+    EndLeg;
 end;
 
 //*************************************************
-procedure TDartGame.PriorPlayerUp;
+procedure TDartGame.SelectPriorToThrow;
 var
 	I: Integer;
 begin
-  I := fUpPlayerIdx;
+  I := fNowToThrow;
 	repeat
-		fUpPlayerIdx := (pred(fUpPlayerIdx) + fPlayers.Count) mod fPlayers.Count;
-	until fPlayers[fUpPlayerIdx].Enabled or (fUpPlayerIdx = I);
-  if not fPlayers[fUpPlayerIdx].Enabled then
-    fUpPlayerIdx := -1;
+		fNowToThrow := (pred(fNowToThrow) + fPlayers.Count) mod fPlayers.Count;
+	until fPlayers[fNowToThrow].Enabled or (fNowToThrow = I);
+  if not fPlayers[fNowToThrow].Enabled then
+    EndLeg;
 end;
 
 //*************************************************
-function TDartGame.GetUpPlayer: TPlayer;
+function TDartGame.GetPlayerToThrow: TPlayer;
 begin
-	if fUpPlayerIdx < 0 then
-    Result := nil
-	else
-		Result := Player[UpPlayerIndex];
-end;
-
-//*************************************************
-procedure TDartGame.PlayGame;
-begin
-  if PlayerCount > 0 then
-	  Player[0].Throw;
+	Result := Player[NowToThrow];
 end;
 
 //*************************************************
 procedure TDartGame.ThrowDone(aPlayer: TPlayer);
 begin
-  NextPlayerUp;
-  UpPlayer.Throw;
+  SelectNextToThrow;
+  PlayerToThrow.Throw;
 end;
 
 //*************************************************
 procedure TDartGame.ThrowCancel(aPlayer: TPlayer);
 begin
-  PriorPlayerUp;
-  if Player[UpPlayerIndex].CanUndoThrow then
-		UpPlayer.UndoThrow
+  SelectPriorToThrow;
+  if Player[NowToThrow].CanUndoThrow then
+		PlayerToThrow.UndoThrow
   else begin
-    NextPlayerUp;
-    UpPlayer.Throw;
+    SelectNextToThrow;
+    PlayerToThrow.Throw;
 	end;
 end;
 
 //*************************************************
 procedure TDartGame.CheckOut(aPlayer: TPlayer);
 begin
-	EndGame;
+	if Assigned(aPlayer) then
+		aPlayer.LegsWon := aPlayer.LegsWon + 1;
+	EndLeg;
 end;
 
 //*************************************************
 procedure TDartGame.LoseOut(aPlayer: TPlayer);
 begin
-  NextPlayerUp;
-  if fUpPlayerIdx = -1 then
-		EndGame
+  SelectNextToThrow;
+  if fNowToThrow = -1 then
+		EndLeg
   else
-		UpPlayer.Throw;
+		PlayerToThrow.Throw;
 end;
 
-//*************************************************
-procedure TDartGame.EndGame;
-begin
-  GameEnded := True;
-end;
-
-//****************************************************************************
+//**************************************************************************************************
 	{ TPlayer }
-//****************************************************************************
+//**************************************************************************************************
 
 //*************************************************
 constructor TPlayer.Create;
@@ -406,13 +491,12 @@ begin
   fGame := TheGame;
 	Enabled := True;
   Throwing := False;
-  InitLeg;
 end;
 
 //*************************************************
-procedure TPlayer.InitLeg(AsStartPlayer: Boolean);
+procedure TPlayer.InitLeg(AsFirstToThrow: Boolean);
 begin
-
+	fFirstToThrow := AsFirstToThrow;
 end;
 
 
