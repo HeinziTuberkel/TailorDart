@@ -101,10 +101,14 @@ type
 	TDartGame = class(TObject)
 	private
 		fGameOptionsClass: TGameOptionsClass;
+		fLegs: Integer;
   	fPlayerClass: TPlayerClass;
 		fPlayers: TPlayerList;
     fOptions: TFrame;
 		fScoreBoard: TWinControl;
+		fSets: Integer;
+		fThisLeg: Integer;
+		fThisSet: Integer;
 		fThrowCancel: MThrowCancel;
 		fThrowDone: MThrowDone;
     fGameEnded: Boolean;
@@ -152,8 +156,8 @@ type
     //The game is finished.
     procedure EndGame; virtual;
 
-    property WinningSets: Integer read fSets write fSets default 1;
-    property WinningLegs: Integer read fLegs write fLegs default 1;
+		property WinningSets: Integer read fSets write fSets default 1;
+		property WinningLegs: Integer read fLegs write fLegs default 1;
 		property ThisSet: Integer read fThisSet;
 		property ThisLeg: Integer read fThisLeg;
 
@@ -260,6 +264,12 @@ begin
   	fPlayers[I].IsStartPlayer := I = fStartPlayerIdx;
 	end;
  	fUpPlayerIdx := fStartPlayerIdx;
+end;
+
+//*************************************************
+procedure TDartGame.InitLeg;
+begin
+
 end;
 
 //*************************************************

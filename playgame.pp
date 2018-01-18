@@ -44,6 +44,8 @@ uses
   TSLibGraphics,
 	TSLib,
   SelectGame;
+
+
 { TFrmPlayGame }
 
 procedure TFrmPlayGame.FormCreate(Sender: TObject);
