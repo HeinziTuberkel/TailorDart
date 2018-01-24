@@ -6,7 +6,7 @@ interface
 
 uses
   DartClasses, Classes, SysUtils, FileUtil, Forms, Controls, StdCtrls, Buttons,
-	TS_Edit, TS_SpeedButton;
+	TS_Edit, TS_SpeedButton, BCButton;
 
 type
   TDartGameX01 = class;
