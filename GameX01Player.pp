@@ -22,7 +22,7 @@ type
 		LbAverage: TLabel;
 		LbFinish: TLabel;
 		LbNickname: TLabel;
-		LbName2: TLabel;
+		LbSetsLegsCaption: TLabel;
 		LbName5: TLabel;
 		LbName6: TLabel;
 		LbSetsLegs: TLabel;
@@ -43,6 +43,7 @@ type
 		Player: TPlayerX01;
 	public
 		procedure Init;
+		procedure Reset(AsFirstToThrow: Boolean);
 		procedure LockInput;
 		procedure GetScore;
     function IsCheckOut: Boolean;
@@ -63,6 +64,7 @@ type
     StartRemain: Integer;
     ScoreList: array of Integer;
     RemainList: array of Integer;
+		function GetSetMode: Boolean;
 	protected
 		procedure ExecuteThrow; override;
 		procedure ExecuteUndoAction; override;
@@ -71,6 +73,7 @@ type
 		constructor Create; override;
 		destructor Destroy; override;
 		procedure InitGame(TheGame: TDartGame); override;
+		procedure InitLeg(AsFirstToThrow: Boolean); override;
     procedure LegWon;
 
     function Require: Integer;
@@ -81,6 +84,7 @@ type
 		procedure ThrowCancel; override;
     procedure CheckOut; override;
 
+		property SetMode: Boolean read GetSetMode;
     property LegsWon: Integer read fLegs;
     property SetsWon: Integer read fSets;
 	end;
@@ -121,7 +125,29 @@ begin
   Align := alLeft;
   LbNickname.Caption := Player.Nickname;
   SGChalkboard.Clear;
-  UpdateDisplay;
+  if Player.SetMode then
+	begin
+		LbSetsLegsCaption.Caption := 'Sets / Legs won';
+		LbSetsLegs.Caption := '0 / 0';
+	end
+	else begin
+		LbSetsLegsCaption.Caption := 'Legs won';
+		LbSetsLegs.Caption := '0';
+	end;
+	LockInput;
+end;
+
+procedure TFrX01Player.Reset(AsFirstToThrow: Boolean);
+begin
+	if AsFirstToThrow then
+		LbNickname.Caption := '* '  + Player.Nickname
+	else
+		LbNickname.Caption := Player.Nickname;
+  if Player.SetMode then
+		LbSetsLegs.Caption := IntToStr(Player.SetsWon) + ' / ' + IntToStr(Player.LegsWon)
+	else
+		LbSetsLegs.Caption := IntToStr(Player.LegsWon);
+  SGChalkboard.Clear;
 	LockInput;
 end;
 
@@ -240,6 +266,12 @@ begin
   SetLength(RemainList, 0);
 end;
 
+procedure TPlayerX01.InitLeg(AsFirstToThrow: Boolean);
+begin
+	inherited InitLeg(AsFirstToThrow);
+	Frame.Reset(AsFirstToThrow);
+end;
+
 function TPlayerX01.Require: Integer;
 var
 	N: Integer;
@@ -249,6 +281,11 @@ begin
   	Result := StartRemain
   else
   	Result := RemainList[N-1];
+end;
+
+function TPlayerX01.GetSetMode: Boolean;
+begin
+	Result := ThisGame.SetMode;
 end;
 
 procedure TPlayerX01.ExecuteThrow;

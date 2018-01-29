@@ -1,10 +1,10 @@
 object FrX01Player: TFrX01Player
   Left = 0
-  Height = 719
+  Height = 706
   Top = 0
-  Width = 431
-  ClientHeight = 719
-  ClientWidth = 431
+  Width = 398
+  ClientHeight = 706
+  ClientWidth = 398
   Font.Name = 'CHAWP'
   ParentFont = False
   ParentShowHint = False
@@ -14,9 +14,9 @@ object FrX01Player: TFrX01Player
   DesignTop = 112
   object SGChalkBoard: TStringGrid
     Left = 0
-    Height = 423
+    Height = 410
     Top = 124
-    Width = 431
+    Width = 398
     Align = alClient
     AutoFillColumns = True
     BorderStyle = bsNone
@@ -29,7 +29,7 @@ object FrX01Player: TFrX01Player
         Font.Height = -27
         Font.Name = 'CHAWP'
         Title.Caption = 'Wurf'
-        Width = 207
+        Width = 191
       end    
       item
         Alignment = taCenter
@@ -37,7 +37,7 @@ object FrX01Player: TFrX01Player
         Font.Height = -40
         Font.Name = 'CHAWP'
         Title.Caption = 'Rest'
-        Width = 208
+        Width = 191
       end>
     DefaultColWidth = 150
     DefaultRowHeight = 40
@@ -58,8 +58,8 @@ object FrX01Player: TFrX01Player
     TitleFont.Height = -40
     TitleFont.Name = 'CHAWP'
     ColWidths = (
-      207
-      208
+      191
+      191
     )
     Cells = (
       10
@@ -99,12 +99,12 @@ object FrX01Player: TFrX01Player
     Left = 0
     Height = 124
     Top = 0
-    Width = 431
+    Width = 398
     Align = alTop
     AutoSize = True
     BorderWidth = 5
     ClientHeight = 124
-    ClientWidth = 431
+    ClientWidth = 398
     Color = clBlack
     Font.Color = clWhite
     Font.Height = -16
@@ -117,7 +117,7 @@ object FrX01Player: TFrX01Player
       Left = 6
       Height = 58
       Top = 6
-      Width = 419
+      Width = 386
       Align = alTop
       Alignment = taCenter
       Caption = 'Heinz Meier'
@@ -132,15 +132,15 @@ object FrX01Player: TFrX01Player
       Left = 11
       Height = 27
       Top = 64
-      Width = 409
+      Width = 376
       Align = alTop
       AutoSize = True
       BorderSpacing.Left = 5
       BorderSpacing.Right = 5
       ClientHeight = 27
-      ClientWidth = 409
+      ClientWidth = 376
       TabOrder = 0
-      object LbName2: TLabel
+      object LbSetsLegsCaption: TLabel
         Left = 6
         Height = 25
         Top = 1
@@ -168,16 +168,16 @@ object FrX01Player: TFrX01Player
       Left = 11
       Height = 27
       Top = 91
-      Width = 409
+      Width = 376
       Align = alTop
       AutoSize = True
       BorderSpacing.Left = 5
       BorderSpacing.Right = 5
       ClientHeight = 27
-      ClientWidth = 409
+      ClientWidth = 376
       TabOrder = 1
       object LbName5: TLabel
-        Left = 302
+        Left = 269
         Height = 25
         Top = 1
         Width = 60
@@ -199,7 +199,7 @@ object FrX01Player: TFrX01Player
         WordWrap = True
       end
       object LbFinish: TLabel
-        Left = 367
+        Left = 334
         Height = 25
         Top = 1
         Width = 36
@@ -229,8 +229,8 @@ object FrX01Player: TFrX01Player
   object PnlGetScore: TTSPanel
     Left = 0
     Height = 172
-    Top = 547
-    Width = 431
+    Top = 534
+    Width = 398
     DisplayStyle.Font.Height = -50
     DisplayStyle.Font.Name = 'AR CENA'
     DisplayStyle.TextAlign = tapCenter
@@ -267,7 +267,7 @@ object FrX01Player: TFrX01Player
     DisplayStyle.Background.Style = bbsColor
     Align = alBottom
     ClientHeight = 172
-    ClientWidth = 431
+    ClientWidth = 398
     Color = clBlack
     Font.Height = -50
     Font.Name = 'AR CENA'
@@ -278,7 +278,7 @@ object FrX01Player: TFrX01Player
       Left = 3
       Height = 88
       Top = 3
-      Width = 425
+      Width = 392
       DisplayStyle.TextAlign = tapCenter
       DisplayStyle.BorderStyle = brdrBump
       DisplayStyle.BorderWidth = 2
@@ -313,14 +313,14 @@ object FrX01Player: TFrX01Player
       DisplayStyle.Background.Style = bbsColor
       Align = alClient
       ClientHeight = 88
-      ClientWidth = 425
+      ClientWidth = 392
       TabOrder = 0
       object BCButton1: TTSSpeedButton
         Left = 131
         Height = 82
         Hint = 'Number is points scored'
         Top = 3
-        Width = 163
+        Width = 129
         Align = alLeft
         StateClicked.Background.Color = clBlack
         StateClicked.Background.ColorOpacity = 255
@@ -1547,7 +1547,7 @@ object FrX01Player: TFrX01Player
         }
       end
       object BCButton3: TTSSpeedButton
-        Left = 294
+        Left = 260
         Height = 82
         Hint = 'Number is points scored'
         Top = 3
@@ -1727,20 +1727,20 @@ object FrX01Player: TFrX01Player
       Left = 3
       Height = 78
       Top = 91
-      Width = 425
+      Width = 392
       Align = alBottom
       AutoSize = True
       BorderWidth = 3
       Caption = 'PnlEdit'
       ClientHeight = 78
-      ClientWidth = 425
+      ClientWidth = 392
       TabOrder = 1
       object BtnUndoThrow: TTSSpeedButton
         Left = 4
         Height = 70
         Hint = 'Press to add another Player to the Game'
         Top = 4
-        Width = 93
+        Width = 70
         Align = alLeft
         StateClicked.Background.Color = clBlack
         StateClicked.Background.ColorOpacity = 255
@@ -2202,11 +2202,11 @@ object FrX01Player: TFrX01Player
         MemoryUsage = bmuHigh
       end
       object BtnScoreDone: TTSSpeedButton
-        Left = 328
+        Left = 318
         Height = 70
         Hint = 'Press to add another Player to the Game'
         Top = 4
-        Width = 93
+        Width = 70
         Align = alRight
         StateClicked.Background.Color = clBlack
         StateClicked.Background.ColorOpacity = 255
@@ -2671,10 +2671,10 @@ object FrX01Player: TFrX01Player
         AnchorSideLeft.Control = BtnUndoThrow
         AnchorSideLeft.Side = asrBottom
         AnchorSideRight.Control = BtnScoreDone
-        Left = 99
+        Left = 76
         Height = 66
         Top = 6
-        Width = 227
+        Width = 240
         MinNumValue = 0
         MaxNumValue = 180
         EmptyValue = 0

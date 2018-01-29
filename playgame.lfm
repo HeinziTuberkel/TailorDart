@@ -1,8 +1,8 @@
 object FrmPlayGame: TFrmPlayGame
-  Left = 968
-  Height = 199
-  Top = 140
-  Width = 383
+  Left = 731
+  Height = 818
+  Top = 152
+  Width = 994
   Caption = 'FrmPlayGame'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
