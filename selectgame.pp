@@ -79,6 +79,13 @@ end;
 procedure TFrmSelectGame.FormShow(Sender: TObject);
 begin
   BtnSelectGameClick(nil);
+
+
+//Schnellstart für Test 501
+BtnAddPlayer.Click;
+BtnAddPlayer.Click;
+BtnStart.Click;
+
 end;
 
 procedure TFrmSelectGame.ActStartGameExecute(Sender: TObject);
@@ -112,6 +119,9 @@ begin
     Top := 1 + Height * N;
     Align := alTop;
     SetFocus;
+
+//Schnellstart für Test 501
+Nickname := 'Player ' + IntToStr(N+1);
 	end;
 end;
 

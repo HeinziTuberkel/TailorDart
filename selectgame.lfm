@@ -492,6 +492,7 @@ object FrmSelectGame: TFrmSelectGame
         StateNormal.FontEx.WordBreak = False
         Caption = 'X01'
         Color = clNone
+        Down = True
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
@@ -668,7 +669,6 @@ object FrmSelectGame: TFrmSelectGame
         StateNormal.FontEx.WordBreak = False
         Caption = 'Shandy Special'
         Color = clNone
-        Down = True
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255

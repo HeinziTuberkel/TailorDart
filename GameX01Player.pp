@@ -57,23 +57,17 @@ type
 
 	TPlayerX01 = class(TPlayer)
 	private
-		fLegs: Integer;
 		Frame: TFrX01Player;
-		fSets: Integer;
     ThisGame: TDartGameX01;
-    StartRemain: Integer;
-    ScoreList: array of Integer;
-    RemainList: array of Integer;
 		function GetSetMode: Boolean;
 	protected
 		procedure ExecuteThrow; override;
 		procedure ExecuteUndoAction; override;
-		procedure SetEnabled(AValue: Boolean); override;
 	public
-		constructor Create; override;
 		destructor Destroy; override;
 		procedure InitGame(TheGame: TDartGame); override;
 		procedure InitLeg(AsFirstToThrow: Boolean); override;
+		procedure AddCurrentThrowToList; virtual;
     procedure LegWon;
 
     function Require: Integer;
@@ -85,8 +79,6 @@ type
     procedure CheckOut; override;
 
 		property SetMode: Boolean read GetSetMode;
-    property LegsWon: Integer read fLegs;
-    property SetsWon: Integer read fSets;
 	end;
 
 implementation
@@ -96,6 +88,8 @@ implementation
 uses
 	strutils, YesNo, DartResources;
 
+//**************************************************************************************************
+//**************************************************************************************************
 { TFrX01Player }
 
 procedure TFrX01Player.BtnUndoThrowClick(Sender: TObject);
@@ -232,17 +226,11 @@ begin
 end;
 
 
+//**************************************************************************************************
+//**************************************************************************************************
 { TPlayerX01 }
-
-procedure TPlayerX01.SetEnabled(AValue: Boolean);
-begin
-	inherited SetEnabled(AValue);
-end;
-
-constructor TPlayerX01.Create;
-begin
-	inherited Create;
-end;
+//**************************************************************************************************
+//**************************************************************************************************
 
 destructor TPlayerX01.Destroy;
 begin
@@ -261,15 +249,20 @@ begin
 		Frame := TFrX01Player.Create(ScoreBoard.Owner);
   Frame.Player := Self;
   Frame.Init;
-  StartRemain := ThisGame.StartValue;
-  SetLength(ScoreList, 0);
-  SetLength(RemainList, 0);
 end;
 
 procedure TPlayerX01.InitLeg(AsFirstToThrow: Boolean);
 begin
 	inherited InitLeg(AsFirstToThrow);
 	Frame.Reset(AsFirstToThrow);
+	CurrentThrow.Score := 0;
+  StartRemain := ThisGame.StartValue;
+end;
+
+procedure TPlayerX01.AddCurrentThrowToList;
+begin
+	inherited AddCurrentThrowToList;
+ 	Frame.UpdateDisplay;
 end;
 
 function TPlayerX01.Require: Integer;

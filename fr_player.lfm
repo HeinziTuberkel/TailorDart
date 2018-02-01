@@ -12,8 +12,8 @@ object FrPlayer: TFrPlayer
   ParentColor = False
   ParentFont = False
   TabOrder = 0
-  DesignLeft = 83
-  DesignTop = 323
+  DesignLeft = 835
+  DesignTop = 128
   object TSPanel1: TTSPanel
     Left = 0
     Height = 79

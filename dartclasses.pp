@@ -9,8 +9,32 @@ uses
 	Classes, SysUtils;
 
 type
+	NSector = (s1, s2, s3, s4, s5, s6, s7, s8, s9,
+							s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20);
+	NRadius = (rNone, rBounce, rBullEye, rBull, rSingleInner,
+							rTriple, rSingleOuter, rDouble, rRing, rOutside);
+
   NGameMode = (gmSingle, gmBestOfX, gmFirstToX, gmEndless);
-  //NThrowResult = (trDone, trCancel, trCheckOut, trLoseOut);
+
+//****************************************************************************
+	{ RDart }
+//****************************************************************************
+	RDart = record
+		Sector: NSector;
+		Radius: NRadius;
+		Score: Integer;
+	end;
+
+//****************************************************************************
+	{ RThrow }
+//****************************************************************************
+	RThrow = record
+		Dart: Array [1..3] of RDart;
+    Score: Integer;			//points scored with these 3 darts (if applicable in current game).
+		GameScore: Integer; //usually either points scored or points remaining (depends on game).
+		NoScore: Boolean;
+		Invalid: Boolean;		//special form of "no score". e.g. "Busted" in 501.
+	end;
 
   TPlayer = class;
   TDartGame = class;
@@ -20,7 +44,6 @@ type
   MCheckOut = procedure(aPlayer: TPlayer; PlayerIndex: Integer) of Object;
   MLoseOut = procedure(aPlayer: TPlayer; PlayerIndex: Integer) of Object;
   MListItemDelete = procedure (Sender: TObject; Index: Integer) of object;
-
 
   TPlayerList = specialize TFPGObjectList<TPlayer>;
   TPlayerClass = class of TPlayer;
@@ -48,14 +71,19 @@ type
 		fEnabled: Boolean;
 		fSetsWon: Integer;
 		fStartPlayer: Boolean;
+		fThrow: RThrow;
 		fThrowing: Boolean;
+		fThrowList: array of RThrow;
 		function GetGame: TDartGame;
-  function GetScoreBoard: TWinControl;
+		function GetScoreBoard: TWinControl;
+		function GetThrow(No: Word): RThrow;
+		function GetThrowCount: Integer;
     procedure SetNickname(AValue: string);
+		procedure SetThrow(AValue: RThrow);
 		procedure SetThrowing(AValue: Boolean);
   protected
   	procedure ExecuteThrow; virtual; abstract;
-    procedure ExecuteUndoAction; virtual; abstract;
+    procedure ExecuteUndoAction; virtual;
 		procedure SetEnabled(AValue: Boolean); virtual;
     //CheckOut and LoseOut: called internally when the entered throw
     // leads to winning or losing the game. These methods are triggered by the Result of
@@ -66,8 +94,10 @@ type
     constructor Create; virtual;
 		procedure InitGame(TheGame: TDartGame); virtual;
     procedure InitLeg(AsFirstToThrow: Boolean); virtual;
+		procedure ClearCurrentThrow;
     //Initiates the throw. It is completed by calling either ThrowDone or ThrowCancel.
 		procedure Throw; virtual;
+		procedure AddCurrentThrowToList; virtual;
     //If possible, the results of the prior throw are cancelled and "Throw" is called.
 		procedure UndoThrow; virtual;
     //True, if a completed "Throw" result exists, that can be undone.
@@ -81,6 +111,10 @@ type
 		function IsCheckOut: Boolean; virtual;
 		//IsLoseOut: Returns TRUE, when the player is throwing and the current Entry results in losing the game/leg
 		function IsLoseOut: Boolean; virtual;
+
+		property CurrentThrow: RThrow read fThrow write SetThrow;
+		property ThrowCount: Integer read GetThrowCount;
+    property ThrowList[No: Word]: RThrow read GetThrow;
 
 		property LegsWon: Integer read fLegsWon write fLegsWon;
 		property SetsWon: Integer read fSetsWon write fSetsWon;
@@ -477,7 +511,23 @@ begin
 	fNickname := AValue;
 end;
 
-//*************************************************
+procedure TPlayer.SetThrow(AValue: RThrow);
+var
+	I: Integer;
+begin
+	for I := 1 to 3 do
+		with CurrentThrow.Dart[I] do
+		begin
+			Radius := AValue.Dart[I].Radius;
+			Sector := AValue.Dart[I].Sector;
+			Score := AValue.Dart[I].Score;
+		end;
+	fThrow.Invalid := AValue.Invalid;
+	fThrow.NoScore := AValue.NoScore;
+	fThrow.Score := AValue.s;
+end;
+
+
 procedure TPlayer.SetEnabled(AValue: Boolean);
 begin
 	if fEnabled = AValue then
@@ -497,24 +547,25 @@ end;
 procedure TPlayer.InitLeg(AsFirstToThrow: Boolean);
 begin
 	fFirstToThrow := AsFirstToThrow;
+	SetLength(fThrowList, 0);
+	ClearCurrentThrow;
 end;
-
 
 //*************************************************
-function TPlayer.GetScoreBoard: TWinControl;
+procedure TPlayer.ClearCurrentThrow;
+var
+	I: Integer;
 begin
-  if Assigned(fGame) then
-		Result := fGame.ScoreBoard
-  else
-    Result := nil;
-end;
-
-function TPlayer.GetGame: TDartGame;
-begin
-  if Assigned(fGame) then
-  	Result := fGame
-  else
-    raise Exception.Create(Nickname + '.Game not Assigned.');
+	for I := 1 to 3 do
+		with CurrentThrow.Dart[I] do
+		begin
+			Radius := rNone;
+			Sector := s1;
+			Score := 0;
+		end;
+	fThrow.Invalid := True;
+	fThrow.NoScore := True;
+	fThrow.Score := 0;
 end;
 
 //*************************************************
@@ -529,34 +580,16 @@ begin
 end;
 
 //*************************************************
-procedure TPlayer.UndoThrow;
+procedure TPlayer.AddCurrentThrowToList;
 begin
-  if CanUndoThrow then
-	  ExecuteUndoAction;
-	Throw;
-end;
-
-//*************************************************
-function TPlayer.CanUndoThrow: Boolean;
-begin
-  Result := not fStartPlayer;
-end;
-
-//*************************************************
-function TPlayer.IsCheckOut: Boolean;
-begin
-  Result := False;
-end;
-
-//*************************************************
-function TPlayer.IsLoseOut: Boolean;
-begin
-	Result := False;
+	SetLength(fThrowList, ThrowCount+1);
+	fThrowList[ThrowCount] := CurrentThrow;
 end;
 
 //*************************************************
 procedure TPlayer.ThrowDone;
 begin
+	AddCurrentThrowToList;
   if IsCheckOut then
     CheckOut
   else if IsLoseOut then
@@ -569,6 +602,73 @@ end;
 procedure TPlayer.ThrowCancel;
 begin
   Game.ThrowCancel(Self);
+end;
+
+//*************************************************
+procedure TPlayer.UndoThrow;
+begin
+  if CanUndoThrow then
+	  ExecuteUndoAction;
+	Throw;
+end;
+
+//*************************************************
+procedure TPlayer.ExecuteUndoAction;
+begin
+	if ThrowCount > 0 then
+		SetLength(fThrowList, pred(ThrowCount));
+	ClearCurrentThrow;
+end;
+
+//*************************************************
+function TPlayer.GetScoreBoard: TWinControl;
+begin
+  if Assigned(fGame) then
+		Result := fGame.ScoreBoard
+  else
+    Result := nil;
+end;
+
+//*************************************************
+function TPlayer.GetThrow(No: Word): RThrow;
+begin
+  if (No > ThrowCount) or (No=0) then
+		Result := CurrentThrow
+	else
+		Result := fThrowList[pred(No)];
+end;
+
+//*************************************************
+function TPlayer.GetThrowCount: Integer;
+begin
+	Result := Length(fThrowList);
+end;
+
+//*************************************************
+function TPlayer.GetGame: TDartGame;
+begin
+  if Assigned(fGame) then
+  	Result := fGame
+  else
+    raise Exception.Create(Nickname + '.Game not Assigned.');
+end;
+
+//*************************************************
+function TPlayer.CanUndoThrow: Boolean;
+begin
+  Result := not fStartPlayer or (ThrowCount > 0);
+end;
+
+//*************************************************
+function TPlayer.IsCheckOut: Boolean;
+begin
+  Result := False;
+end;
+
+//*************************************************
+function TPlayer.IsLoseOut: Boolean;
+begin
+	Result := False;
 end;
 
 //*************************************************
