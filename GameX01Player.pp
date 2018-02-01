@@ -256,7 +256,6 @@ begin
 	inherited InitLeg(AsFirstToThrow);
 	Frame.Reset(AsFirstToThrow);
 	CurrentThrow.Score := 0;
-  StartRemain := ThisGame.StartValue;
 end;
 
 procedure TPlayerX01.AddCurrentThrowToList;

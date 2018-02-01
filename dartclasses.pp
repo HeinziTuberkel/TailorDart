@@ -16,26 +16,6 @@ type
 
   NGameMode = (gmSingle, gmBestOfX, gmFirstToX, gmEndless);
 
-//****************************************************************************
-	{ RDart }
-//****************************************************************************
-	RDart = record
-		Sector: NSector;
-		Radius: NRadius;
-		Score: Integer;
-	end;
-
-//****************************************************************************
-	{ RThrow }
-//****************************************************************************
-	RThrow = record
-		Dart: Array [1..3] of RDart;
-    Score: Integer;			//points scored with these 3 darts (if applicable in current game).
-		GameScore: Integer; //usually either points scored or points remaining (depends on game).
-		NoScore: Boolean;
-		Invalid: Boolean;		//special form of "no score". e.g. "Busted" in 501.
-	end;
-
   TPlayer = class;
   TDartGame = class;
 
@@ -59,6 +39,28 @@ type
   end;
 
 //****************************************************************************
+	{ TDart }
+//****************************************************************************
+	RDart = record
+		Sector: NSector;
+		Radius: NRadius;
+		Score: Integer;
+	end;
+
+//****************************************************************************
+	{ TThrow }
+//****************************************************************************
+	TThrow = class(TObject)
+		Dart: Array [1..3] of RDart;
+    Score: Integer;			//points scored with these 3 darts (if applicable in current game).
+		GameScore: Integer; //usually either points scored or points remaining (depends on game).
+		NoScore: Boolean;
+		Invalid: Boolean;		//special form of "no score". e.g. "Busted" in 501.
+	end;
+
+
+
+//****************************************************************************
 	{ TPlayer }
 //****************************************************************************
 
@@ -71,15 +73,15 @@ type
 		fEnabled: Boolean;
 		fSetsWon: Integer;
 		fStartPlayer: Boolean;
-		fThrow: RThrow;
+		fThrow: TThrow;
 		fThrowing: Boolean;
-		fThrowList: array of RThrow;
+		fThrowList: array of TThrow;
 		function GetGame: TDartGame;
 		function GetScoreBoard: TWinControl;
-		function GetThrow(No: Word): RThrow;
+		function GetThrow(No: Word): TThrow;
 		function GetThrowCount: Integer;
     procedure SetNickname(AValue: string);
-		procedure SetThrow(AValue: RThrow);
+		procedure SetThrow(AValue: TThrow);
 		procedure SetThrowing(AValue: Boolean);
   protected
   	procedure ExecuteThrow; virtual; abstract;
@@ -112,9 +114,9 @@ type
 		//IsLoseOut: Returns TRUE, when the player is throwing and the current Entry results in losing the game/leg
 		function IsLoseOut: Boolean; virtual;
 
-		property CurrentThrow: RThrow read fThrow write SetThrow;
+		property CurrentThrow: TThrow read fThrow write SetThrow;
 		property ThrowCount: Integer read GetThrowCount;
-    property ThrowList[No: Word]: RThrow read GetThrow;
+    property ThrowList[No: Word]: TThrow read GetThrow;
 
 		property LegsWon: Integer read fLegsWon write fLegsWon;
 		property SetsWon: Integer read fSetsWon write fSetsWon;
@@ -511,7 +513,7 @@ begin
 	fNickname := AValue;
 end;
 
-procedure TPlayer.SetThrow(AValue: RThrow);
+procedure TPlayer.SetThrow(AValue: TThrow);
 var
 	I: Integer;
 begin
@@ -524,7 +526,7 @@ begin
 		end;
 	fThrow.Invalid := AValue.Invalid;
 	fThrow.NoScore := AValue.NoScore;
-	fThrow.Score := AValue.s;
+	fThrow.Score := AValue.Score;
 end;
 
 
@@ -630,7 +632,7 @@ begin
 end;
 
 //*************************************************
-function TPlayer.GetThrow(No: Word): RThrow;
+function TPlayer.GetThrow(No: Word): TThrow;
 begin
   if (No > ThrowCount) or (No=0) then
 		Result := CurrentThrow
