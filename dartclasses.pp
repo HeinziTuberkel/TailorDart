@@ -56,6 +56,8 @@ type
 		GameScore: Integer; //usually either points scored or points remaining (depends on game).
 		NoScore: Boolean;
 		Invalid: Boolean;		//special form of "no score". e.g. "Busted" in 501.
+		procedure Assign(TheThrow: TThrow);
+		procedure Reset;
 	end;
 
 
@@ -77,14 +79,14 @@ type
 		fThrowing: Boolean;
 		fThrowList: array of TThrow;
 		function GetGame: TDartGame;
+		function GetLastThrow: TThrow;
 		function GetScoreBoard: TWinControl;
 		function GetThrow(No: Word): TThrow;
 		function GetThrowCount: Integer;
     procedure SetNickname(AValue: string);
-		procedure SetThrow(AValue: TThrow);
 		procedure SetThrowing(AValue: Boolean);
   protected
-  	procedure ExecuteThrow; virtual; abstract;
+  	procedure ExecuteThrow; virtual;
     procedure ExecuteUndoAction; virtual;
 		procedure SetEnabled(AValue: Boolean); virtual;
     //CheckOut and LoseOut: called internally when the entered throw
@@ -96,7 +98,7 @@ type
     constructor Create; virtual;
 		procedure InitGame(TheGame: TDartGame); virtual;
     procedure InitLeg(AsFirstToThrow: Boolean); virtual;
-		procedure ClearCurrentThrow;
+		procedure ClearCurrentThrow; virtual;
     //Initiates the throw. It is completed by calling either ThrowDone or ThrowCancel.
 		procedure Throw; virtual;
 		procedure AddCurrentThrowToList; virtual;
@@ -114,9 +116,10 @@ type
 		//IsLoseOut: Returns TRUE, when the player is throwing and the current Entry results in losing the game/leg
 		function IsLoseOut: Boolean; virtual;
 
-		property CurrentThrow: TThrow read fThrow write SetThrow;
+		property CurrentThrow: TThrow read fThrow;
 		property ThrowCount: Integer read GetThrowCount;
     property ThrowList[No: Word]: TThrow read GetThrow;
+		property LastThrow: TThrow read GetLastThrow;
 
 		property LegsWon: Integer read fLegsWon write fLegsWon;
 		property SetsWon: Integer read fSetsWon write fSetsWon;
@@ -239,6 +242,43 @@ function HPlayerList.MaxIndex: Integer;
 begin
  	Result := pred(Count);
 end;
+
+//**************************************************************************************************
+{ TThrow }
+//**************************************************************************************************
+
+procedure TThrow.Assign(TheThrow: TThrow);
+var
+	I: Integer;
+begin
+	for I := 1 to 3 do
+		with Dart[I] do
+		begin
+			Radius := TheThrow.Dart[I].Radius;
+			Sector := TheThrow.Dart[I].Sector;
+			Score := TheThrow.Dart[I].Score;
+		end;
+	Invalid := TheThrow.Invalid;
+	NoScore := TheThrow.NoScore;
+	Score := TheThrow.Score;
+end;
+
+procedure TThrow.Reset;
+var
+	I: Integer;
+begin
+	for I := 1 to 3 do
+		with Dart[I] do
+		begin
+			Radius := rNone;
+			Sector := s1;
+			Score := 0;
+		end;
+	Invalid := True;
+	NoScore := True;
+	Score := 0;
+end;
+
 
 //**************************************************************************************************
 	{ TDartGame }
@@ -458,7 +498,7 @@ end;
 procedure TDartGame.ThrowCancel(aPlayer: TPlayer);
 begin
   SelectPriorToThrow;
-  if Player[NowToThrow].CanUndoThrow then
+  if PlayerToThrow.CanUndoThrow then
 		PlayerToThrow.UndoThrow
   else begin
     SelectNextToThrow;
@@ -513,23 +553,7 @@ begin
 	fNickname := AValue;
 end;
 
-procedure TPlayer.SetThrow(AValue: TThrow);
-var
-	I: Integer;
-begin
-	for I := 1 to 3 do
-		with CurrentThrow.Dart[I] do
-		begin
-			Radius := AValue.Dart[I].Radius;
-			Sector := AValue.Dart[I].Sector;
-			Score := AValue.Dart[I].Score;
-		end;
-	fThrow.Invalid := AValue.Invalid;
-	fThrow.NoScore := AValue.NoScore;
-	fThrow.Score := AValue.Score;
-end;
-
-
+//*************************************************
 procedure TPlayer.SetEnabled(AValue: Boolean);
 begin
 	if fEnabled = AValue then
@@ -547,27 +571,26 @@ end;
 
 //*************************************************
 procedure TPlayer.InitLeg(AsFirstToThrow: Boolean);
+var
+	I: Integer;
 begin
 	fFirstToThrow := AsFirstToThrow;
+  for I := 0 to Length(fThrowList) do
+		fThrowList[I].Free;
 	SetLength(fThrowList, 0);
 	ClearCurrentThrow;
 end;
 
 //*************************************************
 procedure TPlayer.ClearCurrentThrow;
-var
-	I: Integer;
 begin
-	for I := 1 to 3 do
-		with CurrentThrow.Dart[I] do
-		begin
-			Radius := rNone;
-			Sector := s1;
-			Score := 0;
-		end;
-	fThrow.Invalid := True;
-	fThrow.NoScore := True;
-	fThrow.Score := 0;
+	CurrentThrow.Reset;
+end;
+
+//*************************************************
+procedure TPlayer.ExecuteThrow;
+begin
+	ClearCurrentThrow;
 end;
 
 //*************************************************
@@ -585,7 +608,8 @@ end;
 procedure TPlayer.AddCurrentThrowToList;
 begin
 	SetLength(fThrowList, ThrowCount+1);
-	fThrowList[ThrowCount] := CurrentThrow;
+	fThrowList[ThrowCount] := TThrow.Create;
+	fThrowList[ThrowCount].Assign(CurrentThrow);
 end;
 
 //*************************************************
@@ -618,7 +642,10 @@ end;
 procedure TPlayer.ExecuteUndoAction;
 begin
 	if ThrowCount > 0 then
+	begin
+		fThrowList[pred(ThrowCount)].Free;
 		SetLength(fThrowList, pred(ThrowCount));
+	end;
 	ClearCurrentThrow;
 end;
 
@@ -638,6 +665,12 @@ begin
 		Result := CurrentThrow
 	else
 		Result := fThrowList[pred(No)];
+end;
+
+//*************************************************
+function TPlayer.GetLastThrow: TThrow;
+begin
+  Result := ThrowList[ThrowCount];
 end;
 
 //*************************************************

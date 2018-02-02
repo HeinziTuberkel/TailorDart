@@ -63,7 +63,7 @@ type
 		fDoubleIn: Boolean;
 		fDoubleOut: Boolean;
 		fSetMode: Boolean;
-		fStartValue: Integer;
+		fStartRemain: Integer;
   public
 		constructor Create; override;
 		function HasOptions: Boolean; override;
@@ -71,7 +71,7 @@ type
     procedure EndGame; override;
     function HasWonSet(LegsWon: Integer): Boolean;
 
-    property StartValue: Integer read fStartValue write fStartValue;
+    property StartRemain: Integer read fStartRemain write fStartRemain;
     property DoubleIn: Boolean read fDoubleIn write fDoubleIn;
     property DoubleOut: Boolean read fDoubleOut write fDoubleOut;
     property SetMode: Boolean read fSetMode write fSetMode;
@@ -99,7 +99,7 @@ begin
   fDoubleOut := True;
   fSetMode := True;
   fBestOfMode := True;
-  fStartValue := 501;
+  fStartRemain := 501;
 end;
 
 function TDartGameX01.HasOptions: Boolean;
@@ -134,9 +134,9 @@ procedure TFrX01.BtnStartingPointsSelect(Sender: TObject);
 begin
 	if Assigned(Sender) and (Sender is TControl) then
 	begin
-    Game.StartValue := TControl(Sender).Tag;
-		BtnStartingPoints.Tag := Game.StartValue;
-		BtnStartingPoints.Caption := IntToStr(Game.StartValue);
+    Game.StartRemain := TControl(Sender).Tag;
+		BtnStartingPoints.Tag := Game.StartRemain;
+		BtnStartingPoints.Caption := IntToStr(Game.StartRemain);
 	end;
 	PnlSelectPoints.Hide;
 end;
@@ -236,8 +236,8 @@ end;
 procedure TFrX01.SetContcols;
 begin
 	PnlSelectPoints.Hide;
-	BtnStartingPoints.Caption := IntToStr(Game.StartValue);
-	BtnStartingPoints.Tag := Game.StartValue;
+	BtnStartingPoints.Caption := IntToStr(Game.StartRemain);
+	BtnStartingPoints.Tag := Game.StartRemain;
   XDoubleIn.Down := Game.DoubleIn;
 	XDoubleOut.Down := Game.DoubleOut;
 	XSetMode.Down := Game.SetMode;
@@ -250,7 +250,7 @@ end;
 procedure TFrX01.SetGameOptions;
 begin
 	PnlSelectPoints.Hide;
-	Game.StartValue := BtnStartingPoints.Tag;
+	Game.StartRemain := BtnStartingPoints.Tag;
 	Game.DoubleIn := XDoubleIn.Down;
 	Game.DoubleOut := XDoubleOut.Down;
 	Game.SetMode := XSetMode.Down;

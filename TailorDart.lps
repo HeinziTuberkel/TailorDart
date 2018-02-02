@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="96">
+    <Units Count="99">
       <Unit0>
         <Filename Value="TailorDart.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -19,24 +19,23 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SelectGame"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="75"/>
         <CursorPos X="16" Y="87"/>
         <UsageCount Value="204"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="dartclasses.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="DartClasses"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="481"/>
-        <CursorPos X="31" Y="529"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="509"/>
+        <CursorPos X="30" Y="572"/>
         <UsageCount Value="204"/>
-        <Bookmarks Count="1">
-          <Item0 Y="450" ID="3"/>
+        <Bookmarks Count="2">
+          <Item0 Y="490" ID="3"/>
+          <Item1 Y="556" ID="2"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit2>
@@ -46,11 +45,10 @@
         <ComponentName Value="FrmPlayGame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
         <CursorPos X="13" Y="77"/>
         <UsageCount Value="203"/>
-        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="GameTest.pp"/>
@@ -98,9 +96,9 @@
         <ComponentName Value="FrX01Player"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <TopLine Value="223"/>
-        <CursorPos X="15" Y="271"/>
-        <UsageCount Value="178"/>
+        <TopLine Value="31"/>
+        <CursorPos Y="79"/>
+        <UsageCount Value="180"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -110,9 +108,11 @@
         <ComponentName Value="FrX01"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="91" Y="28"/>
-        <UsageCount Value="178"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="18"/>
+        <CursorPos X="43" Y="73"/>
+        <UsageCount Value="180"/>
+        <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="dartresources.pas"/>
@@ -120,7 +120,7 @@
         <UnitName Value="DartResources"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="25" Y="16"/>
-        <UsageCount Value="56"/>
+        <UsageCount Value="58"/>
       </Unit10>
       <Unit11>
         <Filename Value="dartmain.pas"/>
@@ -149,20 +149,20 @@
         <UsageCount Value="4"/>
       </Unit13>
       <Unit14>
-        <Filename Value="..\..\Lazarus\lcl\controls.pp"/>
+        <Filename Value="..\..\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="2848"/>
-        <CursorPos Y="2891"/>
-        <UsageCount Value="8"/>
+        <TopLine Value="1014"/>
+        <CursorPos X="3" Y="1062"/>
+        <UsageCount Value="10"/>
       </Unit14>
       <Unit15>
-        <Filename Value="..\..\Lazarus\lcl\stdctrls.pp"/>
+        <Filename Value="..\..\lazarus\lcl\stdctrls.pp"/>
         <UnitName Value="StdCtrls"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="140"/>
-        <CursorPos X="3" Y="171"/>
-        <UsageCount Value="7"/>
+        <TopLine Value="665"/>
+        <CursorPos X="3" Y="713"/>
+        <UsageCount Value="10"/>
       </Unit15>
       <Unit16>
         <Filename Value="..\..\Lazarus\fpc\2.6.4\source\packages\fcl-base\src\contnrs.pp"/>
@@ -348,12 +348,11 @@
         <UsageCount Value="2"/>
       </Unit41>
       <Unit42>
-        <Filename Value="..\..\Lazarus\lcl\lclclasses.pp"/>
+        <Filename Value="..\..\lazarus\lcl\lclclasses.pp"/>
         <UnitName Value="LCLClasses"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="28"/>
-        <CursorPos X="17" Y="50"/>
-        <UsageCount Value="7"/>
+        <CursorPos X="3" Y="42"/>
+        <UsageCount Value="10"/>
       </Unit42>
       <Unit43>
         <Filename Value="..\..\Lazarus\fpc\3.0.0\source\rtl\inc\wstringh.inc"/>
@@ -416,11 +415,10 @@
       </Unit51>
       <Unit52>
         <Filename Value="..\..\lazcomp\TSLib\source\TS_Edit.pp"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="2017"/>
-        <CursorPos Y="2065"/>
-        <UsageCount Value="29"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="42"/>
+        <CursorPos X="3" Y="90"/>
+        <UsageCount Value="30"/>
       </Unit52>
       <Unit53>
         <Filename Value="Dart\fr_playerx01.pp"/>
@@ -684,9 +682,9 @@
       <Unit88>
         <Filename Value="..\..\lazarus\fpc\3.0.4\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="146"/>
-        <CursorPos X="23" Y="194"/>
-        <UsageCount Value="9"/>
+        <TopLine Value="155"/>
+        <CursorPos X="21" Y="203"/>
+        <UsageCount Value="10"/>
       </Unit88>
       <Unit89>
         <Filename Value="..\..\lazarus\lcl\lclproc.pas"/>
@@ -740,127 +738,148 @@
         <CursorPos X="11" Y="696"/>
         <UsageCount Value="10"/>
       </Unit95>
+      <Unit96>
+        <Filename Value="..\..\lazarus\fpc\3.0.4\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="390"/>
+        <CursorPos X="15" Y="438"/>
+        <UsageCount Value="10"/>
+      </Unit96>
+      <Unit97>
+        <Filename Value="..\..\lazarus\fpc\3.0.4\source\rtl\objpas\classes\persist.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="104"/>
+        <CursorPos X="3" Y="107"/>
+        <UsageCount Value="10"/>
+      </Unit97>
+      <Unit98>
+        <Filename Value="..\..\lazarus\fpc\3.0.4\source\rtl\inc\objpas.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="283"/>
+        <CursorPos X="12" Y="286"/>
+        <UsageCount Value="10"/>
+      </Unit98>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="258" Column="2" TopLine="210"/>
+        <Caret Line="75" Column="35" TopLine="26"/>
       </Position1>
       <Position2>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="115" Column="54" TopLine="68"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="283" Column="22" TopLine="262"/>
       </Position2>
       <Position3>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="116" Column="51" TopLine="66"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="75" Column="12" TopLine="27"/>
       </Position3>
       <Position4>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="517" Column="2" TopLine="507"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="285" Column="13" TopLine="267"/>
       </Position4>
       <Position5>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="528" Column="30" TopLine="469"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="303" Column="21" TopLine="258"/>
       </Position5>
       <Position6>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="34" Column="73"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="317" TopLine="258"/>
       </Position6>
       <Position7>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="32" Column="19"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="65" Column="33" TopLine="17"/>
       </Position7>
       <Position8>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="3" Column="30"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="317" Column="30" TopLine="260"/>
       </Position8>
       <Position9>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="38" Column="14" TopLine="14"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="65" Column="13" TopLine="17"/>
       </Position9>
       <Position10>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="27" Column="17"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="317" Column="15" TopLine="260"/>
       </Position10>
       <Position11>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="38" Column="5"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="65" Column="13" TopLine="17"/>
       </Position11>
       <Position12>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="39" Column="9"/>
+        <Caret Line="90" Column="15" TopLine="42"/>
       </Position12>
       <Position13>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="35" Column="23"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="65" Column="13" TopLine="17"/>
       </Position13>
       <Position14>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="37" Column="49"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="326" TopLine="260"/>
       </Position14>
       <Position15>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="111" Column="25" TopLine="98"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="316" Column="9" TopLine="260"/>
       </Position15>
       <Position16>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="520" Column="12" TopLine="446"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="323" Column="15" TopLine="250"/>
       </Position16>
       <Position17>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="237" Column="21" TopLine="116"/>
+        <Caret Line="319" TopLine="251"/>
       </Position17>
       <Position18>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="54"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="340" Column="7" TopLine="251"/>
       </Position18>
       <Position19>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="60" TopLine="6"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="71" TopLine="24"/>
       </Position19>
       <Position20>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="236" TopLine="232"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="337" TopLine="245"/>
       </Position20>
       <Position21>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="59"/>
+        <Caret Line="648" Column="5" TopLine="628"/>
       </Position21>
       <Position22>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="76" Column="17" TopLine="28"/>
+        <Caret Line="203" Column="17" TopLine="153"/>
       </Position22>
       <Position23>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="78" Column="25" TopLine="30"/>
+        <Caret Line="512" TopLine="509"/>
       </Position23>
       <Position24>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="81" Column="33" TopLine="33"/>
+        <Caret Line="207" Column="25" TopLine="156"/>
       </Position24>
       <Position25>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="84" Column="32" TopLine="36"/>
+        <Caret Line="326" TopLine="321"/>
       </Position25>
       <Position26>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="74" Column="47" TopLine="6"/>
+        <Caret Line="203" Column="13" TopLine="160"/>
       </Position26>
       <Position27>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="523" Column="22" TopLine="481"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="328" TopLine="237"/>
       </Position27>
       <Position28>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="117" Column="55" TopLine="75"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="327" TopLine="236"/>
       </Position28>
       <Position29>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="529" Column="30" TopLine="481"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="72" Column="14" TopLine="27"/>
       </Position29>
       <Position30>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="259" TopLine="211"/>
+        <Caret Line="79" TopLine="31"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

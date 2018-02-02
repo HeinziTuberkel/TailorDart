@@ -67,16 +67,15 @@ type
 		destructor Destroy; override;
 		procedure InitGame(TheGame: TDartGame); override;
 		procedure InitLeg(AsFirstToThrow: Boolean); override;
-		procedure AddCurrentThrowToList; virtual;
-    procedure LegWon;
+		procedure ClearCurrentThrow; override;
+		procedure AddCurrentThrowToList; override;
 
     function Require: Integer;
-		function CanUndoThrow: Boolean; override;
+		function CurrentScore: Integer;
 		function IsCheckOut: Boolean; override;
 
     procedure ThrowDone; override;
 		procedure ThrowCancel; override;
-    procedure CheckOut; override;
 
 		property SetMode: Boolean read GetSetMode;
 	end;
@@ -255,24 +254,34 @@ procedure TPlayerX01.InitLeg(AsFirstToThrow: Boolean);
 begin
 	inherited InitLeg(AsFirstToThrow);
 	Frame.Reset(AsFirstToThrow);
-	CurrentThrow.Score := 0;
+	ClearCurrentThrow;
+end;
+
+procedure TPlayerX01.ClearCurrentThrow;
+begin
+	inherited ClearCurrentThrow;
+	if ThrowCount = 0 then
+		CurrentThrow.GameScore := ThisGame.StartRemain
+	else
+		CurrentThrow.GameScore := LastThrow.GameScore;
 end;
 
 procedure TPlayerX01.AddCurrentThrowToList;
 begin
+	CurrentThrow.GameScore := LastThrow.GameScore - CurrentThrow.Score;
 	inherited AddCurrentThrowToList;
  	Frame.UpdateDisplay;
 end;
 
 function TPlayerX01.Require: Integer;
-var
-	N: Integer;
 begin
-  N := Length(RemainList);
-  if N = 0 then
-  	Result := StartRemain
-  else
-  	Result := RemainList[N-1];
+	Result := CurrentThrow.GameScore - CurrentScore;
+end;
+
+function TPlayerX01.CurrentScore: Integer;
+begin
+//  Result := CurrentThrow.Dart[1].Score + CurrentThrow.Dart[2].Score + CurrentThrow.Dart[3].Score;
+  Result := Frame.ScoreInput;
 end;
 
 function TPlayerX01.GetSetMode: Boolean;
@@ -285,32 +294,16 @@ begin
 	Frame.GetScore;
 end;
 
-function TPlayerX01.CanUndoThrow: Boolean;
-begin
-	Result := (Length(ScoreList)>0) or not IsStartPlayer;
-end;
-
 procedure TPlayerX01.ThrowDone;
 var
-	Score, N, R: Integer;
+	N, R: Integer;
 begin
-  N := Length(ScoreList);
-  Score := Frame.ScoreInput;
-	SetLength(ScoreList, N+1);
-  SetLength(RemainList, N+1);
   //für evtl. spätere Unterscheidung zwischen "No Score" und "Busted".
-  if (Score > Require) then
-  begin
-  	Score := 0;
-	  ScoreList[N] := -1;
- 	end
+  if (CurrentScore > CurrentThrow.GameScore) then
+  	CurrentThrow.Score := 0
 	else
-	  ScoreList[N] := Score;
-  if N > 0 then
-	  RemainList[N] := RemainList[N-1] - Score
-  else
-  	RemainList[N] := StartRemain - Score;
-	Frame.AddScoreLine(ScoreList[N], RemainList[N]);
+		CurrentThrow.Score := CurrentScore;
+	Frame.AddScoreLine(CurrentThrow.Score, Require);
   Frame.LockInput;
 	inherited ThrowDone;
 end;
@@ -319,15 +312,8 @@ procedure TPlayerX01.ExecuteUndoAction;
 var
 	N: Integer;
 begin
-	if CanUndoThrow then
-  begin
-    N := Length(ScoreList);
-    if N > 0 then
-    	dec(N);
-    SetLength(ScoreList, N);
-    SetLength(RemainList, N);
-    Frame.RemoveScoreLine;
-	end;
+  Frame.RemoveScoreLine;
+  inherited ExecuteUndoAction;
 end;
 
 procedure TPlayerX01.ThrowCancel;
@@ -340,20 +326,6 @@ function TPlayerX01.IsCheckOut: Boolean;
 begin
 	Result := (Require = 0) and Frame.IsCheckOut;
 end;
-
-procedure TPlayerX01.CheckOut;
-begin
-	if IsCheckOut then
-  	LegWon;
-end;
-
-procedure TPlayerX01.LegWon;
-begin
-  inc(fLegs);
-
-end;
-
-
 
 end.
 
