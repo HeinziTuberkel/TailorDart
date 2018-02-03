@@ -28,14 +28,13 @@
         <Filename Value="dartclasses.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="DartClasses"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="509"/>
-        <CursorPos X="30" Y="572"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="616"/>
+        <CursorPos X="51" Y="682"/>
         <UsageCount Value="204"/>
         <Bookmarks Count="2">
           <Item0 Y="490" ID="3"/>
-          <Item1 Y="556" ID="2"/>
+          <Item1 Y="557" ID="2"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit2>
@@ -96,8 +95,8 @@
         <ComponentName Value="FrX01Player"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <TopLine Value="31"/>
-        <CursorPos Y="79"/>
+        <TopLine Value="246"/>
+        <CursorPos Y="303"/>
         <UsageCount Value="180"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -108,7 +107,7 @@
         <ComponentName Value="FrX01"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="18"/>
         <CursorPos X="43" Y="73"/>
         <UsageCount Value="180"/>
@@ -493,10 +492,12 @@
         <UsageCount Value="2"/>
       </Unit62>
       <Unit63>
-        <Filename Value="..\..\lazcomp\TSLib\source\TS_SpeedButton.pp"/>
-        <EditorIndex Value="-1"/>
+        <Filename Value="..\..\LazComp\TSLib\source\TS_SpeedButton.pp"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <CursorPos Y="139"/>
         <UsageCount Value="26"/>
+        <Loaded Value="True"/>
       </Unit63>
       <Unit64>
         <Filename Value="..\..\LazComp\BGRAControls\bgraspeedbutton.pas"/>
@@ -762,129 +763,129 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="75" Column="35" TopLine="26"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="90" Column="15" TopLine="42"/>
       </Position1>
       <Position2>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="283" Column="22" TopLine="262"/>
+        <Caret Line="65" Column="13" TopLine="17"/>
       </Position2>
       <Position3>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="75" Column="12" TopLine="27"/>
+        <Caret Line="326" TopLine="260"/>
       </Position3>
       <Position4>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="285" Column="13" TopLine="267"/>
+        <Caret Line="316" Column="9" TopLine="260"/>
       </Position4>
       <Position5>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="303" Column="21" TopLine="258"/>
+        <Caret Line="323" Column="15" TopLine="250"/>
       </Position5>
       <Position6>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="317" TopLine="258"/>
+        <Caret Line="319" TopLine="251"/>
       </Position6>
       <Position7>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="65" Column="33" TopLine="17"/>
+        <Caret Line="340" Column="7" TopLine="251"/>
       </Position7>
       <Position8>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="317" Column="30" TopLine="260"/>
+        <Caret Line="71" TopLine="24"/>
       </Position8>
       <Position9>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="65" Column="13" TopLine="17"/>
+        <Caret Line="337" TopLine="245"/>
       </Position9>
       <Position10>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="317" Column="15" TopLine="260"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="648" Column="5" TopLine="628"/>
       </Position10>
       <Position11>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="65" Column="13" TopLine="17"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="203" Column="17" TopLine="153"/>
       </Position11>
       <Position12>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="90" Column="15" TopLine="42"/>
+        <Caret Line="512" TopLine="509"/>
       </Position12>
       <Position13>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="65" Column="13" TopLine="17"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="207" Column="25" TopLine="156"/>
       </Position13>
       <Position14>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="326" TopLine="260"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="326" TopLine="321"/>
       </Position14>
       <Position15>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="316" Column="9" TopLine="260"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="203" Column="13" TopLine="160"/>
       </Position15>
       <Position16>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="323" Column="15" TopLine="250"/>
+        <Caret Line="328" TopLine="237"/>
       </Position16>
       <Position17>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="319" TopLine="251"/>
+        <Caret Line="327" TopLine="236"/>
       </Position17>
       <Position18>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="340" Column="7" TopLine="251"/>
+        <Caret Line="72" Column="14" TopLine="27"/>
       </Position18>
       <Position19>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="71" TopLine="24"/>
+        <Caret Line="79" TopLine="31"/>
       </Position19>
       <Position20>
-        <Filename Value="GameX01Player.pp"/>
-        <Caret Line="337" TopLine="245"/>
+        <Filename Value="dartclasses.pp"/>
+        <Caret Line="538" Column="4" TopLine="504"/>
       </Position20>
       <Position21>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="648" Column="5" TopLine="628"/>
+        <Caret Line="547" Column="53" TopLine="531"/>
       </Position21>
       <Position22>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="203" Column="17" TopLine="153"/>
+        <Caret Line="613" Column="23" TopLine="564"/>
       </Position22>
       <Position23>
         <Filename Value="dartclasses.pp"/>
-        <Caret Line="512" TopLine="509"/>
+        <Caret Line="121" Column="18" TopLine="67"/>
       </Position23>
       <Position24>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="207" Column="25" TopLine="156"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="302" TopLine="246"/>
       </Position24>
       <Position25>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="326" TopLine="321"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="284" TopLine="246"/>
       </Position25>
       <Position26>
-        <Filename Value="dartclasses.pp"/>
-        <Caret Line="203" Column="13" TopLine="160"/>
+        <Filename Value="GameX01Player.pp"/>
+        <Caret Line="176" TopLine="133"/>
       </Position26>
       <Position27>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="328" TopLine="237"/>
+        <Caret Line="177" TopLine="133"/>
       </Position27>
       <Position28>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="327" TopLine="236"/>
+        <Caret Line="302" Column="37" TopLine="246"/>
       </Position28>
       <Position29>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="72" Column="14" TopLine="27"/>
+        <Caret Line="284" TopLine="246"/>
       </Position29>
       <Position30>
         <Filename Value="GameX01Player.pp"/>
-        <Caret Line="79" TopLine="31"/>
+        <Caret Line="285" TopLine="246"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="1">
+    <BreakPoints Count="2">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
@@ -892,6 +893,13 @@
         <Source Value="..\..\Lazarus\lcl\include\wincontrol.inc"/>
         <Line Value="6980"/>
       </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="GameX01Player.pp"/>
+        <Line Value="302"/>
+      </Item2>
     </BreakPoints>
     <Watches Count="3">
       <Item1>

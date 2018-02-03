@@ -535,6 +535,7 @@ begin
   fGame := nil;
   fEnabled := False;
   fThrowing := False;
+  fThrow := TThrow.Create;
 end;
 
 //*************************************************
@@ -575,7 +576,7 @@ var
 	I: Integer;
 begin
 	fFirstToThrow := AsFirstToThrow;
-  for I := 0 to Length(fThrowList) do
+  for I := 0 to pred(Length(fThrowList)) do
 		fThrowList[I].Free;
 	SetLength(fThrowList, 0);
 	ClearCurrentThrow;
@@ -606,10 +607,13 @@ end;
 
 //*************************************************
 procedure TPlayer.AddCurrentThrowToList;
+var
+	I: Integer;
 begin
-	SetLength(fThrowList, ThrowCount+1);
-	fThrowList[ThrowCount] := TThrow.Create;
-	fThrowList[ThrowCount].Assign(CurrentThrow);
+  I := Length(fThrowList);
+	SetLength(fThrowList, I+1);
+	fThrowList[I] := TThrow.Create;
+	fThrowList[I].Assign(CurrentThrow);
 end;
 
 //*************************************************

@@ -10,8 +10,8 @@ object FrX01Player: TFrX01Player
   ParentShowHint = False
   ShowHint = True
   TabOrder = 0
-  DesignLeft = 407
-  DesignTop = 112
+  DesignLeft = 2563
+  DesignTop = 59
   object SGChalkBoard: TStringGrid
     Left = 0
     Height = 410
@@ -29,7 +29,7 @@ object FrX01Player: TFrX01Player
         Font.Height = -27
         Font.Name = 'CHAWP'
         Title.Caption = 'Wurf'
-        Width = 191
+        Width = 190
       end    
       item
         Alignment = taCenter
@@ -58,7 +58,7 @@ object FrX01Player: TFrX01Player
     TitleFont.Height = -40
     TitleFont.Name = 'CHAWP'
     ColWidths = (
-      191
+      190
       191
     )
     Cells = (
