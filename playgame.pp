@@ -14,8 +14,10 @@ type
 	{ TFrmPlayGame }
 
 	TFrmPlayGame = class(TForm)
+		ScrBxPlayers: TScrollBox;
 		procedure FormCreate(Sender: TObject);
 		procedure FormDestroy(Sender: TObject);
+		procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 		procedure FormResize(Sender: TObject);
 		procedure FormShow(Sender: TObject);
 	private
@@ -59,6 +61,12 @@ begin
   UnloadFonts;
 end;
 
+procedure TFrmPlayGame.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+	if Assigned(ActiveGame) and ActiveGame.NeedKeyDown then
+		ActiveGame.OnKeyDown(Sender, Key, Shift);
+end;
+
 procedure TFrmPlayGame.FormResize(Sender: TObject);
 begin
 	if FrmSelectGame.Showing and (FrmSelectGame.Parent = Self) then
@@ -74,9 +82,10 @@ end;
 procedure TFrmPlayGame.PlayDartGame(ThisGame: TDartGame);
 begin
   ActiveGame := ThisGame;
-	ActiveGame.InitGame(Self);
+	ActiveGame.InitGame(Self.ScrBxPlayers);
   BorderStyle := bsNone;
   WindowState := wsFullScreen;
+	ActiveGame.OnEndGame := @OnEndGame;
 	ActiveGame.PlayGame;
 end;
 
@@ -114,7 +123,8 @@ end;
 
 procedure TFrmPlayGame.OnEndGame(Sender: TObject);
 begin
-
+	ActiveGame := nil;
+ 	ShowGameSelector;
 end;
 
 procedure TFrmPlayGame.ClearGameBoard;

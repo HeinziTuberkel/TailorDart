@@ -51,11 +51,11 @@ type
 	{ TThrow }
 //****************************************************************************
 	TThrow = class(TObject)
-		Dart: Array [1..3] of RDart;
     Score: Integer;			//points scored with these 3 darts (if applicable in current game).
 		GameScore: Integer; //usually either points scored or points remaining (depends on game).
 		NoScore: Boolean;
 		Invalid: Boolean;		//special form of "no score". e.g. "Busted" in 501.
+		Dart: Array [1..3] of RDart;
 		procedure Assign(TheThrow: TThrow);
 		procedure Reset;
 	end;
@@ -94,6 +94,7 @@ type
     // functions IsCheckOut / IsLoseOut inside the process of ThrowDone.
 		procedure CheckOut; virtual;
 		procedure LoseOut; virtual;
+		procedure OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState); virtual;
 	public
     constructor Create; virtual;
 		procedure InitGame(TheGame: TDartGame); virtual;
@@ -115,6 +116,8 @@ type
 		function IsCheckOut: Boolean; virtual;
 		//IsLoseOut: Returns TRUE, when the player is throwing and the current Entry results in losing the game/leg
 		function IsLoseOut: Boolean; virtual;
+		procedure EndGame; virtual;
+
 
 		property CurrentThrow: TThrow read fThrow;
 		property ThrowCount: Integer read GetThrowCount;
@@ -150,6 +153,8 @@ type
 		fFirstToThrow: Integer;
 		fGameOptionsClass: TGameOptionsClass;
 		fLegs: Integer;
+		fNeedKeyDown: Boolean;
+		fOnEndGame: TNotifyEvent;
   	fPlayerClass: TPlayerClass;
 		fPlayers: TPlayerList;
     fOptions: TFrame;
@@ -208,7 +213,10 @@ type
 		procedure EndSet; virtual;
     //The game has ended.
     procedure EndGame; virtual;
+		procedure ForceQuitGame; virtual;
+		procedure OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState); virtual;
 
+		property NeedKeyDown: Boolean read fNeedKeyDown write fNeedKeyDown;
 		property WinningSets: Integer read fSets write fSets default 1;
 		property WinningLegs: Integer read fLegs write fLegs default 1;
 		property ThisSet: Integer read fThisSet; //Set counter, 0-based
@@ -224,6 +232,7 @@ type
 		property NowToThrow: Integer read fNowToThrow;
     property PlayerToThrow: TPlayer read GetPlayerToThrow;
     property StartPlayerIndex: Integer read fStartPlayerIdx;
+		property OnEndGame: TNotifyEvent read fOnEndGame write fOnEndGame;
 	end;
 
 
@@ -261,6 +270,7 @@ begin
 	Invalid := TheThrow.Invalid;
 	NoScore := TheThrow.NoScore;
 	Score := TheThrow.Score;
+	GameScore := TheThrow.GameScore;
 end;
 
 procedure TThrow.Reset;
@@ -277,6 +287,7 @@ begin
 	Invalid := True;
 	NoScore := True;
 	Score := 0;
+	GameScore := 0;
 end;
 
 
@@ -366,8 +377,20 @@ end;
 
 //*************************************************
 procedure TDartGame.EndGame;
+var
+	I: Integer;
 begin
   GameEnded := True;
+	if Assigned(@fOnEndGame) then
+		fOnEndGame(Self);
+	for I := 0 to pred(PlayerCount) do
+		Player[I].EndGame;
+end;
+
+//*************************************************
+procedure TDartGame.ForceQuitGame;
+begin
+	EndGame;
 end;
 
 //*************************************************
@@ -398,6 +421,20 @@ end;
 procedure TDartGame.SetOptions(AValue: TFrame);
 begin
 	fOptions := AValue;
+end;
+
+//*************************************************
+procedure TDartGame.OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  if Between(fNowToThrow, 0, PlayerCount, bndLo) then
+		fPlayers[fNowToThrow].OnKeyDown(Sender, Key, Shift);
+	if Shift = [ssCtrl, ssShift] then
+		case Key of
+			ord('Q'): begin
+				ForceQuitGame;
+				Key := 0;
+			end;
+		end;
 end;
 
 //*************************************************
@@ -614,6 +651,7 @@ begin
 	SetLength(fThrowList, I+1);
 	fThrowList[I] := TThrow.Create;
 	fThrowList[I].Assign(CurrentThrow);
+	CurrentThrow.Reset;
 end;
 
 //*************************************************
@@ -711,6 +749,12 @@ begin
 end;
 
 //*************************************************
+procedure TPlayer.EndGame;
+begin
+	//Cleanup the Player's Board.
+end;
+
+//*************************************************
 procedure TPlayer.CheckOut;
 begin
   Enabled := False;
@@ -722,6 +766,12 @@ procedure TPlayer.LoseOut;
 begin
   Enabled := False;
   Game.LoseOut(Self);
+end;
+
+//*************************************************
+procedure TPlayer.OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+
 end;
 
 end.

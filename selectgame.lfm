@@ -1,9 +1,10 @@
 object FrmSelectGame: TFrmSelectGame
-  Left = 426
+  Left = 403
   Height = 723
-  Top = 246
+  Top = 39
   Width = 1081
   BorderStyle = bsNone
+  BorderWidth = 10
   Caption = 'FrmSelectGame'
   ClientHeight = 723
   ClientWidth = 1081
@@ -18,10 +19,10 @@ object FrmSelectGame: TFrmSelectGame
   ShowInTaskBar = stNever
   LCLVersion = '1.8.0.6'
   object PnlRight: TTSPanel
-    Left = 272
-    Height = 658
-    Top = 0
-    Width = 809
+    Left = 282
+    Height = 638
+    Top = 10
+    Width = 789
     DisplayStyle.TextAlign = tapCenter
     DisplayStyle.BorderColor = clBlack
     DisplayStyle.BorderStyle = brdrBump
@@ -58,14 +59,14 @@ object FrmSelectGame: TFrmSelectGame
     DisplayStyle.Caption = 'PnlRight'
     Align = alClient
     Caption = 'PnlRight'
-    ClientHeight = 658
-    ClientWidth = 809
+    ClientHeight = 638
+    ClientWidth = 789
     TabOrder = 2
     object PnlRoster: TTSPanel
       Left = 3
-      Height = 361
+      Height = 341
       Top = 63
-      Width = 803
+      Width = 783
       DisplayStyle.TextAlign = tapCenter
       DisplayStyle.BorderColor = clBlack
       DisplayStyle.BorderStyle = brdrBump
@@ -109,10 +110,12 @@ object FrmSelectGame: TFrmSelectGame
     object PnlOptions: TPanel
       Left = 3
       Height = 226
-      Top = 429
-      Width = 803
+      Top = 409
+      Width = 783
       Align = alBottom
       Caption = ' '
+      Color = clGreen
+      ParentColor = False
       TabOrder = 1
       Visible = False
     end
@@ -120,8 +123,8 @@ object FrmSelectGame: TFrmSelectGame
       Cursor = crVSplit
       Left = 3
       Height = 5
-      Top = 424
-      Width = 803
+      Top = 404
+      Width = 783
       Align = alBottom
       Color = clGreen
       ParentColor = False
@@ -132,7 +135,7 @@ object FrmSelectGame: TFrmSelectGame
       Left = 3
       Height = 60
       Top = 3
-      Width = 803
+      Width = 783
       Action = AcAddPlayer
       Align = alTop
       StateClicked.Background.Color = clBlack
@@ -303,14 +306,14 @@ object FrmSelectGame: TFrmSelectGame
     end
   end
   object BxSpiel: TTSGroupBox
-    Left = 0
-    Height = 658
+    Left = 10
+    Height = 638
     Hint = 'Select one of these Games to play'
-    Top = 0
+    Top = 10
     Width = 267
     Align = alLeft
     Caption = 'Spiel wählen'
-    ClientHeight = 632
+    ClientHeight = 612
     ClientWidth = 263
     Font.Color = clWhite
     Font.Height = -21
@@ -319,7 +322,7 @@ object FrmSelectGame: TFrmSelectGame
     TabOrder = 0
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 622
+      Height = 602
       Hint = 'Select one of these Games to play'
       Top = 10
       Width = 263
@@ -327,10 +330,12 @@ object FrmSelectGame: TFrmSelectGame
       VertScrollBar.Page = 240
       Align = alClient
       BorderSpacing.Top = 10
-      ClientHeight = 618
+      ClientHeight = 598
       ClientWidth = 259
+      Color = clGreen
       Font.Color = clMaroon
       Font.Name = 'CHAWP'
+      ParentColor = False
       ParentFont = False
       TabOrder = 0
       object BtnGameX01: TTSSpeedButton
@@ -1041,17 +1046,17 @@ object FrmSelectGame: TFrmSelectGame
     end
   end
   object TSSplitter1: TTSSplitter
-    Left = 267
-    Height = 658
-    Top = 0
+    Left = 277
+    Height = 638
+    Top = 10
     Width = 5
     Color = clGreen
   end
   object BtnStart: TTSSpeedButton
-    Left = 0
+    Left = 10
     Height = 65
-    Top = 658
-    Width = 1081
+    Top = 648
+    Width = 1061
     Action = ActStartGame
     Align = alBottom
     StateClicked.Background.Color = clBlack

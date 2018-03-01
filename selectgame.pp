@@ -84,7 +84,7 @@ begin
 //Schnellstart für Test 501
 BtnAddPlayer.Click;
 BtnAddPlayer.Click;
-BtnStart.Click;
+//BtnStart.Click;
 
 end;
 

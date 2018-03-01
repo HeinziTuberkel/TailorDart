@@ -100,6 +100,7 @@ begin
   fSetMode := True;
   fBestOfMode := True;
   fStartRemain := 501;
+	NeedKeyDown := True;
 end;
 
 function TDartGameX01.HasOptions: Boolean;
@@ -117,6 +118,8 @@ begin
 end;
 
 procedure TDartGameX01.EndGame;
+var
+	I: Integer;
 begin
 	inherited EndGame;
 end;

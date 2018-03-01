@@ -18,7 +18,7 @@ type
 		BCButton1: TTSSpeedButton;
 		BCButton2: TTSSpeedButton;
 		BCButton3: TTSSpeedButton;
-		EdScore: TTSNumEdit;
+		EdScore: TEdit;
 		LbAverage: TLabel;
 		LbFinish: TLabel;
 		LbNickname: TLabel;
@@ -38,17 +38,19 @@ type
 		procedure BtnScoreDoneClick(Sender: TObject);
 		procedure BtnUndoThrowClick(Sender: TObject);
 		procedure EdScoreAccepted(Sender: TObject);
+		procedure EdScoreKeyPress(Sender: TObject; var Key: char);
 		procedure Panel1Enter(Sender: TObject);
 	private
 		Player: TPlayerX01;
 	public
+    constructor Create(TheOwner: TComponent); override;
 		procedure Init;
 		procedure Reset(AsFirstToThrow: Boolean);
 		procedure LockInput;
 		procedure GetScore;
     function IsCheckOut: Boolean;
 		procedure UpdateDisplay;
-		function ScoreInput: Integer;
+		function ScoreInput(ClearScore: Boolean=False): Integer;
 		procedure AddScoreLine(Score, Remain: Integer);
 		procedure RemoveScoreLine;
 	end;
@@ -71,7 +73,7 @@ type
 		procedure AddCurrentThrowToList; override;
 
     function Require: Integer;
-		function CurrentScore: Integer;
+		function CurrentScore(ClearScore: Boolean=False): Integer;
 		function IsCheckOut: Boolean; override;
 
     procedure ThrowDone; override;
@@ -101,14 +103,30 @@ begin
 	Player.ThrowDone;
 end;
 
+procedure TFrX01Player.EdScoreKeyPress(Sender: TObject; var Key: char);
+begin
+  if Key = #13 then
+	begin
+		BtnScoreDone.Click;
+		Key := #0;
+	end;
+end;
+
 procedure TFrX01Player.Panel1Enter(Sender: TObject);
 begin
-  EdScore.TryFocus;
+  if EdScore.CanFocus then
+		EdScore.SetFocus;
+end;
+
+constructor TFrX01Player.Create(TheOwner: TComponent);
+begin
+	inherited Create(TheOwner);
+	Name := '';
 end;
 
 procedure TFrX01Player.BtnScoreDoneClick(Sender: TObject);
 begin
-  EdScore.Accept;
+  Player.ThrowDone;
 end;
 
 procedure TFrX01Player.Init;
@@ -154,6 +172,7 @@ end;
 procedure TFrX01Player.GetScore;
 begin
 	Enabled := True;
+Self.SetFocus;
 	UpdateDisplay;
   PnlGetScore.Show;
   EdScore.SetFocus;
@@ -167,13 +186,57 @@ begin
 end;
 
 procedure TFrX01Player.UpdateDisplay;
-begin
+var
+	I, R, Z: Integer;
 
+	procedure WriteNoScore;
+	begin
+		SGChalkBoard.RowCount := R+1;
+    if Z = 1 then
+	    SGChalkBoard.Cells[0, R] := rsNoScore
+    else
+	    SGChalkBoard.Cells[0, R] := rsNoScore + ' '
+                                + StringOfChar('}', Z div 5) //ergibt einen 5er Zählblock in Schriftart "CHAWP"
+                                + StringOfChar('{', Z mod 5); //ergibt einen Zählstrich in Schriftart "CHAWP"
+    SGChalkBoard.Cells[1, R] := IntToStr(Player.ThrowList[I].GameScore);
+		inc(R);
+	end;
+
+
+begin
+	with SGChalkBoard do
+	begin
+		BeginUpdate;
+		try
+			R := 0;
+			Z := 0;
+    	for I := 1 to Player.ThrowCount do
+    	begin
+  			if Player.ThrowList[I].Invalid or Player.ThrowList[I].NoScore then
+        	inc(Z)
+				else begin
+					if Z > 0 then //one or more "No Score" entries.
+						WriteNoScore;
+					Z := 0;
+      		RowCount := R+1;
+          Cells[0, R] := IntToStr(Player.ThrowList[I].Score);
+          Cells[1, R] := IntToStr(Player.ThrowList[I].GameScore);
+      		inc(R);
+				end;
+    	end; //for each Throw;
+			if Z>0 then
+				WriteNoScore;
+		finally
+			EndUpdate;
+		end;
+	end;
 end;
 
-function TFrX01Player.ScoreInput: Integer;
+function TFrX01Player.ScoreInput(ClearScore: Boolean): Integer;
 begin
-	Result := EdScore.AsInteger;
+	Result := StrToIntDef(EdScore.Text, 0);
+	if ClearScore then
+		EdScore.Clear;
 end;
 
 procedure TFrX01Player.AddScoreLine(Score, Remain: Integer);
@@ -268,20 +331,28 @@ end;
 
 procedure TPlayerX01.AddCurrentThrowToList;
 begin
-	CurrentThrow.GameScore := LastThrow.GameScore - CurrentThrow.Score;
+	with CurrentThrow do
+	begin
+		Invalid := Score > LastThrow.GameScore;
+		NoScore := Invalid or (Score <= 0);
+		if NoScore then
+			Score := 0;
+		GameScore := LastThrow.GameScore - Score;
+	end;
+
 	inherited AddCurrentThrowToList;
  	Frame.UpdateDisplay;
 end;
 
 function TPlayerX01.Require: Integer;
 begin
-	Result := CurrentThrow.GameScore - CurrentScore;
+	Result := LastThrow.GameScore - CurrentScore;
 end;
 
-function TPlayerX01.CurrentScore: Integer;
+function TPlayerX01.CurrentScore(ClearScore: Boolean): Integer;
 begin
 //  Result := CurrentThrow.Dart[1].Score + CurrentThrow.Dart[2].Score + CurrentThrow.Dart[3].Score;
-  Result := Frame.ScoreInput;
+  Result := Frame.ScoreInput(ClearScore);
 end;
 
 function TPlayerX01.GetSetMode: Boolean;
@@ -298,14 +369,10 @@ procedure TPlayerX01.ThrowDone;
 var
 	N, R: Integer;
 begin
-  //für evtl. spätere Unterscheidung zwischen "No Score" und "Busted".
-  if (CurrentScore > CurrentThrow.GameScore) then
-  	CurrentThrow.Score := 0
-	else
-		CurrentThrow.Score := CurrentScore;
-	Frame.AddScoreLine(CurrentThrow.Score, Require);
-  Frame.LockInput;
+	CurrentThrow.Score := CurrentScore(True);
+	//Frame.AddScoreLine(CurrentThrow.Score, Require);
 	inherited ThrowDone;
+  Frame.LockInput;
 end;
 
 procedure TPlayerX01.ExecuteUndoAction;

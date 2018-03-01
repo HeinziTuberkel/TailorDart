@@ -1,3 +1,10 @@
+#source backup files
+backup/
+#object files
+lib/
+#suversion source control
+.svn/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -16,11 +23,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-#source backup files
-backup/
-#object files
-lib/
 
 # =========================
 # Operating System Files

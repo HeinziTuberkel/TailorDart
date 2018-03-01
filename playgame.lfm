@@ -1,13 +1,29 @@
 object FrmPlayGame: TFrmPlayGame
-  Left = 731
+  Left = 416
   Height = 818
-  Top = 152
+  Top = 114
   Width = 994
+  BorderStyle = bsNone
   Caption = 'FrmPlayGame'
+  ClientHeight = 818
+  ClientWidth = 994
+  KeyPreview = True
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  Position = poScreenCenter
+  Position = poDefault
   LCLVersion = '1.8.0.6'
+  WindowState = wsMaximized
+  object ScrBxPlayers: TScrollBox
+    Left = 0
+    Height = 818
+    Top = 0
+    Width = 994
+    HorzScrollBar.Page = 1
+    VertScrollBar.Page = 1
+    Align = alClient
+    TabOrder = 0
+  end
 end

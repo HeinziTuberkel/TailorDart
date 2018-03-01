@@ -16,12 +16,13 @@ type
 		ImgBtnNo: TImage;
 		ImgBtnYes: TImage;
 		LbQuestion: TLabel;
+		Panel1: TPanel;
 		PnlButtons: TPanel;
 		procedure FormKeyPress(Sender: TObject; var Key: char);
   procedure ImgBtnNoClick(Sender: TObject);
 		procedure ImgBtnYesClick(Sender: TObject);
 	private
-		{ private declarations }
+		function CalcSize(ForMessage: string; SetSize: Boolean = True): TPoint;
 	public
 		{ public declarations }
 	end;
@@ -41,14 +42,14 @@ begin
   	Application.CreateForm(TFrmYesNo, FrmYesNo);
   with FrmYesNo do
   begin
-    AutoSize := False;
     LbQuestion.Caption := Question;
-    W := LbQuestion.UndockWidth + LbQuestion.BorderSpacing.Left + LbQuestion.BorderSpacing.Right;
-		if ClientWidth > W then
-    	ClientWidth := W;
-    ClientHeight := LbQuestion.Height + LbQuestion.BorderSpacing.Top
-    								+ LbQuestion.BorderSpacing.Bottom
-                    + PnlButtons.BoundsRect.Bottom - PnlButtons.BoundsRect.Top + 1;
+		CalcSize(Question, True);
+  //  W := LbQuestion.UndockWidth + LbQuestion.BorderSpacing.Left + LbQuestion.BorderSpacing.Right;
+		//if ClientWidth > W then
+  //  	ClientWidth := W;
+  //  ClientHeight := LbQuestion.Height + LbQuestion.BorderSpacing.Top
+  //  								+ LbQuestion.BorderSpacing.Bottom
+  //                  + PnlButtons.BoundsRect.Bottom - PnlButtons.BoundsRect.Top + 1;
   	FrmYesNo.ShowModal;
   	Result := FrmYesNo.ModalResult = mrOK;
 	end;
@@ -78,6 +79,25 @@ end;
 procedure TFrmYesNo.ImgBtnYesClick(Sender: TObject);
 begin
   ModalResult := mrOK;
+end;
+
+function TFrmYesNo.CalcSize(ForMessage: string; SetSize: Boolean = True): TPoint;
+const
+	AddW = 20;
+	AddH = 20;
+var
+	MaxW, MaxH, FontH, W, H: Integer;
+begin
+	MaxW := Screen.Width div 2;
+	MaxH := Screen.Height div 2;
+	FontH := LbQuestion.Font.Height;
+	LbQuestion.CalcFittingFontHeight(ForMessage, MaxW, MaxH, FontH, W, H);
+	Result := Point(W + 2*BorderWidth + AddW, H + 2*BorderWidth + PnlButtons.Height + AddH);
+	if SetSize then
+	begin
+		Width := Result.X;
+		Height := Result.Y;
+	end;
 end;
 
 end.

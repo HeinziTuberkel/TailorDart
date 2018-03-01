@@ -1,15 +1,15 @@
 object FrX01: TFrX01
   Left = 0
-  Height = 310
+  Height = 312
   Top = 0
-  Width = 465
+  Width = 470
   HorzScrollBar.Page = 1
   HorzScrollBar.Tracking = True
   VertScrollBar.Page = 1
   VertScrollBar.Tracking = True
   AutoScroll = True
-  ClientHeight = 310
-  ClientWidth = 465
+  ClientHeight = 312
+  ClientWidth = 470
   Color = 3158064
   Font.Height = -20
   Font.Name = 'blzee'
@@ -17,8 +17,8 @@ object FrX01: TFrX01
   ParentColor = False
   ParentFont = False
   TabOrder = 0
-  DesignLeft = 472
-  DesignTop = 163
+  DesignLeft = 474
+  DesignTop = 106
   object LbPunkte: TLabel
     Left = 16
     Height = 28
