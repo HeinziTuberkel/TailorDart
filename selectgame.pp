@@ -34,6 +34,8 @@ type
 		procedure ActStartGameExecute(Sender: TObject);
 		procedure BtnSelectGameClick(Sender: TObject);
 		procedure FormShow(Sender: TObject);
+		procedure PnlOptionsClick(Sender: TObject);
+		procedure PnlRosterClick(Sender: TObject);
 	private
 		PlayerList: array of TFrPlayer;
 		SelectedGame: TDartGame;
@@ -85,6 +87,16 @@ begin
 BtnAddPlayer.Click;
 BtnAddPlayer.Click;
 //BtnStart.Click;
+
+end;
+
+procedure TFrmSelectGame.PnlOptionsClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmSelectGame.PnlRosterClick(Sender: TObject);
+begin
 
 end;
 

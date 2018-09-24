@@ -19,6 +19,7 @@ type
 		Panel1: TPanel;
 		PnlButtons: TPanel;
 		procedure FormKeyPress(Sender: TObject; var Key: char);
+		procedure FormShow(Sender: TObject);
   procedure ImgBtnNoClick(Sender: TObject);
 		procedure ImgBtnYesClick(Sender: TObject);
 	private
@@ -76,6 +77,11 @@ begin
 	end;
 end;
 
+procedure TFrmYesNo.FormShow(Sender: TObject);
+begin
+  CalcSize(LbQuestion.Caption);
+end;
+
 procedure TFrmYesNo.ImgBtnYesClick(Sender: TObject);
 begin
   ModalResult := mrOK;
@@ -83,15 +89,36 @@ end;
 
 function TFrmYesNo.CalcSize(ForMessage: string; SetSize: Boolean = True): TPoint;
 const
-	AddW = 20;
-	AddH = 20;
+	AddW = 50;
+	AddH = 50;
 var
 	MaxW, MaxH, FontH, W, H: Integer;
+  AFont: TFont;
+  R : TRect;
+  DC : hDC;
+  Flags: Cardinal;
 begin
+  W := 0;
+  H := 0;
 	MaxW := Screen.Width div 2;
 	MaxH := Screen.Height div 2;
-	FontH := LbQuestion.Font.Height;
-	LbQuestion.CalcFittingFontHeight(ForMessage, MaxW, MaxH, FontH, W, H);
+
+  FontH := abs(LbQuestion.Font.Height);
+  AFont := TFont.Create;
+  AFont.Assign(LbQuestion.Font);
+	//LbQuestion.CalcFittingFontHeight(ForMessage, MaxW, MaxH, FontH, W, H);
+  Flags := DT_CALCRECT or DT_NOPREFIX or DT_EXPANDTABS or DT_WORDBREAK;
+  R := Rect(0,0, MaxWidth, MaxHeight*2);
+  DC := GetDC(Self.Handle);
+  try
+    DrawText(DC, PChar(Formessage), Length(ForMessage), R, Flags);
+    NeededWidth := R.Right - R.Left;
+    NeededHeight := R.Bottom - R.Top;
+
+  finally
+    ReleaseDC(Parent.Handle, DC);
+	end;
+
 	Result := Point(W + 2*BorderWidth + AddW, H + 2*BorderWidth + PnlButtons.Height + AddH);
 	if SetSize then
 	begin

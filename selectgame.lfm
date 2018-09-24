@@ -1,7 +1,7 @@
 object FrmSelectGame: TFrmSelectGame
-  Left = 403
+  Left = 824
   Height = 723
-  Top = 39
+  Top = 156
   Width = 1081
   BorderStyle = bsNone
   BorderWidth = 10
@@ -17,7 +17,7 @@ object FrmSelectGame: TFrmSelectGame
   Position = poMainFormCenter
   ShowHint = True
   ShowInTaskBar = stNever
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.6.4.0'
   object PnlRight: TTSPanel
     Left = 282
     Height = 638
@@ -106,6 +106,7 @@ object FrmSelectGame: TFrmSelectGame
       Color = clGreen
       ParentColor = False
       TabOrder = 0
+      OnClick = PnlRosterClick
     end
     object PnlOptions: TPanel
       Left = 3
@@ -118,6 +119,7 @@ object FrmSelectGame: TFrmSelectGame
       ParentColor = False
       TabOrder = 1
       Visible = False
+      OnClick = PnlOptionsClick
     end
     object SpltOptions: TSplitter
       Cursor = crVSplit
@@ -313,7 +315,7 @@ object FrmSelectGame: TFrmSelectGame
     Width = 267
     Align = alLeft
     Caption = 'Spiel wählen'
-    ClientHeight = 612
+    ClientHeight = 604
     ClientWidth = 263
     Font.Color = clWhite
     Font.Height = -21
@@ -322,7 +324,7 @@ object FrmSelectGame: TFrmSelectGame
     TabOrder = 0
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 602
+      Height = 594
       Hint = 'Select one of these Games to play'
       Top = 10
       Width = 263
@@ -330,7 +332,7 @@ object FrmSelectGame: TFrmSelectGame
       VertScrollBar.Page = 240
       Align = alClient
       BorderSpacing.Top = 10
-      ClientHeight = 598
+      ClientHeight = 590
       ClientWidth = 259
       Color = clGreen
       Font.Color = clMaroon

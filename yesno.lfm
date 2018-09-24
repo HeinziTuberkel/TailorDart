@@ -1,8 +1,8 @@
 object FrmYesNo: TFrmYesNo
-  Left = 461
+  Left = 457
   Height = 430
   Hint = 'Press [Esc] for No or [Ctrl+Return] for Yes'
-  Top = 204
+  Top = 134
   Width = 892
   AutoSize = True
   BorderStyle = bsNone
@@ -10,14 +10,15 @@ object FrmYesNo: TFrmYesNo
   Caption = 'FrmYesNo'
   ClientHeight = 430
   ClientWidth = 892
-  Color = clGreen
+  Color = clMaroon
   Font.Color = clWhite
   Font.Height = -27
   Font.Name = 'Chawp'
   KeyPreview = True
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.6.4.0'
   object Panel1: TPanel
     Left = 10
     Height = 410
