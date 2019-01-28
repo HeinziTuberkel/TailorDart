@@ -35,6 +35,10 @@ function Confirm(Question: string): Boolean;
 
 implementation
 
+uses
+  lclintf,
+  LCLType;
+
 function Confirm(Question: string): Boolean;
 var
   H, W: Integer;
@@ -106,9 +110,9 @@ begin
   FontH := abs(LbQuestion.Font.Height);
   AFont := TFont.Create;
   AFont.Assign(LbQuestion.Font);
-	//LbQuestion.CalcFittingFontHeight(ForMessage, MaxW, MaxH, FontH, W, H);
+	LbQuestion.CalcFittingFontHeight(ForMessage, MaxW, MaxH, FontH, W, H);
   Flags := DT_CALCRECT or DT_NOPREFIX or DT_EXPANDTABS or DT_WORDBREAK;
-  R := Rect(0,0, MaxWidth, MaxHeight*2);
+  R := Rect(0,0, MaxW, MaxH*2);
   DC := GetDC(Self.Handle);
   try
     DrawText(DC, PChar(Formessage), Length(ForMessage), R, Flags);
