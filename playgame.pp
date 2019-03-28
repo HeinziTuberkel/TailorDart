@@ -20,6 +20,7 @@ type
 		procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 		procedure FormResize(Sender: TObject);
 		procedure FormShow(Sender: TObject);
+		procedure ScrBxPlayersClick(Sender: TObject);
 	private
     ActiveGame: TDartGame;
     FontID: array of Cardinal;
@@ -77,6 +78,11 @@ procedure TFrmPlayGame.FormShow(Sender: TObject);
 begin
   if ActiveGame = nil then
 	 	ShowGameSelector;
+end;
+
+procedure TFrmPlayGame.ScrBxPlayersClick(Sender: TObject);
+begin
+
 end;
 
 procedure TFrmPlayGame.PlayDartGame(ThisGame: TDartGame);

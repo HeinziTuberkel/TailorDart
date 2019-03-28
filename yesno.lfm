@@ -1,16 +1,15 @@
 object FrmYesNo: TFrmYesNo
-  Left = 457
-  Height = 406
+  Left = 486
+  Height = 787
   Hint = 'Press [Esc] for No or [Ctrl+Return] for Yes'
-  Top = 134
-  Width = 892
-  AutoSize = True
+  Top = 146
+  Width = 625
   BorderStyle = bsNone
   BorderWidth = 10
   Caption = 'FrmYesNo'
-  ClientHeight = 406
-  ClientWidth = 892
-  Color = clMaroon
+  ClientHeight = 787
+  ClientWidth = 625
+  Color = clBlack
   Font.Color = clWhite
   Font.Height = -27
   Font.Name = 'Chawp'
@@ -18,54 +17,78 @@ object FrmYesNo: TFrmYesNo
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   Position = poScreenCenter
+  ShowHint = True
   LCLVersion = '1.6.4.0'
   object Panel1: TPanel
     Left = 10
-    Height = 386
+    Height = 767
     Top = 10
-    Width = 872
+    Width = 605
     Align = alClient
-    BevelOuter = bvNone
-    Caption = 'Panel1'
-    ClientHeight = 386
-    ClientWidth = 872
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    BorderWidth = 3
+    ClientHeight = 767
+    ClientWidth = 605
+    Color = clBlack
+    Font.Color = clWhite
+    Font.Height = -31
+    Font.Name = 'Chawp'
+    ParentColor = False
+    ParentFont = False
     TabOrder = 0
-    object LbQuestion: TLabel
-      Left = 0
-      Height = 316
-      Top = 0
-      Width = 872
+    OnClick = PnlButtonsClick
+    object Pnl: TPanel
+      Left = 25
+      Height = 627
+      Top = 25
+      Width = 555
       Align = alClient
-      Alignment = taCenter
-      AutoSize = False
-      Caption = 'eeeaixu snrtdFra me.)''retltvus n ;:2{[s'' ;(>+{u)45tv l04rcelaui0 nerati nrteaiunr tnr tngfeqvl mrtpzvlcmnrtvl nmmrtdocnruteo vc'#13#10' '#13#10'4ctxu'#13#10')'';tt vlxusxnr tv'#13#10'snr ttvxu'#13#10's nrtcvl'#13#10' nroteiadouhneogvq '#13#10'orcvlnivd '#13#10'hnowgocfqx ncvgfqxqß mocvun oceiho'
-      Color = clBlack
-      ParentColor = False
-      Transparent = False
-      WordWrap = True
+      BorderSpacing.Left = 20
+      BorderSpacing.Top = 20
+      BorderSpacing.Right = 20
+      BevelOuter = bvNone
+      ClientHeight = 627
+      ClientWidth = 555
+      TabOrder = 1
+      OnClick = PnlButtonsClick
+      object LbQuestion: TLabel
+        Left = 0
+        Height = 126
+        Top = 0
+        Width = 555
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'abecnrt nrtd nrt   nrtdnrtdn nrtdnrtdnrtd nrtdnrtdnrtd nrtdnrtdnrtdnrt'
+        Color = clBlack
+        Layout = tlCenter
+        ParentColor = False
+        Transparent = False
+        WordWrap = True
+        OnClick = PnlButtonsClick
+      end
     end
     object PnlButtons: TPanel
-      Left = 0
+      Left = 25
       Height = 70
-      Top = 316
-      Width = 872
+      Top = 672
+      Width = 555
       Align = alBottom
+      BorderSpacing.Around = 20
       BevelOuter = bvNone
       BorderWidth = 10
       ClientHeight = 70
-      ClientWidth = 872
-      Color = clBlack
-      ParentColor = False
+      ClientWidth = 555
       TabOrder = 0
+      OnClick = PnlButtonsClick
       object ImgBtnYes: TImage
-        Left = 634
-        Height = 48
-        Top = 11
-        Width = 48
+        Left = 395
+        Height = 60
+        Hint = 'Confirm (Ctrl + Enter)'
+        Top = 5
+        Width = 60
         Anchors = [akTop]
-        AutoSize = True
-        BorderSpacing.Top = 5
-        BorderSpacing.Bottom = 5
+        Center = True
         OnClick = ImgBtnYesClick
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869631C04000089504E47
@@ -105,14 +128,13 @@ object FrmYesNo: TFrmYesNo
         }
       end
       object ImgBtnNo: TImage
-        Left = 194
-        Height = 48
-        Top = 11
-        Width = 48
+        Left = 100
+        Height = 60
+        Hint = 'Cancel (Esc)'
+        Top = 5
+        Width = 60
         Anchors = [akTop]
-        AutoSize = True
-        BorderSpacing.Top = 5
-        BorderSpacing.Bottom = 15
+        Center = True
         OnClick = ImgBtnNoClick
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869633008000089504E47

@@ -14,7 +14,8 @@ object FrmPlayGame: TFrmPlayGame
   OnResize = FormResize
   OnShow = FormShow
   Position = poDefault
-  LCLVersion = '1.8.0.6'
+  ShowHint = True
+  LCLVersion = '1.6.4.0'
   WindowState = wsMaximized
   object ScrBxPlayers: TScrollBox
     Left = 0
@@ -25,5 +26,6 @@ object FrmPlayGame: TFrmPlayGame
     VertScrollBar.Page = 1
     Align = alClient
     TabOrder = 0
+    OnClick = ScrBxPlayersClick
   end
 end

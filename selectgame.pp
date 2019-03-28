@@ -22,6 +22,7 @@ type
 		BtnGameTest: TTSSpeedButton;
 		BtnGameX01: TTSSpeedButton;
 		BtnStart: TTSSpeedButton;
+		Button1: TButton;
 		BxSpiel: TTSGroupBox;
 		PnlOptions: TPanel;
 		PnlRight: TTSPanel;
@@ -36,6 +37,7 @@ type
 		procedure FormShow(Sender: TObject);
 		procedure PnlOptionsClick(Sender: TObject);
 		procedure PnlRosterClick(Sender: TObject);
+		procedure ScrollBox1Click(Sender: TObject);
 	private
 		PlayerList: array of TFrPlayer;
 		SelectedGame: TDartGame;
@@ -81,13 +83,6 @@ end;
 procedure TFrmSelectGame.FormShow(Sender: TObject);
 begin
   BtnSelectGameClick(nil);
-
-
-//Schnellstart für Test 501
-BtnAddPlayer.Click;
-BtnAddPlayer.Click;
-//BtnStart.Click;
-
 end;
 
 procedure TFrmSelectGame.PnlOptionsClick(Sender: TObject);
@@ -96,6 +91,11 @@ begin
 end;
 
 procedure TFrmSelectGame.PnlRosterClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmSelectGame.ScrollBox1Click(Sender: TObject);
 begin
 
 end;
@@ -131,9 +131,6 @@ begin
     Top := 1 + Height * N;
     Align := alTop;
     SetFocus;
-
-//Schnellstart für Test 501
-Nickname := 'Player ' + IntToStr(N+1);
 	end;
 end;
 

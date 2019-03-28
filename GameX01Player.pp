@@ -15,9 +15,9 @@ type
 	{ TFrX01Player }
 
 	TFrX01Player = class(TFrame)
-		BCButton1: TTSSpeedButton;
-		BCButton2: TTSSpeedButton;
-		BCButton3: TTSSpeedButton;
+		BtnInputTarget: TTSSpeedButton;
+		BtnInputScore: TTSSpeedButton;
+		BtnInputRequire: TTSSpeedButton;
 		EdScore: TEdit;
 		LbAverage: TLabel;
 		LbFinish: TLabel;
@@ -105,10 +105,27 @@ end;
 
 procedure TFrX01Player.EdScoreKeyPress(Sender: TObject; var Key: char);
 begin
-  if Key = #13 then
-	begin
-		BtnScoreDone.Click;
-		Key := #0;
+  case Key of
+    #13: begin
+  		BtnScoreDone.Click;
+  		Key := #0;
+		end;
+		^Z: begin
+  		BtnUndoThrow.Click;
+  		Key := #0;
+		end;
+    ^R: begin
+      BtnInputRequire.Click;
+      Key := #0;
+		end;
+    ^S: begin
+      BtnInputScore.Click;
+      Key := #0;
+		end;
+    ^T: begin
+      BtnInputTarget.Click;
+      Key := #0;
+		end;
 	end;
 end;
 

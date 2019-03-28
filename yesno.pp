@@ -17,16 +17,22 @@ type
 		ImgBtnYes: TImage;
 		LbQuestion: TLabel;
 		Panel1: TPanel;
+		Pnl: TPanel;
 		PnlButtons: TPanel;
 		procedure FormKeyPress(Sender: TObject; var Key: char);
 		procedure FormShow(Sender: TObject);
   procedure ImgBtnNoClick(Sender: TObject);
 		procedure ImgBtnYesClick(Sender: TObject);
+		procedure PnlButtonsClick(Sender: TObject);
 	private
-		function CalcSize(ForMessage: string; SetSize: Boolean = True): TPoint;
+ 		procedure AfterShow(Data: PtrInt);
+		procedure CalcSize;
 	public
 		{ public declarations }
 	end;
+
+const
+	fontDefaultSize = 16;
 
 var
 	FrmYesNo: TFrmYesNo;
@@ -40,21 +46,12 @@ uses
   LCLType;
 
 function Confirm(Question: string): Boolean;
-var
-  H, W: Integer;
 begin
 	if not Assigned(FrmYesNo) then
   	Application.CreateForm(TFrmYesNo, FrmYesNo);
   with FrmYesNo do
   begin
     LbQuestion.Caption := Question;
-		CalcSize(Question, True);
-  //  W := LbQuestion.UndockWidth + LbQuestion.BorderSpacing.Left + LbQuestion.BorderSpacing.Right;
-		//if ClientWidth > W then
-  //  	ClientWidth := W;
-  //  ClientHeight := LbQuestion.Height + LbQuestion.BorderSpacing.Top
-  //  								+ LbQuestion.BorderSpacing.Bottom
-  //                  + PnlButtons.BoundsRect.Bottom - PnlButtons.BoundsRect.Top + 1;
   	FrmYesNo.ShowModal;
   	Result := FrmYesNo.ModalResult = mrOK;
 	end;
@@ -63,6 +60,29 @@ end;
 {$R *.lfm}
 
 { TFrmYesNo }
+
+procedure TFrmYesNo.FormShow(Sender: TObject);
+begin
+  Application.QueueAsyncCall(@AfterShow, 0);
+end;
+
+procedure TFrmYesNo.AfterShow(Data: PtrInt);
+begin
+  CalcSize;
+end;
+
+procedure TFrmYesNo.ImgBtnYesClick(Sender: TObject);
+begin
+  ModalResult := mrOK;
+end;
+
+procedure TFrmYesNo.PnlButtonsClick(Sender: TObject);
+begin
+  if Sender is TControl then
+	  ShowMessage(TControl(Sender).Name)
+  else
+    Showmessage('Klick');
+end;
 
 procedure TFrmYesNo.ImgBtnNoClick(Sender: TObject);
 begin
@@ -81,54 +101,51 @@ begin
 	end;
 end;
 
-procedure TFrmYesNo.FormShow(Sender: TObject);
-begin
-  CalcSize(LbQuestion.Caption);
-end;
-
-procedure TFrmYesNo.ImgBtnYesClick(Sender: TObject);
-begin
-  ModalResult := mrOK;
-end;
-
-function TFrmYesNo.CalcSize(ForMessage: string; SetSize: Boolean = True): TPoint;
+procedure TFrmYesNo.CalcSize;
+type
+	FontHeights = array[8..24] of Integer;
 const
-	AddW = 50;
-	AddH = 50;
+  MulW = 1.1;
+  FontHeight:  FontHeights = (15, 16, 17, 18, 20, 21, 23, 26, 27, 29, 31, 33, 34, 36, 39, 42, 44);
 var
-	MaxW, MaxH, FontH, W, H: Integer;
-  AFont: TFont;
-  R : TRect;
-  DC : hDC;
-  Flags: Cardinal;
+	LineHeight, MaxW, MaxH, CenterW, CenterH, W, H: Integer;
+  WFactor: Double;
 begin
-  W := 0;
-  H := 0;
+  W := 250; // Startbreite
+  H := 40;  // Starthöhe
 	MaxW := Screen.Width div 2;
 	MaxH := Screen.Height div 2;
+  LineHeight := FontHeight[Abs(LbQuestion.Font.Size)];
+  LbQuestion.Align := alTop;
+  with Pnl do
+  begin
+	  Align := alNone;
+	  Width := W;
+	  Height := H;
+	  while (LbQuestion.Height > Height)
+	  	or (LbQuestion.Width > Width)
+	  do begin
+	    if Height < MaxH then
+	    begin
+	      WFactor := 1 + LineHeight/Height;
+	      Height := Height + LineHeight;
+	    	if Width < MaxW then
+					Width := Round(Width * WFactor);
+	    end
+	    else if Width < MaxW then
+	    	Width := Round(Width * MulW)
+	    else
+	      Break;
+	  end;
+	  H := Height + 150;
+	  W := Width + 60;
+	  Align := alClient;
+  end; //with Pnl
+  LbQuestion.Align := alClient;
+//	W := (Screen.Width - W) div 2;
+//  H := (Screen.Height - H) div 2;
+  Self.SetBounds((Screen.Width - W) div 2, (Screen.Height - H) div 2, W, H);
 
-  FontH := abs(LbQuestion.Font.Height);
-  AFont := TFont.Create;
-  AFont.Assign(LbQuestion.Font);
-	LbQuestion.CalcFittingFontHeight(ForMessage, MaxW, MaxH, FontH, W, H);
-  Flags := DT_CALCRECT or DT_NOPREFIX or DT_EXPANDTABS or DT_WORDBREAK;
-  R := Rect(0,0, MaxW, MaxH*2);
-  DC := GetDC(Self.Handle);
-  try
-    DrawText(DC, PChar(Formessage), Length(ForMessage), R, Flags);
-    NeededWidth := R.Right - R.Left;
-    NeededHeight := R.Bottom - R.Top;
-
-  finally
-    ReleaseDC(Parent.Handle, DC);
-	end;
-
-	Result := Point(W + 2*BorderWidth + AddW, H + 2*BorderWidth + PnlButtons.Height + AddH);
-	if SetSize then
-	begin
-		Width := Result.X;
-		Height := Result.Y;
-	end;
 end;
 
 end.

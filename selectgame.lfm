@@ -1,7 +1,7 @@
 object FrmSelectGame: TFrmSelectGame
-  Left = 824
+  Left = 605
   Height = 723
-  Top = 156
+  Top = 151
   Width = 1081
   BorderStyle = bsNone
   BorderWidth = 10
@@ -136,6 +136,7 @@ object FrmSelectGame: TFrmSelectGame
     object BtnAddPlayer: TTSSpeedButton
       Left = 3
       Height = 60
+      Hint = 'Add another Player to the Game (Ctrl+N)'
       Top = 3
       Width = 783
       Action = AcAddPlayer
@@ -329,7 +330,7 @@ object FrmSelectGame: TFrmSelectGame
       Top = 10
       Width = 263
       HorzScrollBar.Page = 220
-      VertScrollBar.Page = 240
+      VertScrollBar.Page = 328
       Align = alClient
       BorderSpacing.Top = 10
       ClientHeight = 590
@@ -340,6 +341,7 @@ object FrmSelectGame: TFrmSelectGame
       ParentColor = False
       ParentFont = False
       TabOrder = 0
+      OnClick = ScrollBox1Click
       object BtnGameX01: TTSSpeedButton
         Left = 0
         Height = 60
@@ -1044,6 +1046,17 @@ object FrmSelectGame: TFrmSelectGame
         DropDownPosition = bdpBottom
         MemoryUsage = bmuHigh
         GroupIndex = 1
+      end
+      object Button1: TButton
+        Left = 24
+        Height = 45
+        Hint = 'Dat issn battn'
+        Top = 283
+        Width = 100
+        Caption = 'Button1'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
       end
     end
   end
