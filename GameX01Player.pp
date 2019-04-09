@@ -149,7 +149,7 @@ end;
 procedure TFrX01Player.Init;
 begin
   Parent := Player.ScoreBoard;
-  Left := Width + 1;
+  Left := 0;
   Align := alLeft;
   LbNickname.Caption := Player.Nickname;
   SGChalkboard.Clear;

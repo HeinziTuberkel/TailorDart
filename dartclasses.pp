@@ -118,7 +118,6 @@ type
 		function IsLoseOut: Boolean; virtual;
 		procedure EndGame; virtual;
 
-
 		property CurrentThrow: TThrow read fThrow;
 		property ThrowCount: Integer read GetThrowCount;
     property ThrowList[No: Word]: TThrow read GetThrow;
@@ -303,7 +302,7 @@ begin
   fScoreBoard := TheScoreBoard;
 	fThisLeg := 0;
 	fThisSet := 0;
-	for I := 0 to fPlayers.MaxIndex do
+	for I := fPlayers.MaxIndex downto 0 do
     fPlayers[I].InitGame(Self);
 end;
 

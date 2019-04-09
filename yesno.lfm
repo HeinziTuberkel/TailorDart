@@ -1,8 +1,8 @@
 object FrmYesNo: TFrmYesNo
-  Left = 486
+  Left = 128
   Height = 787
   Hint = 'Press [Esc] for No or [Ctrl+Return] for Yes'
-  Top = 146
+  Top = 312
   Width = 625
   BorderStyle = bsNone
   BorderWidth = 10
